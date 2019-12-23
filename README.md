@@ -13,3 +13,10 @@ Note that although suitable for many uses, this is not a byte-code
 interpreter and is designed for parsing basic unique expressions, not
 for high volume repetition of the computations on a large volume of data.
 
+    git clone https://github.com/urbanjost/M_calculator.git
+    cd M_calculator/src
+    # change Makefile if not using gfortran(1)
+    make
+
+This will compile the M_calculator module and build all the example programs from
+the document pages in the PROGRAMS/ sub-directory.
