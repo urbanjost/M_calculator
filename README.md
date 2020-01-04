@@ -20,3 +20,33 @@ for high volume repetition of the computations on a large volume of data.
 
 This will compile the M_calculator module and build all the example programs from
 the document pages in the PROGRAMS/ sub-directory.
+
+The [documentation](md/M_calculator.3.md) describes the many functions available.
+
+## EXAMPLE
+
+      program demo_dnum0
+         use M_calculator, only : dnum0
+         implicit none
+         doubleprecision              :: x,y,z, answer
+         integer                      :: i
+         character(len=:),allocatable :: strings(:)
+      
+         strings= [ character(len=128) ::             &
+            '20/3.4                                 ',&
+            'CI=10*sin(3.1416/4)                    ',&
+            'a=CI**2+sqrt(90)                       ',&
+            'x=a/CI-atan(a)                         ',&
+            'y=x+CI/333                             ',&
+            '                                       ']
+      
+         do i=1,size(strings)
+            answer=dnum0(strings(i))
+         enddo
+      
+         x=dnum0('x')
+         y=dnum0('y')
+         z=dnum0('CI')
+         write(*,*)x,y,z
+      
+      end program demo_dnum0

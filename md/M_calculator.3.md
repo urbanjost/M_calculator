@@ -6,8 +6,7 @@
       <dl>
         <dt class="c1">NAME</dt>
 
-        <dd>M_calculator(3fm) - [M_calculator::INTRO] module of routines for parsing expressions and returning values (LICENSE:PD)</dd>
-        <!-- =========================================================================================================================== -->
+        <dd>M_calculator(3fm) - [M_calculator::INTRO] module of routines for parsing expressions and returning values</dd>
 
         <dt class="c1">SYNOPSIS</dt>
 
@@ -17,49 +16,52 @@
     use M_calculator, only : inum0, rnum0, dnum0, snum0
     ! convenience routines
 </pre>
-        </dd><!-- =========================================================================================================================== -->
+        </dd>
 
         <dt class="c1">DESCRIPTION</dt>
 
         <dd>
-          <p>The <span class="c2">M_calculator module and related functions</span> evaluate CHARACTER strings containing FORTRAN-like expressions and
+          <p>The <span class="c2">M_calculator module and related
+          functions</span> evaluate CHARACTER strings containing
+          FORTRAN-like expressions and
           returns numeric and string values.</p>
 
-          <p>Using this interface it is easy to make free-format and order-independent input interfaces where values can be expressions and variable names
+          <p>Using this interface it is easy to make free-format
+          and order-independent input interfaces where values can be
+          expressions and variable names
           instead of simple formatted numbers.</p>
 
-          <p>The primary routine CALCULATOR(3f) acts like a powerful desk-top calculator. It supports named variables and has several arrays (of 55555
-          elements each). Many standard FORTRAN functions are available, plus access to user-written functions is permitted via user-supplied routines via
-          set_mysub(3f) and set_myfunc(3f).</p>
+          <p>The primary routine CALCULATOR(3f) acts like a powerful
+          desk-top calculator. It supports named variables and has
+          several arrays (of 55555 elements each). Many standard FORTRAN
+          functions are available, plus access to user-written functions
+          is permitted via user-supplied routines via set_mysub(3f)
+          and set_myfunc(3f).</p>
 
-          <p>The programmer (generally) uses just the CALCULATOR(3f) routine or several convenience routines (INUM0,RNUM0,SNUM0,,EXPRESSION) that
-          simplify making the most common type of calls to CALCULATOR(3f).</p>
-          <!-- =========================================================================================================================== -->
+          <p>The programmer (generally) uses just the
+          CALCULATOR(3f) routine or several convenience routines
+          (INUM0,RNUM0,SNUM0,,EXPRESSION) that simplify making the most
+          common type of calls to CALCULATOR(3f).</p>
+          
         </dd>
 
         <dt class="c1">PROCEDURES</dt>
 
         <dd>
-          <ul>
-            <li><a href="calculator.3.html">calculator</a> The procedure CALCULATOR(3f) acts like a calculator</li>
+         <ul>
+          <li><a href="calculator.3.md">calculator</a> The procedure CALCULATOR(3f) acts like a calculator</li>
+          <li> Convenience routines
+           <ul>
 
-            <li> Convenience routines
-              <ul>
-
-                <li><a href="inum0">inum0</a> resolve a calculator string into a whole integer number</li>
-
-                <li><a href="rnum0">rnum0</a> resolve a calculator string into a real number (return 0 on errors)</li>
-
-                <li><a href="dnum0">dnum0</a> resolve a calculator string into a doubleprecision number (return 0 on error s)</li>
-
-                <li><a href="snum0">snum0</a> resolve a calculator expression into a string(return blank on errors)</li>
-
-                <li><a href="expression">expression</a> call calculator() calculator and display messages</li>
-
-              </ul>
-            </li>
-          </ul>
-        </dd><!-- =========================================================================================================================== -->
+             <li><a href="inum0.3.md">inum0</a> resolve a calculator string into a whole integer number</li>
+             <li><a href="rnum0.3.md">rnum0</a> resolve a calculator string into a real number (return 0 on errors)</li>
+             <li><a href="dnum0.3.md">dnum0</a> resolve a calculator string into a doubleprecision number (return 0 on error s)</li>
+             <li><a href="snum0.3.md">snum0</a> resolve a calculator expression into a string(return blank on errors)</li>
+             <li><a href="expression.3.md">expression</a> call calculator() calculator and display messages</li>
+           </ul>
+          </li>
+         </ul>
+        </dd>
 
         <dt class="c1">CONSTANTS</dt>
 
@@ -74,24 +76,18 @@
           <blockquote>
             <ul>
               <li>integer,parameter,public :: iclen_calc=512 ! max length of expression or variable value as a string</li>
-
               <li>integer,parameter,public :: ixy_calc=55555 ! number of variables in X() and Y() array</li>
-
               <li>integer,parameter,public :: icname_calc=20 ! max length of a variable name</li>
-
               <li>real(kind=dp),save,public :: x(ixy_calc)=0.0_dp ! x array for procedure funcs_</li>
-
               <li>real(kind=dp),save,public :: y(ixy_calc)=0.0_dp ! y array for procedure funcs_</li>
-
               <li>integer,save,public,allocatable :: values_len(:) ! lengths of the string variable values</li>
-
               <li>character(len=:),save,public,allocatable :: values(:) ! string variable values</li>
             </ul>
           </blockquote>
           <pre>
 
 </pre>
-        </dd><!-- =========================================================================================================================== -->
+        </dd>
 
         <dt class="c1">SEE ALSO</dt>
 
@@ -104,26 +100,27 @@
             <li>inum0(3f),rnum0(3f),dnum0(3f),snum0(3f)</li>
 
           </ul>
-        </dd><!-- =========================================================================================================================== -->
+        </dd>
 
         <dt class="c1"><a name="USAGE" id="USAGE">USAGE</a></dt>
 
         <dd>
           <div class="c4">
             <h2>Calculator Expressions</h2>
-          </div><!-- ======================================================================= -->
+          </div>
 
           <dl>
-            <!-- ======================================================================= -->
 
             <dt class="c1">SYNOPSIS</dt>
 
-            <dd>The calculator interface allows input values to be numeric or string expressions using Fortran-like syntax instead of just simple
-            variables.<br />
+            <dd>The calculator interface allows input values to be numeric
+            or string expressions using Fortran-like syntax instead of
+            just simple variables.<br />
             <br />
-            Named variables may be created. Several arrays of 55555 elements each exist. The majority of FORTRAN intrinsic functions are available, Custom
-            routines may be made available for each application using the interface.</dd>
-            <!-- ======================================================================= -->
+            Named variables may be created. Several arrays of 55555
+            elements each exist. The majority of FORTRAN intrinsic
+            functions are available, Custom routines may be made available
+            for each application using the interface.</dd>
 
             <dt class="c1">DESCRIPTION</dt>
 
@@ -131,21 +128,31 @@
               A summary of the syntax rules for the expressions follows:
 
               <ul>
-                <li>The hierarchy of operations is the same as that of FORTRAN except that adjacent exponents are done from left to right, not right to left
-                [i.e. in FORTRAN 3**2**4=3**(2**4), e.g. 3**2**4=(3**2)**4]; and +- strings are resolved to a single sign (that is, 3+ -4 is acceptable
-                instead of 3+(-4)).</li>
+                <li>The hierarchy of operations is the same as that of
+                FORTRAN except that adjacent exponents are done from
+                left to right, not right to left [i.e. in FORTRAN
+                3**2**4=3**(2**4), e.g. 3**2**4=(3**2)**4]; and +-
+                strings are resolved to a single sign (that is, 3+
+                -4 is acceptable instead of 3+(-4)).</li>
 
-                <li>Almost all the INTRINSIC mathematical functions defined in FORTRAN are available, as well as access to common extensions and
-                user-written routines.</li>
+                <li>Almost all the INTRINSIC mathematical functions
+                defined in FORTRAN are available, as well as access to
+                common extensions and user-written routines.</li>
 
-                <li>Embedded blanks are ignored during the processing of a calculation, but most applications using the calculator interface parse on
-                spaces. Therefore, it is generally good practice to assume unquoted white-space ends an expression.</li>
+                <li>Embedded blanks are ignored during the processing of
+                a calculation, but most applications using the calculator
+                interface parse on spaces. Therefore, it is generally
+                good practice to assume unquoted white-space ends an
+                expression.</li>
 
-                <li>All numeric values are treated as FORTRAN type REAL variables.</li>
+                <li>All numeric values are treated as FORTRAN type REAL
+                variables.</li>
 
-                <li>Input lines should not normally be over 255 characters long,</li>
+                <li>Input lines should not normally be over 255 characters
+                long,</li>
 
-                <li>There are three ways to store results to be used in future calculations:
+                <li>There are three ways to store results to be used in
+                future calculations:
 
                   <ol>
                     <li>Variable names</li>
@@ -156,25 +163,33 @@
                   </ol>Each of the types will be discussed separately.
                 </li>
               </ul>
-            </dd><!-- ======================================================================= -->
+            </dd>
 
             <dt class="c1">VARIABLE NAMES</dt>
 
             <dd>
-              Names must be 1 to 20 characters long, and are case-sensitive. The numbr of names permitted is only limited by the available memory. Numeric
-              variable names should be composed of the letters a-z and underscores and numbers. String variables are similar but start with a dollar
-              sign($). Names must not end in a "digit-E" combination. For example:
+              Names must be 1 to 20 characters long, and are
+              case-sensitive. The numbr of names permitted is only
+              limited by the available memory. Numeric variable names
+              should be composed of the letters a-z and underscores
+              and numbers. String variables are similar but start
+              with a dollar sign($). Names must not end in a "digit-E"
+              combination. For example:
               <pre>
       A=sin(3.1416/2)
       big=200.333E200
       $name="Thomas Jefferson"
    
-</pre>Variables may be defined by equating them to an expression. To define or redefine a variable called FRED, simply enter:
+</pre>
+Variables may be defined by equating them to an expression. To
+define or redefine a variable called FRED, simply enter:
               <pre>
         &gt; FRED=300*4/500
     
-</pre>The last value assigned to a variable will be used to evaluate the expression on the left of the equals sign when this expression redefines the
-variable. For example:
+</pre>
+The last value assigned to a variable will be used to evaluate the
+expression on the left of the equals sign when this expression redefines
+the variable. For example:
               <pre>
         &gt; A=2
           2
@@ -185,16 +200,23 @@ variable. For example:
         &gt; A=A+A
           8
     
-</pre>To allow FORTRAN-type E-format numeric entry and yet not cause the calculator routine to do an excessive amount of checking, a variable name ending in
-the letter E must not have a digit (012345789) in front of that ending E. Attempting to define such a variable name will produce an error. This limitation
-prevents the calculator from becoming confused by whether 12E+3 is a variable called 12E plus 3 or the exponential number 12E3=12000.
-            </dd><!-- ======================================================================= -->
+</pre>
+To allow FORTRAN-type E-format numeric entry and yet not cause the
+calculator routine to do an excessive amount of checking, a variable
+name ending in the letter E must not have a digit (012345789) in front of
+that ending E. Attempting to define such a variable name will produce an
+error. This limitation prevents the calculator from becoming confused
+by whether 12E+3 is a variable called 12E plus 3 or the exponential
+number 12E3=12000.
+            </dd>
 
             <dt class="c1">CURRENT VALUE</dt>
 
             <dd>
-              The variable name '?' is automatically set by the program to contain the last calculated value. This current-value register may be used like
-              any variable or number. It is 0 at program initialization. Example:
+              The variable name '?' is automatically set by the program
+              to contain the last calculated value. This current-value
+              register may be used like any variable or number. It is
+              0 at program initialization. Example:
               <pre>
           &gt; (300+500)
             800
@@ -204,18 +226,21 @@ prevents the calculator from becoming confused by whether 12E+3 is a variable ca
             400
     
 </pre>
-            </dd><!-- ======================================================================= -->
+            </dd>
 
             <dt class="c1">THE X AND Y ARRAYS</dt>
 
             <dd>
-              Two arrays called X and Y are available that can contain up to 55555 values each. The arrays are originally initialized to all zeros. To set
-              values in the arrays, use the xstore (or ystore) command. The format of the commands is
+              Two arrays called X and Y are available that can contain up
+              to 55555 values each. The arrays are originally initialized
+              to all zeros. To set values in the arrays, use the xstore
+              (or ystore) command. The format of the commands is
 
               <blockquote>
                 <tt>xstore(start,ex1,ex2,ex3)<br />
                 ystore(start,ex1,ex2,ex3)<br /></tt>
-              </blockquote>where start=array address to start storing at and ex(i) are expressions.<br />
+              </blockquote>
+	      where start=array address to start storing at and ex(i) are expressions.<br />
               The current value is assigned the last value stored.<br />
               In addition there are similar string arrays and functions that can hold up to 50 255-character strings:
 
@@ -223,7 +248,9 @@ prevents the calculator from becoming confused by whether 12E+3 is a variable ca
                 <li><b>$nstore(), $xstore(), $ystore()</b></li>
 
                 <li><b>$n() ,$x() ,$y()</b></li>
-              </ul>For example, to store into the locations 10,11,and 12 the values 1/10,2/10, and 3/10, the following could be entered:
+              </ul>For example, to store into the locations 10,11,and
+              12 the values 1/10,2/10, and 3/10, the following could
+              be entered:
               <pre>
 
         xstore( 10 , 1/10 , 2/20 , 3/10 )
@@ -233,7 +260,7 @@ prevents the calculator from becoming confused by whether 12E+3 is a variable ca
                         beginning at x(10).
     
 </pre>
-            </dd><!-- ======================================================================= -->
+            </dd>
 
             <dt class="c1">REFERENCING AN ARRAY VALUE</dt>
 
@@ -257,7 +284,7 @@ prevents the calculator from becoming confused by whether 12E+3 is a variable ca
 
                 <li>The current value is set to the value of the last expression by the xstore and ystore commands</li>
               </ol>
-            </dd><!-- ======================================================================= -->
+            </dd>
 
             <dt class="c1">INTRINSICS</dt>
 
@@ -763,7 +790,7 @@ prevents the calculator from becoming confused by whether 12E+3 is a variable ca
       !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       end program demo_M_calculator
 </pre>
-        </dd><!-- =========================================================================================================================== -->
+        </dd>
 
       </dl>
     </div>

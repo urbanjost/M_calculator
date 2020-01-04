@@ -83,7 +83,7 @@ essentially integer results.
 
       <blockquote>
         All programs that call the calculator routine can supply their own <b>substitute_subroutine</b>(<i>3f</i>) and <b>substitute_C</b>(<i>3f</i>)
-        procedures. See the ../html/Example.html"&gt;example program for samples.
+        procedures. See the example program for samples.
       </blockquote><a name="5"></a>
 
       <h3><a name="5">EXAMPLES</a></h3>
