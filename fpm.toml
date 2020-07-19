@@ -13,7 +13,6 @@ name="runTests"
 source-dir="test"
 main="main.f90"
 
-
 [[executable]]
 name="compute"
 source-dir="app"

@@ -24,7 +24,7 @@ the document pages in the PROGRAMS/ sub-directory.
 The [documentation](md/M_calculator.3.md) describes the many functions available.
 
 ## EXAMPLE
-
+```fortran
       program demo_dnum0
          use M_calculator, only : dnum0
          implicit none
@@ -50,3 +50,4 @@ The [documentation](md/M_calculator.3.md) describes the many functions available
          write(*,*)x,y,z
       
       end program demo_dnum0
+```

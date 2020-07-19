@@ -209,26 +209,26 @@ public remove        ! [M_list] delete entry by index from a sorted allocatable 
    private remove_d
    private remove_i
 
-character(len=*),parameter::ident_1="&
-&@(#)M_list::locate(3f): Generic subroutine locates where element is or should be in sorted allocatable array"
+!character(len=*),parameter::ident_1="&
+!&@(#)M_list::locate(3f): Generic subroutine locates where element is or should be in sorted allocatable array"
 interface locate
    module procedure locate_c, locate_d
 end interface
 
-character(len=*),parameter::ident_2="&
-&@(#)M_list::insert(3f): Generic subroutine inserts element into allocatable array at specified position"
+!character(len=*),parameter::ident_2="&
+!&@(#)M_list::insert(3f): Generic subroutine inserts element into allocatable array at specified position"
 interface insert
    module procedure insert_c, insert_d, insert_i
 end interface
 
-character(len=*),parameter::ident_3="&
-&@(#)M_list::replace(3f): Generic subroutine replaces element from allocatable array at specified position"
+!character(len=*),parameter::ident_3="&
+!&@(#)M_list::replace(3f): Generic subroutine replaces element from allocatable array at specified position"
 interface replace
    module procedure replace_c, replace_d, replace_i 
 end interface
 
-character(len=*),parameter::ident_4="&
-&@(#)M_list::remove(3f): Generic subroutine deletes element from allocatable array at specified position"
+!character(len=*),parameter::ident_4="&
+!&@(#)M_list::remove(3f): Generic subroutine deletes element from allocatable array at specified position"
 interface remove
    module procedure remove_c, remove_d, remove_i 
 end interface
@@ -322,7 +322,7 @@ recursive subroutine calculator(inline,outlin,mssg,slast,ierr)
 !#----------------------------------------------------------------------------------------------------------------------------------
 !subroutine calculator(inline,outlin,mssg,slast,ierr)
 
-character(len=*),parameter::ident_1="@(#)M_calculator::calculator(3f): The procedure CALCULATOR(3f) acts like a calculator"
+!character(len=*),parameter::ident_1="@(#)M_calculator::calculator(3f): The procedure CALCULATOR(3f) acts like a calculator"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),intent(in)            :: inline
@@ -469,7 +469,7 @@ end subroutine calculator
 !===================================================================================================================================
 subroutine help_funcs_()
 
-character(len=*),parameter::ident_2="@(#)M_calculator::help_funcs_(3fp): prints help for calculator functions"
+!character(len=*),parameter::ident_2="@(#)M_calculator::help_funcs_(3fp): prints help for calculator functions"
 
 character(len=80),allocatable :: help_text(:)
 integer                       :: i
@@ -642,7 +642,7 @@ end subroutine help_funcs_
 !===================================================================================================================================
 recursive subroutine parens_(string,nchar,ier)
 
-character(len=*),parameter::ident_3="@(#)M_calculator::parens_(3fp): crack out the parenthesis and solve"
+!character(len=*),parameter::ident_3="@(#)M_calculator::parens_(3fp): crack out the parenthesis and solve"
 
 character(len=*)             :: string
 integer,intent(inout)        :: nchar
@@ -770,8 +770,8 @@ end subroutine parens_
 !===================================================================================================================================
 recursive subroutine funcs_(wstrng,nchars,ier)
 
-character(len=*),parameter::ident_4="&
-&@(#)M_calculator::funcs_(3fp):given string of form name(p1,p2,...) (p(i) are non-parenthesized expressions) call procedure name"
+!character(len=*),parameter::ident_4="&
+!&@(#)M_calculator::funcs_(3fp):given string of form name(p1,p2,...) (p(i) are non-parenthesized expressions) call procedure name"
 
 character(len=*)                    :: wstrng
 integer                             :: nchars
@@ -1729,7 +1729,7 @@ end subroutine funcs_
 !===================================================================================================================================
 subroutine stufftok_(fval,wstrng,nchars,string,iend,ier)
 
-character(len=*),parameter::ident_5="@(#)M_calculator::stufftok_(3fp): add a new token variable and assign string to it"
+!character(len=*),parameter::ident_5="@(#)M_calculator::stufftok_(3fp): add a new token variable and assign string to it"
 
 real(kind=dp)          :: fval
 character(len=*)       :: wstrng
@@ -1771,8 +1771,8 @@ end subroutine stufftok_
 !===================================================================================================================================
 subroutine args_(line,ilen,array,itype,iarray,ier,mx)
 
-character(len=*),parameter::ident_6="&
-&@(#)M_calculator::args_(3fp):given 'par1,par2,...' store non-parenthesized expression par(n) into a real or string array"
+!character(len=*),parameter::ident_6="&
+!&@(#)M_calculator::args_(3fp):given 'par1,par2,...' store non-parenthesized expression par(n) into a real or string array"
 
 !@ (#) record type of par(n) into itype()"
 !@ (#) Commas are only legal delimiters. extra or redundant delimiters are ignored.
@@ -1858,8 +1858,8 @@ end subroutine args_
 !===================================================================================================================================
 subroutine expressions_(string,nchar,value,ier)
 
-character(len=*),parameter::ident_7="&
-&@(#)M_calculator::expressions_(3fp): resolve a series of terms into a single value and restring"
+!character(len=*),parameter::ident_7="&
+!&@(#)M_calculator::expressions_(3fp): resolve a series of terms into a single value and restring"
 
 character(len=*),intent(inout) :: string
 integer,intent(inout)          :: nchar
@@ -1978,7 +1978,7 @@ end subroutine expressions_
 !===================================================================================================================================
 subroutine pows_(wstrng,nchar,ier)
 
-character(len=*),parameter::ident_8="@(#)M_calculator::pows_(3fp): expand power functions in a string, working from left to right"
+!character(len=*),parameter::ident_8="@(#)M_calculator::pows_(3fp): expand power functions in a string, working from left to right"
 
 character(len=*),intent(inout) :: wstrng    ! input string returned with power operators evaluated
 integer,intent(inout)          :: nchar     ! input length of wstrng, returned corrected for new wstrng returned.
@@ -2109,8 +2109,8 @@ end subroutine pows_
 !===================================================================================================================================
 subroutine factors_(wstrng,nchr,fval1,ier)
 
-character(len=*),parameter::ident_9="&
-&@(#)M_calculator::factors_(3fp):reduce unparenthesized string with only * and / operators to val"
+!character(len=*),parameter::ident_9="&
+!&@(#)M_calculator::factors_(3fp):reduce unparenthesized string with only * and / operators to val"
 
 !
 !     The input string is unaltered. for any single pass thru the routine, the string structure is assumed to be:
@@ -2261,8 +2261,8 @@ end subroutine factors_
 !===================================================================================================================================
 subroutine a_to_d_(chars,rval8,ierr)
 
-character(len=*),parameter::ident_10="&
-&@(#)M_calculator::a_to_d_(3f):returns a real value rval8 from a numeric character string chars."
+!character(len=*),parameter::ident_10="&
+!&@(#)M_calculator::a_to_d_(3f):returns a real value rval8 from a numeric character string chars."
 
 ! CAREFUL: LAST is in GLOBAL, but can be read from when passed to this routine as CHARS. DO NOT CHANGE CHARS.
 character(len=*),intent(in) :: chars
@@ -2382,8 +2382,8 @@ end subroutine a_to_d_
 !===================================================================================================================================
 subroutine squeeze_(string,imax,nchars,varnam,nchar2,ier)
 
-character(len=*),parameter::ident_11="&
-&@(#)M_calculator::squeeze_(3fp):change +-[] to #=(),replace strings with placeholders,delete comments"
+!character(len=*),parameter::ident_11="&
+!&@(#)M_calculator::squeeze_(3fp):change +-[] to #=(),replace strings with placeholders,delete comments"
 
 integer, parameter                      :: ilen=(icbuf_calc)+2
 character(len=*)                        :: string
@@ -2626,7 +2626,7 @@ end subroutine squeeze_
 !===================================================================================================================================
 subroutine given_name_get_stringvalue_(chars,ierr)
 
-character(len=*),parameter::ident_12="@(#)M_calculator::given_name_get_stringvalue_(3fp): return associated value for variable name"
+!character(len=*),parameter::ident_12="@(#)M_calculator::given_name_get_stringvalue_(3fp):return associated value for variable name"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),intent(in)  :: chars
@@ -2716,8 +2716,8 @@ end subroutine given_name_get_stringvalue_
 !===================================================================================================================================
 subroutine stuff(varnam,value)
 
-character(len=*),parameter::ident_14="&
-&@(#)M_calculator::stuff(3fp): pass key value and integer|real|doubleprecision value to dictionary(3f) as doubleprecision"
+!character(len=*),parameter::ident_14="&
+!&@(#)M_calculator::stuff(3fp): pass key value and integer|real|doubleprecision value to dictionary(3f) as doubleprecision"
 
 character(len=*),intent(in)           :: varnam        ! variable name to add or replace value of
 class(*),intent(in)                   :: value
@@ -2799,7 +2799,7 @@ end subroutine stuff
 !===================================================================================================================================
 subroutine stuffa(varnam,string)
 
-character(len=*),parameter::ident_15="@(#)M_calculator::stuffa(3f): directly store a string into calculator variable name table"
+!character(len=*),parameter::ident_15="@(#)M_calculator::stuffa(3f): directly store a string into calculator variable name table"
 
 character(len=*),intent(in)           :: varnam    !  assuming friendly, not checking for null or too long varnam0
 character(len=:),allocatable          :: varnam_local
@@ -2894,7 +2894,7 @@ end subroutine stuffa
 !-----------------------------------------------------------------------------------------------------------------------------------
 integer function inum0(inline,ierr)
 
-character(len=*),parameter::ident_16="@(#)M_calculator::inum0(3f):resolve a calculator string into a whole integer number"
+!character(len=*),parameter::ident_16="@(#)M_calculator::inum0(3f):resolve a calculator string into a whole integer number"
 
 !  The special string '*' returns -99999, otherwise return 0 on errors
 character(len=*),intent(in)  :: inline
@@ -2991,7 +2991,7 @@ end function inum0
 !===================================================================================================================================
 real function rnum0(inline,ierr)
 
-character(len=*),parameter::ident_17="@(#)M_calculator::rnum0(3f):resolve a calculator string into a real number"
+!character(len=*),parameter::ident_17="@(#)M_calculator::rnum0(3f):resolve a calculator string into a real number"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),intent(in)  :: inline
@@ -3074,7 +3074,7 @@ end function rnum0
 !===================================================================================================================================
 doubleprecision function dnum0(inline,ierr)
 
-character(len=*),parameter::ident_18="@(#)M_calculator::dnum0(3f):resolve a calculator string into a doubleprecision number"
+!character(len=*),parameter::ident_18="@(#)M_calculator::dnum0(3f):resolve a calculator string into a doubleprecision number"
 
 character(len=*),intent(in) :: inline
 integer,optional,intent(out) :: ierr
@@ -3174,7 +3174,7 @@ end function dnum0
 !===================================================================================================================================
 function snum0(inline0,ierr)
 
-character(len=*),parameter::ident_19="@(#)M_calculator::snum0(3f):resolve a calculator expression into a string"
+!character(len=*),parameter::ident_19="@(#)M_calculator::snum0(3f):resolve a calculator expression into a string"
 
 !  a few odd things are done because some compilers did not work as expected
 character(len=:),allocatable :: snum0
@@ -3307,7 +3307,7 @@ end function snum0
 !===================================================================================================================================
 recursive subroutine expression(inlin0,outval,outlin0,ierr,ilen)
 
-character(len=*),parameter::ident_20="@(#)M_calculator::expression(3f):call CALCULATOR(3f) calculator and display messages"
+!character(len=*),parameter::ident_20="@(#)M_calculator::expression(3f):call CALCULATOR(3f) calculator and display messages"
 
 ! evaluate a FORTRAN-like string expression and return a numeric
 ! value and its character equivalent or a string value as appropriate
@@ -3437,7 +3437,7 @@ end function c_placeholder
 !===================================================================================================================================
 elemental pure function upper(str,begin,end) result (string)
 
-character(len=*),parameter::ident_21="@(#)M_strings::upper(3f): Changes a string to uppercase"
+!character(len=*),parameter::ident_21="@(#)M_strings::upper(3f): Changes a string to uppercase"
 
 character(*), intent(In)      :: str                 ! inpout string to convert to all uppercase
 integer, intent(in), optional :: begin,end
@@ -3467,7 +3467,7 @@ end function upper
 !===================================================================================================================================
 elemental pure function lower(str,begin,end) result (string)
 
-character(len=*),parameter::ident_22="@(#)M_strings::lower(3f): Changes a string to lowercase over specified range"
+!character(len=*),parameter::ident_22="@(#)M_strings::lower(3f): Changes a string to lowercase over specified range"
 
 character(*), intent(In)     :: str
 character(len(str))          :: string
@@ -3498,7 +3498,7 @@ end function lower
 !===================================================================================================================================
 subroutine delim(line,array,n,icount,ibegin,iterm,ilen,dlim)
 
-character(len=*),parameter::ident_9="@(#)M_strings::delim(3f): parse a string and store tokens into an array"
+!character(len=*),parameter::ident_9="@(#)M_strings::delim(3f): parse a string and store tokens into an array"
 
 !
 !     given a line of structure " par1 par2 par3 ... parn "
@@ -3606,7 +3606,7 @@ end subroutine delim
 !===================================================================================================================================
 subroutine value_to_string(gval,chars,length,err,fmt,trimz)
 
-character(len=*),parameter::ident_40="@(#)M_strings::value_to_string(3fp): subroutine returns a string from a value"
+!character(len=*),parameter::ident_40="@(#)M_strings::value_to_string(3fp): subroutine returns a string from a value"
 
 class(*),intent(in)                      :: gval
 character(len=*),intent(out)             :: chars
@@ -3689,8 +3689,8 @@ end subroutine value_to_string
 !===================================================================================================================================
 subroutine locate_c(list,value,place,ier,errmsg)
 
-character(len=*),parameter::ident_5="&
-&@(#)M_list::locate_c(3f): find PLACE in sorted character array where VALUE can be found or should be placed"
+!character(len=*),parameter::ident_5="&
+!&@(#)M_list::locate_c(3f): find PLACE in sorted character array where VALUE can be found or should be placed"
 
 character(len=*),intent(in)             :: value
 integer,intent(out)                     :: place
@@ -3763,8 +3763,8 @@ end subroutine locate_c
 !===================================================================================================================================
 subroutine locate_d(list,value,place,ier,errmsg)
 
-character(len=*),parameter::ident_6="&
-&@(#)M_list::locate_d(3f): find PLACE in sorted doubleprecision array where VALUE can be found or should be placed"
+!character(len=*),parameter::ident_6="&
+!&@(#)M_list::locate_d(3f): find PLACE in sorted doubleprecision array where VALUE can be found or should be placed"
 
 ! Assuming an array sorted in descending order
 !
@@ -3843,8 +3843,8 @@ end subroutine locate_d
 !===================================================================================================================================
 subroutine locate_i(list,value,place,ier,errmsg)
 
-character(len=*),parameter::ident_8="&
-&@(#)M_list::locate_i(3f): find PLACE in sorted integer array where VALUE can be found or should be placed"
+!character(len=*),parameter::ident_8="&
+!&@(#)M_list::locate_i(3f): find PLACE in sorted integer array where VALUE can be found or should be placed"
 
 ! Assuming an array sorted in descending order
 !
@@ -3923,7 +3923,7 @@ end subroutine locate_i
 !===================================================================================================================================
 subroutine remove_i(list,place)
 
-character(len=*),parameter::ident_13="@(#)M_list::remove_i(3fp): remove value from allocatable array at specified position"
+!character(len=*),parameter::ident_13="@(#)M_list::remove_i(3fp): remove value from allocatable array at specified position"
 integer,allocatable    :: list(:)
 integer,intent(in)     :: place
 integer                :: end
@@ -3943,7 +3943,7 @@ end subroutine remove_i
 !===================================================================================================================================
 subroutine remove_c(list,place)
 
-character(len=*),parameter::ident_9="@(#)M_list::remove_c(3fp): remove string from allocatable string array at specified position"
+!character(len=*),parameter::ident_9="@(#)M_list::remove_c(3fp): remove string from allocatable string array at specified position"
 
 character(len=:),allocatable :: list(:)
 integer,intent(in)           :: place
@@ -3962,8 +3962,8 @@ integer                      :: ii, end
 end subroutine remove_c
 subroutine remove_d(list,place)
 
-character(len=*),parameter::ident_10="&
-&@(#)M_list::remove_d(3fp): remove doubleprecision value from allocatable array at specified position"
+!character(len=*),parameter::ident_10="&
+!&@(#)M_list::remove_d(3fp): remove doubleprecision value from allocatable array at specified position"
 
 doubleprecision,allocatable  :: list(:)
 integer,intent(in)           :: place
@@ -3983,7 +3983,7 @@ end subroutine remove_d
 !===================================================================================================================================
 subroutine replace_c(list,value,place)
 
-character(len=*),parameter::ident_14="@(#)M_list::replace_c(3fp): replace string in allocatable string array at specified position"
+!character(len=*),parameter::ident_14="@(#)M_list::replace_c(3fp): replace string in allocatable string array at specified position"
 
 character(len=*),intent(in)  :: value
 character(len=:),allocatable :: list(:)
@@ -4011,8 +4011,8 @@ end subroutine replace_c
 !===================================================================================================================================
 subroutine replace_d(list,value,place)
 
-character(len=*),parameter::ident_15="&
-&@(#)M_list::replace_d(3fp): place doubleprecision value into allocatable array at specified position"
+!character(len=*),parameter::ident_15="&
+!&@(#)M_list::replace_d(3fp): place doubleprecision value into allocatable array at specified position"
 
 doubleprecision,intent(in)   :: value
 doubleprecision,allocatable  :: list(:)
@@ -4033,7 +4033,7 @@ end subroutine replace_d
 !===================================================================================================================================
 subroutine replace_i(list,value,place)
 
-character(len=*),parameter::ident_18="@(#)M_list::replace_i(3fp): place value into allocatable array at specified position"
+!character(len=*),parameter::ident_18="@(#)M_list::replace_i(3fp): place value into allocatable array at specified position"
 
 integer,intent(in)    :: value
 integer,allocatable   :: list(:)
@@ -4054,7 +4054,7 @@ end subroutine replace_i
 !===================================================================================================================================
 subroutine insert_c(list,value,place)
 
-character(len=*),parameter::ident_19="@(#)M_list::insert_c(3fp): place string into allocatable string array at specified position"
+!character(len=*),parameter::ident_19="@(#)M_list::insert_c(3fp): place string into allocatable string array at specified position"
 
 character(len=*),intent(in)  :: value
 character(len=:),allocatable :: list(:)
@@ -4089,8 +4089,8 @@ end subroutine insert_c
 !===================================================================================================================================
 subroutine insert_d(list,value,place)
 
-character(len=*),parameter::ident_21="&
-&@(#)M_list::insert_d(3fp): place doubleprecision value into allocatable array at specified position"
+!character(len=*),parameter::ident_21="&
+!&@(#)M_list::insert_d(3fp): place doubleprecision value into allocatable array at specified position"
 
 doubleprecision,intent(in)       :: value
 doubleprecision,allocatable      :: list(:)
@@ -4115,7 +4115,7 @@ end subroutine insert_d
 !===================================================================================================================================
 subroutine insert_i(list,value,place)
 
-character(len=*),parameter::ident_23="@(#)M_list::insert_i(3fp): place value into allocatable array at specified position"
+!character(len=*),parameter::ident_23="@(#)M_list::insert_i(3fp): place value into allocatable array at specified position"
 
 integer,allocatable   :: list(:)
 integer,intent(in)    :: value
@@ -4141,7 +4141,7 @@ end subroutine insert_i
 !===================================================================================================================================
 subroutine dict_delete(self,key)
 
-character(len=*),parameter::ident_24="@(#)M_list::dict_delete(3f): remove string from sorted allocatable string array if present"
+!character(len=*),parameter::ident_24="@(#)M_list::dict_delete(3f): remove string from sorted allocatable string array if present"
 
 class(dictionary),intent(inout) :: self
 character(len=*),intent(in)     :: key
@@ -4158,7 +4158,7 @@ end subroutine dict_delete
 !===================================================================================================================================
 function dict_get(self,key) result(value)
 
-character(len=*),parameter::ident_25="@(#)M_list::dict_get(3f): get value of key-value pair in dictionary, given key"
+!character(len=*),parameter::ident_25="@(#)M_list::dict_get(3f): get value of key-value pair in dictionary, given key"
 
 !!class(dictionary),intent(inout) :: self
 class(dictionary)               :: self
@@ -4175,7 +4175,7 @@ end function dict_get
 !===================================================================================================================================
 subroutine dict_add(self,key,value)
 
-character(len=*),parameter::ident_26="@(#)M_list::dict_add(3f): place key-value pair into dictionary, adding the key if required"
+!character(len=*),parameter::ident_26="@(#)M_list::dict_add(3f): place key-value pair into dictionary, adding the key if required"
 
 class(dictionary),intent(inout) :: self
 character(len=*),intent(in)     :: key
@@ -4227,7 +4227,7 @@ end function round
 !===================================================================================================================================
 subroutine trimzeros(string)
 
-character(len=*),parameter::ident_50="@(#)M_strings::trimzeros(3fp): Delete trailing zeros from numeric decimal string"
+!character(len=*),parameter::ident_50="@(#)M_strings::trimzeros(3fp): Delete trailing zeros from numeric decimal string"
 
 ! if zero needs added at end assumes input string has room
 character(len=*)             :: string
@@ -4270,8 +4270,8 @@ end subroutine trimzeros
 !===================================================================================================================================
 subroutine init_random_seed(mine)
 
-character(len=*),parameter::ident_7="&
-&@(#)M_random::init_random_seed(3f): initialize random_number(3f) to return a single value with single integer seed like srand(3c)"
+!character(len=*),parameter::ident_7="&
+!&@(#)M_random::init_random_seed(3f): initialize random_number(3f) to return a single value with single integer seed like srand(3c)"
 
 ! to make this start with a single number like srand(3c) take the seed and
 ! use the value to fill the seed array, adding 37 to each subsequent value
