@@ -20,8 +20,8 @@ for high volume repetition of the computations on a large volume of data.
     # change Makefile if not using gfortran(1)
     make
 
-This will compile the M_calculator module and build all the example programs from
-the document pages in the PROGRAMS/ sub-directory.
+This will compile the M_calculator module and build all the example
+programs from the document pages in the PROGRAMS/ sub-directory.
 
 ## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
