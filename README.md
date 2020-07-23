@@ -13,6 +13,8 @@ Note that although suitable for many uses, this is not a byte-code
 interpreter and is designed for parsing basic unique expressions, not
 for high volume repetition of the computations on a large volume of data.
 
+## DOWNLOAD
+
     git clone https://github.com/urbanjost/M_calculator.git
     cd M_calculator/src
     # change Makefile if not using gfortran(1)
@@ -20,6 +22,25 @@ for high volume repetition of the computations on a large volume of data.
 
 This will compile the M_calculator module and build all the example programs from
 the document pages in the PROGRAMS/ sub-directory.
+
+## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
+
+Alternatively, download the github repository and build it with 
+fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
+
+```bash
+     git clone https://github.com/urbanjost/M_calculator.git
+     cd M_calculator
+     fpm build
+     fpm test
+```
+
+or just list it as a dependency in your fpm.toml project file.
+
+     [dependencies]
+     calculator        = { git = "https://github.com/urbanjost/M_XXXXXXX.git" }
+
+## DOCUMENTATION
 
 The [documentation](md/M_calculator.3.md) describes the many functions available.
 
