@@ -4,6 +4,7 @@ license = "Public Domain"
 author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John S. Urban"
+description = "basic numeric expression parser"
 
 [library]
 source-dir="src"
