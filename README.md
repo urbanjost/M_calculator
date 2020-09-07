@@ -39,7 +39,7 @@
    or just list it as a dependency in your fpm.toml project file.
 
      [dependencies]
-     calculator        = { git = "https://github.com/urbanjost/M_XXXXXXX.git" }
+     calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 
 ## DOCUMENTATION
 
