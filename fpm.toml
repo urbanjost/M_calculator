@@ -8,11 +8,15 @@ description = "basic numeric expression parser"
 
 [library]
 source-dir="src"
+[dependencies]
+M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 
 [[test]]
 name="runTests"
-source-dir="test"
-main="main.f90"
+source-dir="test/test_suite"
+main="test_suite_M_calculator.f90"
+[test.dependencies]
+M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 
 [[executable]]
 name="compute"
