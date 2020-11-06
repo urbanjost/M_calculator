@@ -1004,7 +1004,7 @@
 
         <dd>
           <p>The <span class="c2">M_calculator module and related functions</span> evaluate CHARACTER strings containing FORTRAN-like expressions and
-          returns numeric and string values.</p>
+          return numeric and string values.</p>
 
           <p>Using this interface it is easy to make free-format and order-independent input interfaces where values can be expressions and variable names
           instead of simple formatted numbers.</p>
@@ -1035,7 +1035,7 @@
 
                 <li><a href="snum0">snum0</a> resolve a calculator expression into a string(return blank on errors)</li>
 
-                <li><a href="expression">expression</a> call calculator() calculator and display messages</li>
+                <li><a href="expression">expression</a> call calculator(3f) and display messages</li>
 
               </ul>
             </li>
@@ -1122,7 +1122,7 @@
                 <li>Embedded blanks are ignored during the processing of a calculation, but most applications using the calculator interface parse on
                 spaces. Therefore, it is generally good practice to assume unquoted white-space ends an expression.</li>
 
-                <li>All numeric values are treated as FORTRAN type REAL variables.</li>
+                <li>All numeric values are treated as FORTRAN type DOUBLEPRECISION variables.</li>
 
                 <li>Input lines should not normally be over 255 characters long,</li>
 

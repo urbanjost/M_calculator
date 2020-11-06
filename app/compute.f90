@@ -10,6 +10,7 @@ character(len=iclen_calc) :: event
 real(kind=dp)             :: rvalue
 integer                   :: ierr
    ierr=0
+   write(*,*)'Enter expressions or "funcs" or "dump"'
    call calculator('ownmode(1)',outlin,event,rvalue,ierr)
    ! activate user-defined function interface
    INFINITE: do
