@@ -2,7 +2,7 @@
 
 ## parse mathematical expressions
 
-   The M_calculator(3f) module contains A basic expression parser and
+   The M_calculator(3f) module contains a basic expression parser and
    related convenience routines.
    
    Expressions are similar to Fortran77 syntax except powers are processed
