@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="easy project">
+    
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>calculator &ndash; M_calculator</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">M_calculator </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>calculator
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="29.9% of total for procedures.">116 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/M_calculator.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/m_calculator.f90.html'>M_calculator.f90</a></li>
+    
+     <li><a href='../module/m_calculator.html'>M_calculator</a></li>
+    
+  
+     <li class="active">calculator</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-i10">i10</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-i20">i20</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-idum">idum</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-imax">imax</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-indx">indx</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-iplace">iplace</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-istart">istart</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-junout">junout</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-line">line</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-nchar2">nchar2</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-nchard">nchard</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-rlast">rlast</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-varnam">varnam</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/calculator.html#src">calculator</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public recursive subroutine calculator(inline, outlin, mssg, slast, ierr)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>!!!!!  could return string values directly instead of thru message field
+!!!!!  make sure normal output values are not left indeterminate</p>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-inline~5"></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>inline</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-outlin"></span>character(len=iclen_calc),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>outlin</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-mssg"></span>character(len=iclen_calc),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>mssg</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-slast"></span>real(kind=dp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>slast</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ierr~5"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ierr</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-i10">i10</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-i20">i20</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-idum">idum</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-imax">imax</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-indx">indx</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-iplace">iplace</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-istart">istart</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-junout">junout</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-line">line</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-nchar2">nchar2</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-nchard">nchard</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-rlast">rlast</a>
+      
+      <a class="list-group-item" href="../proc/calculator.html#variable-varnam">varnam</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/calculator.html#src">calculator</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-i10"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>i10</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-i20"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>i20</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-idum"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>idum</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-imax"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>imax</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-indx"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>indx</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iplace"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>iplace</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istart"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>istart</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-junout"></span>character(len=iclen_calc),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>junout</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-line"></span>character(len=icbuf_calc),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>line</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nchar2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>nchar2</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nchard"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>nchard</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rlast"></span>real(kind=dp),</td>
+  
+  <td>public,</td>
+  <td>save</td><td>::</td>
+  <td><strong>rlast</strong></td><td> =</td><td>0.0_dp</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-varnam"></span>character(len=iclen_calc),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>varnam</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">recursive subroutine </span><span class="n">calculator</span><span class="p">(</span><span class="n">inline</span><span class="p">,</span><span class="n">outlin</span><span class="p">,</span><span class="n">mssg</span><span class="p">,</span><span class="n">slast</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!     The goal is to create a procedure easily utilized from other</span>
+<span class="c">!     programs that takes a standard Fortran value statement and reduces</span>
+<span class="c">!     it down to a value, efficiently and using standard Fortran</span>
+<span class="c">!     standards where ever feasible.</span>
+<span class="c">!</span>
+<span class="c">!  Version 2.0: 03/13/87</span>
+<span class="c">!  Version 3.0: 07/11/2013</span>
+<span class="c">!  Version 5.0: 07/16/2013</span>
+<span class="c">!</span>
+<span class="c">!  o  adjacent powers are done left to right, not right to left</span>
+<span class="c">!  o  code does not prevent - and + beside an other operator.</span>
+<span class="c">!  o  no check on whether user input more characters than allowed.</span>
+<span class="c">!     no check on whether line expansion ever causes line length to</span>
+<span class="c">!     exceed allowable number of characters.</span>
+<span class="c">!     number of characters to prevent over-expansion would currently be</span>
+<span class="c">!     23 digits per number max*(input number of characters/2+1).</span>
+<span class="c">!  o  allowing for ixy_calc arguments in max and min seems too high. if reducing</span>
+<span class="c">!     array size helps significantly in costs, do so.</span>
+<span class="c">!  o  parentheses are required on a function call.</span>
+<span class="c">!  o  square brackets [] are equivalent to parenthesis ().</span>
+<span class="c">!===========================================================================--------------------------------------------------------</span>
+<span class="c">!  2. need a generic help function to list commands and functions</span>
+<span class="c">!  3. allow multiple expressions per line with a semi-colon between them</span>
+<span class="c">!     (like the parse functions).</span>
+<span class="c">!  4. make a function to fill x and y arrays, or to read values into them</span>
+<span class="c">!     from a file; and make some statistical functions that work on the</span>
+<span class="c">!     arrays.</span>
+<span class="c">!  6. allow user-written functions to be called from funcs_ routine.</span>
+<span class="c">!  7. allow for user-defined arrays and array operations.</span>
+<span class="c">!===========================================================================--------------------------------------------------------</span>
+<span class="c">!  12/07/87 --- put in an implicit real (a-h,o-z) statement in each</span>
+<span class="c">!              procedure so that it could quickly be changed to</span>
+<span class="c">!              implicit real*8 (a-h,o-z) for a vax. be careful of</span>
+<span class="c">!              type mismatch between external functions and the</span>
+<span class="c">!              real variables.</span>
+<span class="c">!              use following xedit commands where periods denote</span>
+<span class="c">!              spaces</span>
+<span class="c">!              c/implicit real../implicit real*8./ *</span>
+<span class="c">! 12/11/87  --- changed ifix calls to int calls as ifix on vax does</span>
+<span class="c">!              not allow real*8 in ifix calls</span>
+<span class="c">! 12/11/87  --- moving all prints out of column 1 so it is not picked</span>
+<span class="c">!              out by vax as carriage control.</span>
+<span class="c">! 12/28/87  --- put bn format specifier into a_to_d_ routine because</span>
+<span class="c">!              vax assumes zero fill</span>
+<span class="c">! 06/23/88  --- making a first cut at allowing string variables.</span>
+<span class="c">!               1. string variable names must start with a dollar-sign</span>
+<span class="c">!               2. strings can only be up to (iclen_calc) characters long</span>
+<span class="c">!               3. they will be returned in the message string to</span>
+<span class="c">!                  the calling program</span>
+<span class="c">!               4. input strings must be delimited with double quotes.</span>
+<span class="c">!                  to place a double quote into the string, put two</span>
+<span class="c">!                  double quotes adjacent to each other.</span>
+<span class="c">!               5. a flag value for ier to distinguish between string</span>
+<span class="c">!                  and numeric output?</span>
+<span class="c">!#----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="c">!subroutine calculator(inline,outlin,mssg,slast,ierr)</span>
+
+<span class="c">!character(len=*),parameter::ident_1=&quot;@(#)M_calculator::calculator(3f): The procedure CALCULATOR(3f) acts like a calculator&quot;</span>
+
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">inline</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">outlin</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">mssg</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">slast</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>                    <span class="kd">::</span> <span class="n">ierr</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">icbuf_calc</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">line</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">varnam</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">junout</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="k">save</span>                     <span class="kd">::</span> <span class="n">rlast</span><span class="o">=</span><span class="mf">0.0_dp</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">i10</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">i20</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">idum</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">imax</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">indx</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">iplace</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">istart</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">nchar2</span>
+<span class="kt">integer</span>                                <span class="kd">::</span> <span class="n">nchard</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+   <span class="n">line</span><span class="o">=</span><span class="n">inline</span>                                      <span class="c">! set working string to initial input line</span>
+   <span class="n">imax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">inline</span><span class="p">)</span>                                 <span class="c">! determine the length of the input line</span>
+   <span class="n">mssg</span><span class="o">=</span><span class="s1">&#39; &#39;</span>                                         <span class="c">! set returned message/error/string value string to a blank</span>
+   <span class="n">outlin</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
+   <span class="n">BIG</span><span class="p">:</span> <span class="k">do</span>                                          <span class="c">! for $A=numeric and A=string</span>
+      <span class="n">ierr</span><span class="o">=</span><span class="mi">1</span>                                           <span class="c">! set status flag to message mode</span>
+      <span class="n">mssge</span><span class="o">=</span><span class="s1">&#39; &#39;</span>                                        <span class="c">! set message/error/string value in GLOBAL to a blank</span>
+      <span class="n">varnam</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
+      <span class="k">call </span><span class="n">squeeze_</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">nchard</span><span class="p">,</span><span class="n">varnam</span><span class="p">,</span><span class="n">nchar2</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span> <span class="c">! preprocess the string: remove blanks and process special characters</span>
+                                                         <span class="c">! also remove all quoted strings and replace them with a token</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>                <span class="c">! if an error occurred during preprocessing of the string, set returned message and quit</span>
+         <span class="n">slast</span><span class="o">=</span><span class="n">rlast</span>                    <span class="c">! set returned real value to last good calculated value</span>
+         <span class="n">mssg</span><span class="o">=</span><span class="n">mssge</span>                     <span class="c">! place internal message from GLOBAL into message returned to user</span>
+         <span class="k">return</span>
+<span class="k">      </span><span class="n">elseif</span><span class="p">(</span><span class="n">nchard</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>  <span class="c">! if a blank input string was entered report it as an error and quit</span>
+         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
+         <span class="n">mssg</span><span class="o">=</span><span class="s1">&#39;*calculator* input line was empty&#39;</span>
+      <span class="n">elseif</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;dump&#39;</span><span class="p">)</span><span class="k">then</span> <span class="c">! process dump command</span>
+         <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">line</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">)</span>
+         <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;current value= &#39;</span><span class="p">,</span><span class="n">last</span>
+         <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39; variable name       variable value     &#39;</span>
+         <span class="k">if</span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">keyr_q</span><span class="p">))</span><span class="k">then</span>
+<span class="k">            do </span><span class="n">i10</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">keyr_q</span><span class="p">)</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">keyr_q</span><span class="p">(</span><span class="n">i10</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">                  write</span><span class="p">(</span><span class="n">junout</span><span class="p">,</span><span class="s1">&#39;(&#39;&#39; &#39;&#39;,2a,g23.16e3)&#39;</span><span class="p">)</span><span class="n">keyr_q</span><span class="p">(</span><span class="n">i10</span><span class="p">),</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">values_d</span><span class="p">(</span><span class="n">i10</span><span class="p">)</span>
+                  <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="nb">trim</span><span class="p">(</span><span class="n">junout</span><span class="p">)</span>
+               <span class="k">endif</span>
+<span class="k">            enddo</span>
+<span class="k">         endif</span>
+<span class="k">         if</span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">keys_q</span><span class="p">))</span><span class="k">then</span>
+<span class="k">            do </span><span class="n">i20</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">keys_q</span><span class="p">)</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">keys_q</span><span class="p">(</span><span class="n">i20</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">                  write</span><span class="p">(</span><span class="n">junout</span><span class="p">,</span><span class="s1">&#39;(&#39;&#39; &#39;&#39;,3a)&#39;</span><span class="p">)</span><span class="n">keys_q</span><span class="p">(</span><span class="n">i20</span><span class="p">),</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">values</span><span class="p">(</span><span class="n">i20</span><span class="p">)(:</span><span class="n">values_len</span><span class="p">(</span><span class="n">i20</span><span class="p">))</span>
+                  <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="nb">trim</span><span class="p">(</span><span class="n">junout</span><span class="p">)</span>
+               <span class="k">endif</span>
+<span class="k">            enddo</span>
+<span class="k">         endif</span>
+<span class="k">         </span><span class="n">mssg</span><span class="o">=</span><span class="s1">&#39;variable listing complete&#39;</span>
+      <span class="n">elseif</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;funcs&#39;</span><span class="p">)</span> <span class="k">then</span>     <span class="c">! process funcs command</span>
+         <span class="k">call </span><span class="n">help_funcs_</span><span class="p">()</span>
+         <span class="n">mssg</span><span class="o">=</span><span class="s1">&#39;function listing complete&#39;</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+      <span class="k">else</span>                                                <span class="c">! this is an input line to process</span>
+         <span class="k">call </span><span class="n">parens_</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">nchard</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>                   <span class="c">! process the command</span>
+         <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                 <span class="c">! if no errors occurred set output string, store the value as last, store any variable</span>
+                                           <span class="c">! numeric value with no errors, assume nchard is 23 or less</span>
+            <span class="n">outlin</span><span class="o">=</span><span class="n">line</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">)</span>                         <span class="c">! set string output value</span>
+            <span class="n">last</span><span class="o">=</span><span class="n">line</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">)</span>                           <span class="c">! store last value (for use with question-mark token)</span>
+            <span class="k">call </span><span class="n">a_to_d_</span><span class="p">(</span><span class="n">last</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">),</span><span class="n">rlast</span><span class="p">,</span><span class="n">idum</span><span class="p">)</span>       <span class="c">! set real number output value</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">nchar2</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mf">0.</span><span class="nb">and</span><span class="p">.</span><span class="n">varnam</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;$&#39;</span><span class="p">)</span><span class="k">then</span>    <span class="c">! if the statement defines a variable make sure variable name is stored</span>
+               <span class="k">call </span><span class="n">locate</span><span class="p">(</span><span class="n">keyr_q</span><span class="p">,</span><span class="n">varnam</span><span class="p">(:</span><span class="n">nchar2</span><span class="p">),</span><span class="n">indx</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span> <span class="c">! determine placement of the variable and whether it is new</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>
+<span class="k">                  </span><span class="n">slast</span><span class="o">=</span><span class="n">rlast</span>                             <span class="c">! set returned real value to last good calculated value</span>
+                  <span class="n">mssg</span><span class="o">=</span><span class="n">mssge</span>                              <span class="c">! place internal message from GLOBAL into message returned to user</span>
+                  <span class="k">return</span>
+<span class="k">               endif</span>
+<span class="k">               if</span><span class="p">(</span><span class="n">indx</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                          <span class="c">! if the variable needs added, add it</span>
+                  <span class="n">istart</span><span class="o">=</span><span class="nb">iabs</span><span class="p">(</span><span class="n">indx</span><span class="p">)</span>
+                  <span class="k">call </span><span class="n">insert</span><span class="p">(</span><span class="n">keyr_q</span><span class="p">,</span><span class="n">varnam</span><span class="p">(:</span><span class="n">nchar2</span><span class="p">),</span><span class="n">istart</span><span class="p">)</span>
+                  <span class="k">call </span><span class="n">insert</span><span class="p">(</span><span class="n">values_d</span><span class="p">,</span><span class="mf">0.0d0</span><span class="p">,</span><span class="n">istart</span><span class="p">)</span>
+               <span class="k">endif</span>
+<span class="k">               call </span><span class="n">a_to_d_</span><span class="p">(</span><span class="n">last</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">),</span><span class="n">values_d</span><span class="p">(</span><span class="nb">iabs</span><span class="p">(</span><span class="n">indx</span><span class="p">)),</span><span class="n">ierr</span><span class="p">)</span>  <span class="c">! store a defined variable&#39;s value</span>
+            <span class="n">elseif</span><span class="p">(</span><span class="n">nchar2</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                       <span class="c">! numeric value to string</span>
+               <span class="n">line</span><span class="p">(:)</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
+               <span class="n">line</span><span class="o">=</span><span class="n">varnam</span><span class="p">(:</span><span class="n">nchar2</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;=&quot;&#39;</span><span class="o">//</span><span class="n">last</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nchard</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+               <span class="n">imax</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>                        <span class="c">! determine the length of the input line</span>
+               <span class="k">cycle </span><span class="n">BIG</span>
+            <span class="k">endif</span>
+<span class="k">         </span><span class="n">elseif</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">2</span><span class="p">)</span><span class="k">then</span> <span class="c">! returned output is not numeric, but alphanumeric (it is a string)</span>
+<span class="c">!!!!!!!  could return string values directly instead of thru message field</span>
+<span class="c">!!!!!!!  make sure normal output values are not left indeterminate</span>
+            <span class="n">mssg</span><span class="o">=</span><span class="n">mssge</span>                                    <span class="c">! set returned string value to returned string value</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">nchar2</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mf">0.</span><span class="nb">and</span><span class="p">.</span><span class="n">varnam</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;$&#39;</span><span class="p">)</span><span class="k">then</span>    <span class="c">! if the statement defines a variable make sure variable name is stored</span>
+               <span class="k">call </span><span class="n">locate</span><span class="p">(</span><span class="n">keys_q</span><span class="p">,</span><span class="n">varnam</span><span class="p">(:</span><span class="n">nchar2</span><span class="p">),</span><span class="n">indx</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span> <span class="c">! determine placement of the variable and whether it is new</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>
+<span class="k">                  </span><span class="n">slast</span><span class="o">=</span><span class="n">rlast</span>                             <span class="c">! set returned real value to last good calculated value</span>
+                  <span class="n">mssg</span><span class="o">=</span><span class="n">mssge</span>                              <span class="c">! place internal message from GLOBAL into message returned to user</span>
+                  <span class="k">return</span>
+<span class="k">               endif</span>
+<span class="k">               </span><span class="n">iplace</span><span class="o">=</span><span class="nb">iabs</span><span class="p">(</span><span class="n">indx</span><span class="p">)</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">indx</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                             <span class="c">! if the variable needs added, add it</span>
+                  <span class="k">call </span><span class="n">insert</span><span class="p">(</span><span class="n">keys_q</span><span class="p">,</span><span class="n">varnam</span><span class="p">(:</span><span class="n">nchar2</span><span class="p">),</span><span class="n">iplace</span><span class="p">)</span> <span class="c">! adding the new variable name to the variable name array</span>
+                  <span class="k">call </span><span class="n">insert</span><span class="p">(</span><span class="n">values</span><span class="p">,</span><span class="s1">&#39; &#39;</span>            <span class="p">,</span><span class="n">iplace</span><span class="p">)</span>
+                  <span class="k">call </span><span class="n">insert</span><span class="p">(</span><span class="n">values_len</span><span class="p">,</span><span class="mi">0</span>              <span class="p">,</span><span class="n">iplace</span><span class="p">)</span>
+               <span class="k">endif</span>
+<span class="k">               call </span><span class="n">replace</span><span class="p">(</span><span class="n">values</span><span class="p">,</span><span class="n">mssg</span><span class="p">,</span><span class="n">iplace</span><span class="p">)</span>
+               <span class="k">call </span><span class="n">replace</span><span class="p">(</span><span class="n">values_len</span><span class="p">,</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">mssg</span><span class="p">),</span><span class="n">iplace</span><span class="p">)</span>
+               <span class="n">rlast</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">values_len</span><span class="p">(</span><span class="n">iplace</span><span class="p">))</span>             <span class="c">! returned value is length of string when string is returned</span>
+            <span class="n">elseif</span><span class="p">(</span><span class="n">nchar2</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                       <span class="c">! string but being stored to numeric variable</span>
+                <span class="n">line</span><span class="o">=</span><span class="n">varnam</span><span class="p">(:</span><span class="n">nchar2</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;=&#39;</span><span class="o">//</span><span class="n">mssg</span>
+                <span class="n">imax</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>                       <span class="c">! determine the length of the input line</span>
+                <span class="k">cycle </span><span class="n">BIG</span>
+            <span class="k">else</span>                                          <span class="c">! a string function with an assignment to it (for example &quot;Hello&quot;</span>
+               <span class="n">rlast</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">mssg</span><span class="p">)</span>                       <span class="c">! probably should pass message length up from someplace</span>
+            <span class="k">endif</span>
+<span class="k">         endif</span>
+<span class="k">         </span><span class="n">mssg</span><span class="o">=</span><span class="n">mssge</span>
+      <span class="k">endif</span>
+<span class="k">      exit </span><span class="n">BIG</span>
+   <span class="k">enddo </span><span class="n">BIG</span>
+   <span class="n">slast</span><span class="o">=</span><span class="n">rlast</span>                                            <span class="c">! set returned value to last successfully calculated real value</span>
+<span class="k">end subroutine </span><span class="n">calculator</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2021-09-17 18:41  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_calculator was developed by John S. Urban</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
