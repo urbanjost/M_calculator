@@ -54,7 +54,7 @@
      calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 ```
 
-## DOCUMENTATION
+## DOCUMENTATION   ![docs](docs/images/docs.gif)
 
    The [documentation](md/M_calculator.3.md) describes the many functions available.
 
