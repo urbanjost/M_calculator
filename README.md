@@ -13,7 +13,7 @@
    interpreter and is designed for parsing basic unique expressions, not
    for high volume repetition of the computations on a large volume of data.
 
-## DOWNLOAD
+## Build with gmake(1) ![gmake](docs/images/gnu.gif)
 ```bash
     git clone https://github.com/urbanjost/M_calculator.git
     cd M_calculator/src
@@ -34,7 +34,9 @@
    This will compile the M_calculator module and build all the example
    programs from the document pages in the PROGRAMS/ sub-directory.
    
-   ## SUPPORTS FPM ![fpm](docs/images/fpm_logo.gif)
+
+
+## Build with  fpm(1) ![fpm](docs/images/fpm_logo.gif)
    #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
    
    Alternatively, download the github repository and build it with 
@@ -54,35 +56,35 @@
      calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 ```
 
-## DOCUMENTATION   ![docs](docs/images/docs.gif)
+## Documentation   ![docs](docs/images/docs.gif)
 
    The [documentation](md/M_calculator.3.md) describes the many functions available.
 
-## EXAMPLE
+## Example
 ```fortran
-      program demo_dnum0
-         use M_calculator, only : dnum0
-         implicit none
-         doubleprecision              :: x,y,z, answer
-         integer                      :: i
-         character(len=:),allocatable :: strings(:)
-      
-         strings= [ character(len=128) ::             &
-            '20/3.4                                 ',&
-            'CI=10*sin(3.1416/4)                    ',&
-            'a=CI**2+sqrt(90)                       ',&
-            'x=a/CI-atan(a)                         ',&
-            'y=x+CI/333                             ',&
-            '                                       ']
-      
-         do i=1,size(strings)
-            answer=dnum0(strings(i))
-         enddo
-      
-         x=dnum0('x')
-         y=dnum0('y')
-         z=dnum0('CI')
-         write(*,*)x,y,z
-      
-      end program demo_dnum0
+program demo_dnum0
+use M_calculator, only : dnum0
+implicit none
+doubleprecision              :: x,y,z, answer
+integer                      :: i
+character(len=:),allocatable :: strings(:)
+  
+   strings= [ character(len=128) ::             &
+      '20/3.4                                 ',&
+      'CI=10*sin(3.1416/4)                    ',&
+      'a=CI**2+sqrt(90)                       ',&
+      'x=a/CI-atan(a)                         ',&
+      'y=x+CI/333                             ',&
+      '                                       ']
+
+   do i=1,size(strings)
+      answer=dnum0(strings(i))
+   enddo
+
+   x=dnum0('x')
+   y=dnum0('y')
+   z=dnum0('CI')
+   write(*,*)x,y,z
+  
+end program demo_dnum0
 ```
