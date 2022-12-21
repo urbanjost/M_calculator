@@ -61,7 +61,7 @@
 
    The [documentation](md/M_calculator.3.md) describes the many functions available.
 
-## Example
+## Example ![example](docs/images/demo.gif)
 ```fortran
 program demo_dnum0
 use M_calculator, only : dnum0
