@@ -1,0 +1,4102 @@
+#<*ush* version 6.0.0> Aug 15 2022
+read calc.ush
+# ==> read calc.ush
+sz 500 800
+set TRUE=1 FALSE=0
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+polyfill TRUE
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+polyfill FALSE
+closeobj
+################################################
+genobj display
+makeobj display
+color 3
+polyfill TRUE
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+polyfill FALSE
+color 0
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.141592653589793238462
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+polyfill TRUE
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+polyfill FALSE
+closeobj
+################################################
+genobj display
+makeobj display
+color 3
+polyfill TRUE
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+polyfill FALSE
+color 0
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.1415926535897932384
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=1 FALSE=0
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+polyfill TRUE
+makepoly
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closepoly
+polyfill FALSE
+closeobj
+################################################
+genobj display
+makeobj display
+color 3
+polyfill TRUE
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+polyfill FALSE
+color 0
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.1415926535897932384
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 2
+polyfill TRUE
+makepoly
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+polyfill FALSE
+closepoly
+color 0
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.1415926535897932384
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 2
+polyfill TRUE
+makepoly
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+polyfill FALSE
+closepoly
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 100
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.1415926535897932384
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 2
+polyfill TRUE
+makepoly
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+polyfill FALSE
+closepoly
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 100
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.141592653589
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 2
+polyfill TRUE
+makepoly
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+closepoly
+polyfill FALSE
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 100
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.141592653
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 100
+textsize 8 8
+centertext TRUE
+move2 0 0
+drawstr 3.141592653
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 100
+textsize 8 7
+centertext TRUE
+move2 0 0
+drawstr 3.141592653
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 100
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.141592653
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj 0 0 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj -20  20 0 1 1 1 0 0 0 key
+invokeobj -20  10 0 1 1 1 0 0 0 key
+invokeobj -20   0 0 1 1 1 0 0 0 key
+invokeobj -20 -10 0 1 1 1 0 0 0 key
+invokeobj -20 -20 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+!vi
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj -17  H=19   0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+invokeobj -17  H=17   0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj -17  H 0 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+execute H=17 -a C=1 -b lt(C,6) -c C=C+1 column
+#   invokeobj -17  H=17   0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj -17  H 0 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+execute H=17 -a C=1 -b lt(C,6) -c C=C+1 column
+#   invokeobj -17  H=17   0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+help execute
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj -17  H 0 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+set H=17
+execute column DO=5
+#   invokeobj -17  H=17   0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+#   invokeobj -17  H=H-12 0 1 1 1 0 0 0 key
+color 7
+linewidth 200
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj -17  H R 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=-20
+   execute column DO=5
+   set H=17 R=-10
+   execute column DO=5
+   set H=17 R=10
+   execute column DO=5
+   set H=17 R=20
+   execute column DO=5
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+execute columns
+#*expression* error===> *a_2_d_* undeclared variable [columns ]
+#*strgar2* could not turn string into number:columns:
+#*strgar2* error is -1
+#*exec* unknown parcel name
+parcel
+#0000001  -oo  roundrect
+#0000018  -oo  roundrect
+#0000035  -oo  roundrect
+#0000052  -oo  roundrect
+#0000069  -oo  roundrect
+#0000086  -oo  roundrect
+#0000103  -oo  roundrect
+#0000120  -oo  roundrect
+#0000137  -oo  roundrect
+#0000154  -oo  roundrect
+#0000171  -oo  roundrect
+#0000188  -oo  roundrect
+#0000205  -oo  roundrect
+#0000222  -oo  roundrect
+#0000239  -oo  roundrect
+#0000256  -oo  column
+#0000260  -oo  roundrect
+#0000277  -oo  column
+#0000281  -oo  roundrect
+#0000298  -oo  column
+#0000302  -oo  roundrect
+#0000319  -oo  column
+#0000323  -oo  rows
+execute rows
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj -17  H R 0 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=-20
+   execute column DO=5
+   set H=17 R=-10
+   execute column DO=5
+   set H=17 R=10
+   execute column DO=5
+   set H=17 R=20
+   execute column DO=5
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj H R 0 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=0
+   execute column
+   set H=17 R=-20
+   execute column DO=5
+   set H=17 R=-10
+   execute column DO=5
+   set H=17 R=10
+   execute column DO=5
+   set H=17 R=20
+   execute column DO=5
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+invokeobj H R 0 1 1 1 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=-17
+   execute column DO=5
+   set H=17 R=R+10
+   execute column DO=5
+   set H=17 R=R+10
+   execute column DO=5
+   set H=17 R=R+10
+   execute column DO=5
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.95
+invokeobj H R 0 S S S 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=-16
+   execute column DO=5
+   set H=17 R=R+10
+   execute column DO=5
+   set H=17 R=R+10
+   execute column DO=5
+   set H=17 R=R+10
+   execute column DO=5
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.95
+invokeobj H R 0 S S S 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=-16
+   execute column DO=2
+   set H=17 R=R+10
+   execute column DO=2
+   set H=17 R=R+10
+   execute column DO=2
+   set H=17 R=R+10
+   execute column DO=2
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 7 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+set H=H-12
+post
+################################################
+parcel rows
+   set H=17 R=-16
+   execute column DO=3
+   set H=17 R=R+10
+   execute column DO=2
+   set H=17 R=R+10
+   execute column DO=2
+   set H=17 R=R+10
+   execute column DO=2
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi vi calc.ush
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+set H=H-14
+post
+################################################
+parcel rows
+   set H=17 R=-16
+   execute column DO=4
+   set H=17 R=R+10
+   execute column DO=4
+   set H=17 R=R+10
+   execute column DO=4
+   set H=17 R=R+10
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+set H=H-11
+post
+################################################
+parcel rows
+   set H=17 R=-16
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr $S
+#*expression* error===>  variable $S is undefined
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+set H=H-11
+post
+################################################
+parcel rows
+set $S="+"
+   set H=17 R=-16
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+set dump
+#dump
+#current value= 1234
+# variable name       variable value
+# width         50.00000000000000
+# tall          80.00000000000000
+# smoothpts     10.00000000000000
+# smoothmode    0.000000000000000
+# rows          610.0000000000000
+# roundrect     588.0000000000000
+# radius        5.000000000000000
+# p_loop03      0.000000000000000
+# p_loop02      0.000000000000000
+# key           12398.00000000000
+# doty         -35.00000000000000
+# dotx         -20.00000000000000
+# display       12399.00000000000
+# column        605.0000000000000
+# ZOOM_FACTOR   10.00000000000000
+# VTRUE         1.000000000000000
+# VFUNCTION     12399.00000000000
+# VFALSE        0.000000000000000
+# USHOBJECT    -1.000000000000000
+# TRUE          0.000000000000000
+# TITLE_CHARS   20.00000000000000
+# STATUS        5.000000000000000
+# SCALE_CHARS   0.000000000000000
+# S            0.9000000000000000
+# R             28.00000000000000
+# PWIN_YMIN    -42.00000000000000
+# PWIN_YMAX     42.00000000000000
+# PWIN_XMIN    -28.00000000000000
+# PWIN_XMAX     28.00000000000000
+# PUT           0.000000000000000
+# PLTOBJECT     12345.00000000000
+# PLOTS         0.000000000000000
+# PI            3.141592653589793
+# PAUSE         1.000000000000000
+# LOGICAL2      6.000000000000000
+# LOGICAL1      1.000000000000000
+# LABEL_CHARS   40.00000000000000
+# LABELPLACES   0.000000000000000
+# ID_CHARS      59.00000000000000
+# HCOPYS        54.00000000000000
+# H            -27.00000000000000
+# GOLDEN_RATIO  1.618033988749895
+# FALSE         1.000000000000000
+# E             2.718281828459045
+# DO            1.000000000000000
+# DETACH        538976288.0000000
+# C             1.000000000000000
+# $y               f=16
+# $sup             v=0.5 s=0.5
+# $sub             v=-0.5 s=0.5
+# $rp              b=0 S=1
+# $rf              f=0
+# $g               f=9
+# $_001            +
+# $VERSION         6.0.0
+# $USHTR
+# $USHTM
+# $USHTL
+# $USHRT
+# $USHRM
+# $USHRB
+# $USHLT
+# $USHLM
+# $USHLB
+# $USHBR
+# $USHBM
+# $USHBL
+# $S               +
+# $PAUSE
+# $HDEVICE         p6
+# $DEVICE          x11
+# $COL_SAVE_FORMAT (10000(g14.7,1x):)
+#*expression* message===> variable listing complete
+vi calc.sh
+vi calc.ush
+set
+$S="AAAAAAAAA"
+# = $S="AAAAAAAAA"
+#*expression* error===>  variable $A is undefined
+$A
+$S
+#AAAAAAAAA
+#*additional_functions* unknown function
+#function name is ........drawstr$str
+#function name length is.. 11
+#number of arguments ..... 1
+drawstr $str($S)
+#0 = drawstr $str($S)
+#*expression* error===> *a_2_d_* undeclared variable [move200 ]
+move2 0 0
+.
+move2 0 0
+drawstr $S
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+drawstr $S
+set H=H-11
+post
+################################################
+parcel rows
+set $S="+"
+   set H=17 R=-26
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $S
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+set $S="+"
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+mank M_calculator
+vi calc.sh
+vi calc.sh
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
+#*expression* error===> illegal subscript value for array in $xstore
+#*strgar2* could not turn string into number:$XSTORE("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")):
+#*strgar2* error is -1
+execute rows
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+#*expression* error===> *a_2_d_* undeclared variable [I ]
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=1
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
+#*expression* error===> illegal subscript value for array in $xstore
+#*strgar2* could not turn string into number:$XSTORE("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")):
+#*strgar2* error is -1
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+set
+$X(1)
+$x(1)
+#dump
+#current value= 1234
+# variable name       variable value
+# width         50.00000000000000
+# tall          80.00000000000000
+# smoothpts     10.00000000000000
+# smoothmode    0.000000000000000
+# rows          762.0000000000000
+# roundrect     736.0000000000000
+# radius        5.000000000000000
+# p_loop03      0.000000000000000
+# p_loop02      0.000000000000000
+# key           12406.00000000000
+# doty         -35.00000000000000
+# dotx         -20.00000000000000
+# display       12407.00000000000
+# column        753.0000000000000
+# ZOOM_FACTOR   10.00000000000000
+# VTRUE         1.000000000000000
+# VFUNCTION     12407.00000000000
+# VFALSE        0.000000000000000
+# USHOBJECT    -1.000000000000000
+# TRUE          0.000000000000000
+# TITLE_CHARS   20.00000000000000
+# STATUS        5.000000000000000
+# SCALE_CHARS   0.000000000000000
+# S            0.9000000000000000
+# R             16.00000000000000
+# PWIN_YMIN    -42.00000000000000
+# PWIN_YMAX     42.00000000000000
+# PWIN_XMIN    -28.00000000000000
+# PWIN_XMAX     28.00000000000000
+# PUT           0.000000000000000
+# PLTOBJECT     12345.00000000000
+# PLOTS         0.000000000000000
+# PI            3.141592653589793
+# PAUSE         1.000000000000000
+# LOGICAL2      6.000000000000000
+# LOGICAL1      1.000000000000000
+# LABEL_CHARS   40.00000000000000
+# LABELPLACES   0.000000000000000
+# ID_CHARS      59.00000000000000
+# I             21.00000000000000
+# HCOPYS        62.00000000000000
+# H            -27.00000000000000
+# GOLDEN_RATIO  1.618033988749895
+# FALSE         1.000000000000000
+# E             2.718281828459045
+# DO            1.000000000000000
+# DETACH        538976288.0000000
+# C             1.000000000000000
+# $y               f=16
+# $sup             v=0.5 s=0.5
+# $sub             v=-0.5 s=0.5
+# $rp              b=0 S=1
+# $rf              f=0
+# $g               f=9
+# $_026            Z
+# $_025            Y
+# $_024            X
+# $_023            W
+# $_022            V
+# $_021            U
+# $_020            T
+# $_019            S
+# $_018            R
+# $_017            Q
+# $_016            P
+# $_015            O
+# $_014            N
+# $_013            M
+# $_012            L
+# $_011            K
+# $_010            J
+# $_009            I
+# $_008            H
+# $_007            G
+# $_006            F
+# $_005            E
+# $_004            D
+# $_003            C
+# $_002            B
+# $_001
+# $VERSION         6.0.0
+# $USHTR
+# $USHTM
+# $USHTL
+# $USHRT
+# $USHRM
+# $USHRB
+# $USHLT
+# $USHLM
+# $USHLB
+# $USHBR
+# $USHBM
+# $USHBL
+# $S               +
+# $PAUSE
+# $HDEVICE         p6
+# $DEVICE          x11
+# $COL_SAVE_FORMAT (10000(g14.7,1x):)
+#*expression* message===> variable listing complete
+dump
+$x(1)
+#*expression* error===> *a_2_d_* undeclared variable [read ]
+read
+.
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=1
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
+#*expression* error===> illegal subscript value for array in $xstore
+#*strgar2* could not turn string into number:$XSTORE("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")):
+#*strgar2* error is -1
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=1
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
+#*expression* error===> *parens_* extraneous right parenthesis found
+#*strgar2* could not turn string into number:$XSTORE(1,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")):
+#*strgar2* error is -1
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
+#*expression* error===> *parens_* extraneous right parenthesis found
+#*strgar2* could not turn string into number:$XSTORE(1,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")):
+#*strgar2* error is -1
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+!vi
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"A","B","C","D","/","F","0","H","*","1","2","3","-","4","5","6","+","7","8","9")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+goo calculator icon
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"C","a","b","c","/","F","0","%","*","3","2","1","-","6","5","4","+","9","8","7")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 7
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"=","(",")","C","/","F","0","%","*","3","2","1","-","6","5","4","+","9","8","7")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 7
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"=",")","(","C","/","F","0","%","*","3","2","1","-","6","5","4","+","9","8","7")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+!vi
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 7
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"=",")","(","C","/","^","0","%","*","3","2","1","-","6","5","4","+","9","8","7")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 550 550
+# *hcopy* creating calc.p6 with device p6 550 550
+hcopy p6 -obj 1234 -sz 2400 1500 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 2400 1500
+page
+callobj 1234
+dt
+zero
+dt
+cp calc.gif calc_small.gif
+display calc_small.gif
+display calc.gif
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 7
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"=",")","(","C","/","^","0","%","*","3","2","1","-","6","5","4","+","9","8","7")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 80*10 50*10
+# *hcopy* creating calc.p6 with device p6 80*10 50*10
+hcopy p6 -obj 1234 -sz 80*10 50*10 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 80*10 50*10
+page
+callobj 1234
+cp calc.gif calc_small.gif
+display calc_small.gif
+vi calc.ush
+# ==> read
+sz 500 800
+set TRUE=0 FALSE=1
+################################################
+parcel roundrect
+ !set tall=50 width=80 radius=10
+ dotx=0-width/2+radius
+ doty=0-tall/2+radius
+ arc dotx doty radius 180 270
+ dotx=width/2-radius
+ draw2 dotx doty-radius
+ arc dotx doty radius 270 360
+ doty=abs(doty)
+ draw2 dotx+radius tall/2-radius
+ arc dotx doty radius 0 90
+ dotx=-dotx
+ draw2 dotx doty+radius
+ arc dotx doty radius 90 180
+ doty=-doty
+ draw2 dotx-radius doty
+post
+################################################
+genobj key
+makeobj key
+linewidth 200
+execute roundrect tall=10 width=10 radius=3
+#-2 = dotx=0-width/2+radius
+#-2 = doty=0-tall/2+radius
+#2 = dotx=width/2-radius
+#2 = doty=abs(doty)
+#-2 = dotx=-dotx
+#-2 = doty=-doty
+linewidth 120
+textsize 6.5 7
+centertext TRUE
+move2 0 0
+closeobj
+################################################
+genobj display
+makeobj display
+color 7
+execute roundrect tall=10 width=42 radius=2
+#-19 = dotx=0-width/2+radius
+#-3 = doty=0-tall/2+radius
+#19 = dotx=width/2-radius
+#3 = doty=abs(doty)
+#-19 = dotx=-dotx
+#-3 = doty=-doty
+linewidth 120
+textsize 6.5 8
+centertext TRUE
+move2 0 0
+drawstr 3.14159265
+closeobj
+################################################
+parcel column
+set S=.90 I=I+1
+invokeobj H R 0 S S S 0 0 0 key
+pushmatrix
+translate H R 0
+drawstr $X(I)
+popmatrix
+set H=H-11
+post
+################################################
+parcel rows
+   set I=0
+   set H=17 R=-28
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+   set H=17 R=R+11
+   execute column DO=4
+post
+################################################
+################################################
+makeobj 1234  # URBAN ART
+page -28 28 -42 42
+circleprecision 60
+linewidth 200
+color 7
+execute roundrect tall=80 width=50 radius=5
+#-20 = dotx=0-width/2+radius
+#-35 = doty=0-tall/2+radius
+#20 = dotx=width/2-radius
+#35 = doty=abs(doty)
+#-20 = dotx=-dotx
+#-35 = doty=-doty
+invokeobj 0 30 0 1 1 1 0 0 0 display
+linewidth 200
+color 7
+set $XSTORE(1,"=",")","(","C","/","^","0","%","*","3","2","1","-","6","5","4","+","9","8","7")
+execute rows
+closeobj
+rm -f calc.p6
+hcopy p6 -obj 1234 -f calc.p6 -sz 50*10 80*10
+# *hcopy* creating calc.p6 with device p6 50*10 80*10
+hcopy p6 -obj 1234 -sz 50*10 80*10 -f |ppmtogif >calc.gif
+# *hcopy* creating |ppmtogif >calc.gif with device p6 50*10 80*10
+page
+callobj 1234
+cp calc.gif calc_small.gif
+display calc_small.gif
+display calc_small.gif
+dt
+zero
+rm calc.p6
+dt
+cp calc* $HOME/github/EXPRESSIONS/M_calculator/docs/images/
+quit
