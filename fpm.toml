@@ -23,6 +23,6 @@ main="test_suite_M_calculator.f90"
 #M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 
 [[executable]]
-name="compute"
+name="ca"
 source-dir="app"
-main="compute.f90"
+main="ca.f90"

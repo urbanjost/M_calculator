@@ -1,3 +1,4 @@
+## ![M_uuid](docs/images/calc_small.gif)
 # M_calculator
 
 ## parse mathematical expressions

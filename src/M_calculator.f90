@@ -115,6 +115,7 @@ integer,save,public,allocatable           :: values_len(:)         ! lengths of 
 
 character(len=:),allocatable,save         :: keyr_q(:)             ! contains the names of numeric variables
 real(kind=dp),save,allocatable            :: values_d(:)           ! numeric variable values
+logical,save                              :: G_debug=.false.
 
 public  :: calculator
 private :: stuff
@@ -1897,7 +1898,7 @@ real(kind=dp) :: temp
       endif
       do
          iendp=index(string(istat:nchar),'#')     ! find left-most addition operator
-         iendm=index(string(istat:nchar),'=')     ! find left-most subtraction operator
+         iendm=index(string(istat:nchar),'@')     ! find left-most subtraction operator
          iend=min(iendp,iendm)                    ! find left-most sum (+-) operator assuming at least one of each exists
          if(iend.eq.0)iend=max(iendm,iendp)       ! if one of the sum operators is not remaining, find left-most of remaining type
          if(iend.eq.0)then                        ! if no more sum operators remain this is the last remaining term
@@ -1913,7 +1914,7 @@ real(kind=dp) :: temp
          if(ier.eq.-1) return                     ! if an error occurred, return
          call factors_(dummy,nchar2,temp,ier)       ! evaluate and remove * and / operators, return the evaluated -value- temp
          if(ier.eq.-1)return                      ! if an error occurred, return
-         if(string(ista:ista).eq.'=')then         ! if term operator was a subtraction, subtract temp from value
+         if(string(ista:ista).eq.'@')then         ! if term operator was a subtraction, subtract temp from value
             value=value-temp
          else                                     ! operator was an addition (+) , add temp to value
 !           if first term was not signed, then first character will not be a subtraction, so addition is implied
@@ -2402,7 +2403,7 @@ integer                                 :: iplace
 character(len=1)                        :: currnt
 character(len=iclen_calc)               :: ctoken
 !!character(len=10),parameter             :: list  =' +-="#[]{}'  ! list of special characters
-!!character(len=10),parameter             :: list2 =' #=&  ()()'  ! list of what to convert special characters too when appropriate
+!!character(len=10),parameter             :: list2 =' #@&  ()()'  ! list of what to convert special characters too when appropriate
 character(len=5)                        :: toknam
 integer                                 :: i10
 integer                                 :: i20
@@ -2490,11 +2491,11 @@ integer                                 :: kstrln
 !!!!!       what is effect on a---b or other +- combinations?
             ! if letter before e is not numeric this is a variable name and - is an operator
             if(index('0123456789.',back2).eq.0)then
-              currnt="="                       ! no digit before the e, so the e is the end of a variable name
+              currnt="@"                       ! no digit before the e, so the e is the end of a variable name
             else                               ! digit before e, so assume this is number and do not change +- to #= operators
             endif
          else
-            currnt="="                         ! previous letter was not e, so +- is an operator so change +- to #= operators
+            currnt="@"                         ! previous letter was not e, so +- is an operator so change +- to #= operators
          endif
 !-----------------------------------------------------------------------------------------------------------------------------------
       case("=")                                      ! current is a plus or minus
