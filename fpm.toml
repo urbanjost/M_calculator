@@ -10,6 +10,28 @@ categories = ["Expression Parser"]
 keywords = ["fortran", "evaluate expressions"]
 homepage = "https://github.com/urbanjost/M_calculator.git"
 
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+# new force module naming rules to avoid collisions with other packages
+#module-naming = true
+# traditional where user can use any module name
+module-naming = false
+
+[fortran]
+
+# new
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+#
+# traditional
+#implicit-typing = true
+#implicit-external = true
+#source-form = "default"
+
 [library]
 source-dir="src"
 [dev-dependencies]
