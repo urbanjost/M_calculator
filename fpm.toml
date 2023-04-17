@@ -16,9 +16,9 @@ auto-tests = true
 auto-examples = true
 
 # new force module naming rules to avoid collisions with other packages
-module-naming = true
+#module-naming = true
 # traditional where user can use any module name
-#module-naming = false
+module-naming = false
 
 [fortran]
 
