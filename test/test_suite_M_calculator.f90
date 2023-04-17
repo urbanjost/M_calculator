@@ -1,10 +1,10 @@
 program test_suite_M_calculator
-use M_verify, only : unit_check_start,unit_check,unit_check_done,unit_check_good,unit_check_bad,unit_check_msg
-use M_verify, only : unit_check_level
-use M_verify, only : almost
-use M_verify, only : unit_check_command, unit_check_keep_going, unit_check_level
-use M_verify, only : unit_check_stop
-use M_msg
+use M_framework__verify, only : unit_check_start,unit_check,unit_check_done,unit_check_good,unit_check_bad,unit_check_msg
+use M_framework__verify, only : unit_check_level
+use M_framework__verify, only : almost
+use M_framework__verify, only : unit_check_command, unit_check_keep_going, unit_check_level
+use M_framework__verify, only : unit_check_stop
+use M_framework__msg
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, stuff, stuffa
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : inum0, rnum0, dnum0, snum0, expression, strgarr, strgar2

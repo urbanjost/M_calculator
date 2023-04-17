@@ -781,7 +781,6 @@ integer                             :: ier
 integer,parameter                   :: iargs=100
 character(len=10),save              :: days(7)
 character(len=10),save              :: months(12)
-character(len=9) :: day
 character(len=iclen_calc)           :: ctmp
 character(len=iclen_calc)           :: ctmp2
 character(len=iclen_calc)           :: junout
@@ -790,7 +789,6 @@ character(len=icname_calc)          :: wstrng2
 
 real(kind=dp)                       :: args(iargs)
 
-real                                :: acurcy
 real(kind=dp)                       :: arg1
 real(kind=dp)                       :: arg2
 real(kind=dp)                       :: bottom
@@ -815,7 +813,6 @@ integer                             :: i3030
 integer                             :: i410
 integer                             :: i440
 integer                             :: i520
-integer                             :: i852
 integer                             :: iargs_type(iargs)
 integer                             :: ibegin(ixyc_calc),iterm(ixyc_calc)
 integer                             :: icalen
@@ -826,38 +823,27 @@ integer                             :: idum
 integer                             :: iend
 integer                             :: iend1
 integer                             :: iend2
-integer                             :: ifail
 integer                             :: iflen
 integer                             :: ii
-integer                             :: iie
 integer                             :: iii
 integer                             :: iiie
 integer                             :: ileft
 integer                             :: ilen
 integer                             :: in
-integer                             :: ind
 integer                             :: indexout
 integer                             :: ios
 integer                             :: iright
 integer                             :: istart
-integer                             :: istat
 integer                             :: istore
 integer                             :: istoreat
 integer                             :: isub
-integer                             :: itime(8)
 integer                             :: itype
-integer                             :: iunit
 integer                             :: ival
 integer                             :: ivalue
 integer                             :: jend
-integer                             :: jj
 integer                             :: n
-integer                             :: idat(8)
 integer                             :: ierr
-integer                             :: iweekday
 integer                             :: ii2
-integer                             :: ilen2
-integer                             :: istatus
 
 intrinsic                           :: abs,aint,anint,exp,nint,int,log,log10
 intrinsic                           :: acos,asin,atan,cos,cosh,sin,sinh,tan,tanh
@@ -4202,7 +4188,7 @@ end subroutine dict_add
 !===================================================================================================================================
 function round(val,idigits0)
 implicit none
-character(len=*),parameter :: ident="@(#) M_math::round(3f): round val to specified number of significant digits"
+!character(len=*),parameter :: ident="@(#) M_math::round(3f): round val to specified number of significant digits"
 integer,parameter          :: dp=kind(0.0d0)
 real(kind=dp),intent(in)   :: val
 integer,intent(in)         :: idigits0

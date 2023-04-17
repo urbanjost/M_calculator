@@ -1,4 +1,4 @@
-# TOML file for fpm as described at https://github.com/fortran-lang/fpm/blob/master/manifest-reference.md
+# TOML file for fpm as described at https://fpm.fortran-lang.org/en/spec/manifest.html
 name = "M_calculator"
 version = "0.1.0"
 license = "Public Domain"
@@ -16,9 +16,9 @@ auto-tests = true
 auto-examples = true
 
 # new force module naming rules to avoid collisions with other packages
-#module-naming = true
+module-naming = true
 # traditional where user can use any module name
-module-naming = false
+#module-naming = false
 
 [fortran]
 
@@ -35,14 +35,14 @@ source-form = "free"
 [library]
 source-dir="src"
 [dev-dependencies]
-M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
+M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
 
 [[test]]
 name="runTests"
 source-dir="test"
 main="test_suite_M_calculator.f90"
 #[test.dependencies]
-#M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
+#M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
 
 [[executable]]
 name="ca"
