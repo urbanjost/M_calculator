@@ -1,8 +1,6 @@
 program test_suite_M_calculator
 use M_framework__verify, only : unit_check_start,unit_check,unit_check_done,unit_check_good,unit_check_bad,unit_check_msg
-use M_framework__verify, only : unit_check_level
 use M_framework__verify, only : almost
-use M_framework__verify, only : unit_check_command, unit_check_keep_going, unit_check_level
 use M_framework__verify, only : unit_check_stop
 use M_framework__msg
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa
@@ -15,9 +13,6 @@ use M_calculator, only : inum0, rnum0, dnum0, snum0, expression
 !!use M_calculator, only : read_config
 implicit none
 integer,parameter :: bug=0 ! gfortran-11 bug where function calls as arguments cause errors, but expressions do not
-unit_check_command=''
-unit_check_keep_going=.true.
-unit_check_level=0
 call test_calculator()
 !!call test_jucals()
 !!call test_squeeze_()
