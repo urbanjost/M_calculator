@@ -1,7 +1,7 @@
 program test_suite_M_calculator
 use M_framework__verify, only : unit_check_start,unit_check,unit_check_done,unit_check_good,unit_check_bad,unit_check_msg
-use M_framework__verify, only : almost
 use M_framework__verify, only : unit_check_stop
+use M_framework__approx, only : almost
 use M_framework__msg
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, stuff, stuffa
