@@ -1,7 +1,11 @@
 program runtest
 use M_msg
+use M_verify, only : unit_check_command, unit_check_keep_going, unit_check_level
 use M_verify, only : unit_check_stop
 implicit none
+   unit_check_command=''
+   unit_check_keep_going=.true.
+   unit_check_level=0
    call test_suite_M_calculator()
    call unit_check_stop()
 contains
@@ -12,6 +16,7 @@ end program runtest
 !===================================================================================================================================
 subroutine test_suite_M_calculator
 use M_verify, only : unit_check_start,unit_check,unit_check_done,unit_check_good,unit_check_bad,unit_check_msg
+use M_verify, only : unit_check_level
 use M_verify,  only : almost
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa
 !*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, stuff, stuffa
