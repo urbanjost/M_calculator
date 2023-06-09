@@ -19,7 +19,7 @@ display: public
 source: true
 proc_internals: true
 sort: permission-alpha
-favicon: docs/images/favicon.ico
+favicon: docs/images/small_calc.ico
 print_creation_date: true
 extra_mods: iso_fortran_env:https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html
             tomlf:https://toml-f.github.io/toml-f
