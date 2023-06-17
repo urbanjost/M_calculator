@@ -1,8 +1,5 @@
-## ![M_calculator](docs/images/calc_small.ico)
-# M_calculator
-[![GPF](docs/images/calc.gif)](https://urbanjost.github.io/M_calculator-purpose-fortran/docs/index.html)
-# [M_calculator](https://urbanjost.github.io/M_calculator/docs/man3.html)
-[![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
+[![M_calculator](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fom-ford/index.html)
+# [M_calculator](https://urbanjost.github.io/M_calculator/index.html)
 
 ## parse mathematical expressions
 
@@ -98,3 +95,4 @@ character(len=:),allocatable :: strings(:)
   
 end program demo_dnum0
 ```
+[![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
