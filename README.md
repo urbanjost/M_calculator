@@ -47,6 +47,8 @@
          write(*,*)x,y,z
         
       end program demo_dnum0
+```
+
 ## Build with gmake(1) ![gmake](docs/images/gnu.gif)
 ```bash
     git clone https://github.com/urbanjost/M_calculator.git
@@ -100,5 +102,4 @@
  - [github action status](docs/STATUS.md)
 -->
 
-```
 [![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
