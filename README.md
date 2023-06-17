@@ -1,4 +1,4 @@
-[![M_calculator](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fom-ford/index.html)
+[![M_calculator](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fpm-ford/index.html)
 # [M_calculator](https://urbanjost.github.io/M_calculator/index.html)
 
 ## parse mathematical expressions
