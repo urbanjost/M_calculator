@@ -7,7 +7,7 @@ output_dir: docs/fpm-ford
 project: M_calculator
 summary: easy project
 project_github: https://github.com/urbanjost/M_calculator
-project_download:
+project_download: https://github.com/urbanjost/M_calculator/archive/refs/heads/master.zip
 author: John S. Urban
 author_email: urbanjost@comcast.net
 github: https://github.com/urbanjost/M_calculator
