@@ -99,12 +99,29 @@
 			   <tr><td><a href='../proc/set_myfunc.html'>set_myfunc</a></td><td><a href='../module/m_calculator.html'>M_calculator</a></td><td>Subroutine</td><td></td></tr>
 			   <tr><td><a href='../proc/set_mysub.html'>set_mysub</a></td><td><a href='../module/m_calculator.html'>M_calculator</a></td><td>Subroutine</td><td></td></tr>
 			   <tr><td><a href='../proc/snum0.html'>snum0</a></td><td><a href='../module/m_calculator.html'>M_calculator</a></td><td>Function</td><td><p>function snum0(inline0,ierr)</p><a href="../proc/snum0.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td><a href='../sourcefile/test_suite_m_calculator.f90.html'>test_suite_M_calculator.f90</a></td><td>Subroutine</td><td><p>REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa
-REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, stuff, stuffa
-REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : inum0, rnum0, dnum0, snum0, expression, strgarr, strgar2
-use M_calculator, only : read_config
-call test_jucals()
-call test_squeeze_()</p><a href="../proc/test_suite_m_calculator.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
+			   <tr><td><a href='../proc/test_c.html'>test_c</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;c&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_calculator.html'>test_calculator</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;calculator&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_dnum0.html'>test_dnum0</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>JUST PRINT VALUES!!if(almost(z,10*sin(3.1416d0/4.0d0),35,verbose=.true.))continue</p></td></tr>
+			   <tr><td><a href='../proc/test_expression.html'>test_expression</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;expression&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_getvalue.html'>test_getvalue</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>!   call unit_check(&lsquo;getvalue&rsquo;, value.eq. 3.1415926535897931d0, &lsquo;check PI&rsquo;,value)</p></td></tr>
+			   <tr><td><a href='../proc/test_igetvalue.html'>test_igetvalue</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>!   call stuff(&lsquo;ten&rsquo;,10)
+!   call unit_check(&lsquo;igetvalue&rsquo;, inum0(&lsquo;ten&rsquo;).eq.10, &lsquo;checking integer&rsquo;,inum0(&lsquo;ten&rsquo;))</p></td></tr>
+			   <tr><td><a href='../proc/test_inum0.html'>test_inum0</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td></td></tr>
+			   <tr><td><a href='../proc/test_juown1.html'>test_juown1</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;juown1&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_rgetvalue.html'>test_rgetvalue</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;rgetvalue&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_rnum0.html'>test_rnum0</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;rnum0&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_snum0.html'>test_snum0</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;snum0&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_strgar2.html'>test_strgar2</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;strgar2&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_strgarr.html'>test_strgarr</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>call unit_check(&lsquo;strgarr&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p></td></tr>
+			   <tr><td><a href='../proc/test_stuff.html'>test_stuff</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>!   call unit_check_start(&lsquo;stuff&rsquo;,msg=&rsquo;&lsquo;)
+!   call unit_check(&lsquo;stuff&rsquo;, value.eq. 31.415926535897931d0, &lsquo;check PI*10&rsquo;,value,31.415926535897931d0)</p></td></tr>
+			   <tr><td><a href='../proc/test_stuffa.html'>test_stuffa</a></td><td><a href='../program/test_suite_m_calculator.html'>test_suite_M_calculator</a></td><td>Subroutine</td><td><p>!   call stuffa(&lsquo;$A&rsquo;,&rsquo;&lsquo;)
+!   string=&rsquo;this is the value of the string&rsquo;
+!   call stuffa(&lsquo;$mystring&rsquo;,string)
+!   call unit_check(&lsquo;stuffa&rsquo;, snum0(&lsquo;$mystring&rsquo;).eq.string, &lsquo;string check&rsquo;,snum0(&lsquo;$mystring&rsquo;))
+!   string=&rsquo;this is the new value of the string&rsquo;
+!   call stuffa(&lsquo;$mystring&rsquo;,string)
+!   call unit_check(&lsquo;stuffa&rsquo;, snum0(&lsquo;$mystring&rsquo;).eq.string, &lsquo;string check&rsquo;,snum0(&lsquo;$mystring&rsquo;))</p></td></tr>
 			 </tbody></table>
              
         </div>
@@ -114,14 +131,14 @@ call test_squeeze_()</p><a href="../proc/test_suite_m_calculator.html" class="pu
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>M_calculator was developed by John S. Urban<br>&copy; 2022 
+        <div class="col-xs-6 col-md-6"><p>M_calculator was developed by John S. Urban<br>&copy; 2023 
 </p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2022-12-21 03:12            </p>
+ on 2023-06-17 13:40            </p>
         </div>
       </div>
       <br>

@@ -1,5 +1,8 @@
-## ![M_uuid](docs/images/calc_small.ico)
+## ![M_calculator](docs/images/calc_small.ico)
 # M_calculator
+[![GPF](docs/images/calc.gif)](https://urbanjost.github.io/M_calculator-purpose-fortran/docs/index.html)
+# [M_calculator](https://urbanjost.github.io/M_calculator/docs/man3.html)
+[![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
 
 ## parse mathematical expressions
 
@@ -59,7 +62,13 @@
 
 ## Documentation   ![docs](docs/images/docs.gif)
 
-   The [documentation](md/M_calculator.3.md) describes the many functions available.
+ = The [user documentation](md/M_calculator.3.md) describes the many functions available.
+
+ - The code was run through [ford(1)](https://politicalphysicist.github.io/ford-fortran-documentation.html)
+   to produce a [developers' document](https://urbanjost.github.io/M_calculator/fpm-ford/index.html).
+<!--
+ - [github action status](docs/STATUS.md)
+-->
 
 ## Example ![example](docs/images/demo.gif)
 ```fortran
