@@ -1,5 +1,5 @@
 [![](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fpm-ford/index.html)
-# [M_calculator](https://urbanjost.github.io/M_calculator/M_calculator.md)
+# [M_calculator](https://urbanjost.github.io/M_calculator/M_calculator.3.md)
 
 ## parse mathematical expressions
 
