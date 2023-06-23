@@ -130,7 +130,7 @@
    variable name will produce an error. This limitation prevents the
    calculator from becoming confused by whether 12E+3 is a variable
    called 12E plus 3 or the exponential number 12E3=12000.
-## CURRENT VALUE
+#### CURRENT VALUE
    The variable name '?' is automatically set by the program to
    contain the last calculated value. This current-value register may
    be used like any variable or number. It is 0 at program
@@ -143,7 +143,7 @@
       +?
       > 400
 ```
-## THE X AND Y ARRAYS
+#### THE X AND Y ARRAYS
    Two arrays called X and Y are available that can contain up to
    55555 values each. The arrays are originally initialized to all
    zeros. To set values in the arrays, use the xstore (or ystore)
@@ -170,7 +170,7 @@
         *-------Start storing evaluated expressions sequentially,
                 beginning at x(10).
 ```
-## REFERENCING AN ARRAY VALUE
+#### REFERENCING AN ARRAY VALUE
    The values stored into the arrays may be referenced by subscript.
    For example:
 ```text
@@ -187,7 +187,8 @@
 ```
    2. The current value is set to the value of the last expression
       by the xstore and ystore commands
-## INTRINSICS
+
+### INTRINSICS
 #### supported Fortran intrinsics
    The majority of intrinsic Fortran numeric functions are available.
    At a minimum the following are recognized (Deviations of the
@@ -341,7 +342,7 @@
   + ERFC(X) - Complementary error function.
   + ERFC_SCALED(X) - Exponentially-scaled complementary error function.
 
-### ADDITIONAL PROCEDURES
+#### ADDITIONAL PROCEDURES
    In addition to standard Fortran intrinsics, many other functions
    are supported ...
 ##### conversion functions

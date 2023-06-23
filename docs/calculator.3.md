@@ -1,6 +1,6 @@
 ## NAME
-     calculator - [M_calculator] parse calculator expression and return
-     numeric or string value (LICENSE:PD)
+   calculator - [M_calculator] parse calculator expression and return
+   numeric or string value (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
      subroutine calculator(inline,outlin,mssg,slast,ierr)
@@ -12,8 +12,8 @@
      integer, intent=(out)                  :: ierr
 ```
 ## DESCRIPTION
-     CALCULATOR(3f) evaluates FORTRAN-like expressions. It can be used to
-     add calculator-like abilities to your program.
+   CALCULATOR(3f) evaluates FORTRAN-like expressions. It can be used to
+   add calculator-like abilities to your program.
 ## OPTIONS
 <dl>
 
