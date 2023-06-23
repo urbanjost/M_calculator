@@ -8,7 +8,7 @@
      character(len=*),intent(in)  :: inline
      integer,optional,intent(out) :: ierr
 ```
-## SYNOPSIS
+## DESCRIPTIONS
    INUM0(3f) evaluates a CHARACTER argument as a FORTRAN-like
    calculator expression and returns an integer.
 
@@ -21,16 +21,29 @@
    returned to reduce roundoff error problems. This could introduce errors
    if INUM0 is misused and is not being used to calculate essentially
    integer results.
-## DESCRIPTION
-   inline:  INLINE is a CHARACTER variable up to 255 characters long that
-            is similar to a FORTRAN 77 numeric expression. Keep it less
-            than 80 characters when possible.
 
-   ierr:    zero (0) if no error occurs
+## OPTIONS
+<dl>
+
+  <dt>inline</dt>
+  <dd>
+  INLINE is a CHARACTER variable up to 255 characters long that
+  is similar to a FORTRAN 77 numeric expression. Keep it less
+  than 80 characters when possible.
+  </dd>
+
+  <dt>ierr</dt>
+  <dd>
+   zero (0) if no error occurs
+  </dd>
+
+</dl>
+
 ## DEPENDENCIES
    All programs that call the calculator routine can supply their own
-   substitute_subroutine(3f) and substitute_C(3f) procedures. See the
-   example program for samples.
+   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M_calculator
+   module. See the example program for samples.
 ## EXAMPLES
    Sample program:
 ```text

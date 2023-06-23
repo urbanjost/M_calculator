@@ -13,15 +13,27 @@
     representing a numeric expression. It uses the M_calculator(3fp)
     module.
 ## OPTIONS
-   inline:  INLINE is a CHARACTER variable up to (iclen_calc=512)
-            characters long that is similar to a FORTRAN 77 numeric
-            expression.
-   ierr:    error code. If zero, no error occurred
+<dl>
+
+  <dt>inline</dt>
+  <dd>
+   INLINE is a CHARACTER variable up to (iclen_calc=512)
+   characters long that is similar to a FORTRAN 77 numeric
+   expression.
+  </dd>
+
+  <dt>ierr</dt>
+  <dd>
+   error code. If zero, no error occurred
+  </dd>
+
+</dl>
 ## DEPENDENCIES
-   User-supplied routines: 
    All programs that call the calculator routine can supply their own
-   substitute_subroutine(3f) and substitute_C(3f) procedures. See the
-   example program for samples.
+   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M_calculator
+   module. See the example program for samples.
+   
 ## EXAMPLES
    Sample program
 ```fortran
@@ -34,6 +46,6 @@
     end program demo_rnum0
 ```
 ## SEE ALSO
-   o The syntax of an expression is as described in the main
-     documentation of the Calculator Library.
-   o See EXPRESSION(3f), CALCULATOR(3f), INUM0(3f), DNUM0(3f), SNUM0(3f).
+  o The syntax of an expression is as described in the main
+    documentation of the Calculator Library.
+  o See EXPRESSION(3f), CALCULATOR(3f), INUM0(3f), DNUM0(3f), SNUM0(3f).

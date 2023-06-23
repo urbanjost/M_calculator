@@ -19,45 +19,74 @@
    to CALCULATOR(3f). CALCULATOR(3f) does not display error messages
    directly.
 
-   o EXPRESSION(3f) calls the calculator routine CALCULATOR
+   + EXPRESSION(3f) calls the calculator routine CALCULATOR
      (3f) to evaluate the expressions.
-   o Messages beginning with a # are considered comments and
+   + Messages beginning with a # are considered comments and
      are not passed on to the calculator.
 
 ## OPTIONS
-   inlin0:  INLIN0 is a string containing a numeric expression. The
-            expression can be up to (iclen_calc=512) characters long. The
-            syntax of an expression is as described in the main document
-            of the Calc library. For example:
-```text
-             'A=sin(3.1416/5)'
-             '# this is a comment'
-             '$STR("The value is ",40/3)'
-```
+<dl>
 
-   outval:  OUTVAL is a numeric value calculated from the expression in
-            INLIN0 (when IERR returns 0). When a string value is returned
-            (IERR=2) then OUTVAL is the length of the output string.
-   outlin0:
-            OUTLIN0 contains a string representation of the number
-            returned in OUTVAL up to 23 characters long when INLIN0 is a
-            numeric expression. It contains a string up to
-            (iclen_calc=512) characters long when INLIN0 is a string
-            expression.
+  <dt>inlin0</dt>
+  <dd>
+   INLIN0 is a string containing a numeric expression. The
+   expression can be up to (iclen_calc=512) characters long. The
+   syntax of an expression is as described in the main document
+   of the Calc library. For example:
+```text
+      'A=sin(3.1416/5)'
+      '# this is a comment'
+      '$STR("The value is ",40/3)'
+```
+  </dd>
+
+  <dt>outval</dt>
+  <dd>
+   OUTVAL is a numeric value calculated from the expression in
+   INLIN0 (when IERR returns 0). When a string value is returned
+   (IERR=2) then OUTVAL is the length of the output string.
+  </dd>
+
+  <dt>outlin0</dt>
+  <dd>
+  OUTLIN0 contains a string representation of the number
+  returned in OUTVAL up to 23 characters long when INLIN0 is a
+  numeric expression. It contains a string up to
+  (iclen_calc=512) characters long when INLIN0 is a string
+  expression.
+  </dd>
+
+  <dt>ierr</dt>
+  <dd>
    ierr:  IERR returns
-          o -1 if an error occurred
-          o 0 if a numeric value is returned (value is in OUTVAL, string
-            representation of the value is in OUTLIN2).
-          o 1 if no value was returned but a message was displayed (If a
-            'dump' or 'funcs' command was passed to the calculator).
-          o 2 if the expression evaluated to a string value instead of a
-            numeric value (value is in OUTLIN0).
-   ilen:   ILEN returns the length of the input string minus trailing
-           blanks.
+   <ul>
+   <li> -1 if an error occurred
+   </li>
+   <li> 0 if a numeric value is returned (value is in OUTVAL, string
+        representation of the value is in OUTLIN2).
+   </li>
+   <li> 1 if no value was returned but a message was displayed (If a
+        'dump' or 'funcs' command was passed to the calculator).
+   </li>
+   <li> 2 if the expression evaluated to a string value instead of a
+        numeric value (value is in OUTLIN0).
+   </li>
+   </ul>
+  </dd>
+
+  <dt>ilen</dt>
+  <dd>
+   ILEN returns the length of the input string minus trailing
+   blanks.
+  </dd>
+
+</dl>
+
 ## DEPENDENCIES
-   o User-supplied routines: All programs that call the calculator
-     routine can supply their own substitute_subroutine(3f) and
-     substitute_C(3f) procedures. See the example program for samples.
+   All programs that call the calculator routine can supply their own
+   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M_calculator
+   module. See the example program for samples.
 ## EXAMPLES
    Sample program:
 ```fortran

@@ -12,15 +12,27 @@
    DNUM0(3f) is used to return a DOUBLEPRECISION value from a CHARACTER
    string representing a numeric expression.
 
-   o If an error occurs in evaluating the expression INUM(3f)
+   + If an error occurs in evaluating the expression INUM(3f)
      returns zero(0).
-   o DNUM0(3f) ultimately uses the calculator routine CALCULATOR(3f)
+   + DNUM0(3f) ultimately uses the calculator routine CALCULATOR(3f)
 
 ## OPTIONS
-   inline:  INLINE is a CHARACTER variable up to (iclen_calc=255)
-            characters long that is similar to a FORTRAN 77 numeric
-            expression.
-   ierr:    error code. If zero, no error occurred
+<dl>
+
+  <dt>inline</dt>
+  <dd>
+      INLINE is a CHARACTER variable up to (iclen_calc=255)
+      characters long that is similar to a FORTRAN 77 numeric
+      expression.
+  </dd>
+
+  <dt>ierr</dt>
+  <dd>
+      error code. If zero, no error occurred
+  </dd>
+
+</dl>
+
 ## EXAMPLES
    Sample Program
 ```fortran
@@ -34,6 +46,6 @@
    end program demo_dnum0
 ```
 ## SEE ALSO
-   o The syntax of an expression is as described in the main
-     documentation of the Calculator Library.
-   o See EXPRESSION(3f), CALCULATOR(3f), RNUM0(3f), SNUM0(3f).
+  o The syntax of an expression is as described in the main
+    documentation of the Calculator Library.
+  o See EXPRESSION(3f), CALCULATOR(3f), RNUM0(3f), SNUM0(3f).

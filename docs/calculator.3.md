@@ -15,25 +15,43 @@
      CALCULATOR(3f) evaluates FORTRAN-like expressions. It can be used to
      add calculator-like abilities to your program.
 ## OPTIONS
-     inline:  INLINE is a string expression up to (iclen_calc=512)
-              characters long. The syntax of an expression is described in
-              the main document of the Calculator Library.
-     outlin:  Returned numeric value as a string when IERR=0.
-     mssg:    MSSG is a string that can serve several purposes
-              o Returned string value when IERR=2
-              o Error message string when IERR=-1
-              o Message from 'funcs' or 'dump' command when IERR=1
-     slast:   SLAST has different meanings depending on whether a string or
-              number is being returned
-              o REAL value set to last successfully calculated value when
-                IERR=0
-              o Number of characters in returned string variable when IERR=2
-     ierr :   status flag.
+<dl>
 
-              + -1 An error occurred
-              +  0 A numeric value was returned
-              +  1 A message was returned
-              +  2 A string value was returned
+  <dt>inline</dt> <dd>
+      INLINE is a string expression up to (iclen_calc=512)
+      characters long. The syntax of an expression is described in
+      the main document of the Calculator Library.
+  </dd>
+  <dt>outlin</dt> <dd>
+      Returned numeric value as a string when IERR=0.
+  </dd>
+  <dt>mssg</dt> <dd>
+      MSSG is a string that can serve several purposes
+      <ul>
+      <li> Returned string value when IERR=2 </li>
+      <li> Error message string when IERR=-1 </li>
+      <li> Message from 'funcs' or 'dump' command when IERR=1 </li>
+      <ul>
+  </dd>
+  <dt>slast</dt> <dd>
+      has different meanings depending on whether a string or
+      number is being returned
+      <ul>
+      <li> REAL value set to last successfully calculated value when IERR=0 </li>
+      <li> Number of characters in returned string variable when IERR=2 </li>
+      /ul>
+  </dd>
+  <dt>ierr</dt> <dd>
+     status flag.
+     <ul>
+     <li> -1 -- An error occurred </li>
+     <li>  0 -- A numeric value was returned </li>
+     <li>  1 -- A message was returned </li>
+     <li>  2 -- A string value was returned </li>
+     </ul>
+  </dd>
+
+</dl>
 ## EXAMPLES
      Example calculator program
 ```fortran
@@ -77,5 +95,5 @@
    999 continue
    end program demo_calculator
 ```
-## SEE ALSO 
+## SEE ALSO
    see INUM0(),RNUM0(),SNUM0(),EXPRESSION().
