@@ -30,9 +30,9 @@
             syntax of an expression is as described in the main document
             of the Calc library. For example:
 ```text
-                 'A=sin(3.1416/5)'
-                 '# this is a comment'
-                 '$STR("The value is ",40/3)'
+             'A=sin(3.1416/5)'
+             '# this is a comment'
+             '$STR("The value is ",40/3)'
 ```
 
    outval:  OUTVAL is a numeric value calculated from the expression in

@@ -11,25 +11,24 @@
      doubleprecision, intent=(out)          :: slast
      integer, intent=(out)                  :: ierr
 ```
-
 ## DESCRIPTION
      CALCULATOR(3f) evaluates FORTRAN-like expressions. It can be used to
      add calculator-like abilities to your program.
 ## OPTIONS
-     inline: INLINE is a string expression up to (iclen_calc=512)
-             characters long. The syntax of an expression is described in
-             the main document of the Calculator Library.
-     outlin: Returned numeric value as a string when IERR=0.
-     mssg:   MSSG is a string that can serve several purposes
-            o Returned string value when IERR=2
-            o Error message string when IERR=-1
-            o Message from 'funcs' or 'dump' command when IERR=1
-     slast:  SLAST has different meanings depending on whether a string or
-             number is being returned
-            o REAL value set to last successfully calculated value when
-              IERR=0
-            o Number of characters in returned string variable when IERR=2
-     ierr :  status flag.
+     inline:  INLINE is a string expression up to (iclen_calc=512)
+              characters long. The syntax of an expression is described in
+              the main document of the Calculator Library.
+     outlin:  Returned numeric value as a string when IERR=0.
+     mssg:    MSSG is a string that can serve several purposes
+              o Returned string value when IERR=2
+              o Error message string when IERR=-1
+              o Message from 'funcs' or 'dump' command when IERR=1
+     slast:   SLAST has different meanings depending on whether a string or
+              number is being returned
+              o REAL value set to last successfully calculated value when
+                IERR=0
+              o Number of characters in returned string variable when IERR=2
+     ierr :   status flag.
 
               + -1 An error occurred
               +  0 A numeric value was returned
@@ -78,6 +77,5 @@
    999 continue
    end program demo_calculator
 ```
-
 ## SEE ALSO 
-     see INUM0(),RNUM0(),SNUM0(),EXPRESSION().
+   see INUM0(),RNUM0(),SNUM0(),EXPRESSION().
