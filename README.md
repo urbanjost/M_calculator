@@ -1,4 +1,4 @@
-[![M_calculator](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fpm-ford/index.html)
+[![](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fpm-ford/index.html)
 # [M_calculator](https://urbanjost.github.io/M_calculator/M_calculator.md)
 
 ## parse mathematical expressions
@@ -91,17 +91,14 @@ Results:
    fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 
 ```bash
-     git clone https://github.com/urbanjost/M_calculator.git
-     cd M_calculator
-     fpm build
-     fpm test
+    git clone https://github.com/urbanjost/M_calculator.git
+    cd M_calculator
+    fpm build
+    fpm test
 ```
-
    or just list it as a dependency in your fpm.toml project file.
-
 ```toml
-     [dependencies]
-     calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
+    [dependencies]
+    calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 ```
-
 [![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
