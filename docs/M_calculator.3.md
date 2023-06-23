@@ -28,13 +28,13 @@
    simplify making the most common type of calls to CALCULATOR(3f).
 
 ## PROCEDURES
-   + calculator**:
-     The procedure [CALCULATOR(3f)](calculator.3.md) acts like a calculator
+   + [**calculator**](calculator.3.md):
+     The procedure acts like a calculator
    + Convenience routines
-     + [**inum0**](inum0.md):  resolve a calculator string into a whole integer number
-     + [**rnum0**](rnum0.md):  resolve a calculator string into a real number (return 0 on errors)
-     + [**dnum0**](dnum0.md):  resolve a calculator string into a doubleprecision number (return 0 on errors)
-     + [**snum0**](snum0.md):  resolve a calculator expression into a string(return blank on errors)
+     + [**inum0**](inum0.3.md):  resolve a calculator string into a whole integer number
+     + [**rnum0**](rnum0.3.md):  resolve a calculator string into a real number (return 0 on errors)
+     + [**dnum0**](dnum0.3.md):  resolve a calculator string into a doubleprecision number (return 0 on errors)
+     + [**snum0**](snum0.3.md):  resolve a calculator expression into a string(return blank on errors)
      + [**expression**](expressions.md):  call calculator() calculator and display messages
 ## CONSTANTS
    The variables used to hold the X,Y,$X,$Y, ... arrays and the
