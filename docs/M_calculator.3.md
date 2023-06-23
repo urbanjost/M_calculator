@@ -92,7 +92,7 @@
      2. The current-value
      3. The x and y arrays
 
-    Each of the types will be discussed separately.
+   Each of the types will be discussed separately.
 #### VARIABLE NAMES
    Names must be 1 to 20 characters long, and are case-sensitive. The
    numbr of names permitted is only limited by the available memory.
@@ -108,20 +108,20 @@
    Variables may be defined by equating them to an expression. To
    define or redefine a variable called FRED, simply enter:
 ```text
-       > FRED=300*4/500
+       FRED=300*4/500
 ```
    The last value assigned to a variable will be used to evaluate the
    expression on the left of the equals sign when this expression
    redefines the variable. For example:
 ```text
-       > A=2
-       2
-       > A
-       2
-       > A=A+A
-       4
-       > A=A+A
-       8
+       A=2
+       > 2
+       A
+       > 2
+       A=A+A
+       > 4
+       A=A+A
+       > 8
 ```
    To allow FORTRAN-type E-format numeric entry and yet not cause the
    calculator routine to do an excessive amount of checking, a
@@ -136,12 +136,12 @@
    be used like any variable or number. It is 0 at program
    initialization. Example:
 ```text
-      > (300+500)
-      800
-      > (1/4)*?
-      200
-      > ?+?
-      400
+      300+500)
+      > 800
+      1/4)*?
+      > 200
+      +?
+      > 400
 ```
 ## THE X AND Y ARRAYS
    Two arrays called X and Y are available that can contain up to
