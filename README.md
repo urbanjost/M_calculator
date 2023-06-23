@@ -13,41 +13,55 @@
    + all numeric values are assumed to be DOUBLEPRECISION.
    
    Note that although suitable for many uses, this is not a byte-code
-   interpreter and is designed for parsing basic unique expressions, not
-   for high volume repetition of the computations on a large volume of data.
+   interpreter and is designed for parsing basic unique expressions,
+   not for high volume repetition of the computations on a large volume
+   of data.
 
    The original dates back a long time, but it still works.
 
 ## Example ![example](docs/images/demo.gif)
 
-
 ```fortran
-      program demo_dnum0
-      use M_calculator, only : dnum0
-      implicit none
-      doubleprecision              :: x,y,z, answer
-      integer                      :: i
-      character(len=:),allocatable :: strings(:)
-        
-         strings= [ character(len=128) ::             &
-            '20/3.4                                 ',&
-            'CI=10*sin(3.1416/4)                    ',&
-            'a=CI**2+sqrt(90)                       ',&
-            'x=a/CI-atan(a)                         ',&
-            'y=x+CI/333                             ',&
-            '                                       ']
-      
-         do i=1,size(strings)
-            answer=dnum0(strings(i))
-         enddo
-      
-         x=dnum0('x')
-         y=dnum0('y')
-         z=dnum0('CI')
-         write(*,*)x,y,z
-        
-      end program demo_dnum0
+program demo_dnum0
+use M_calculator, only: dnum0
+implicit none
+doubleprecision              :: x, y, z, answer
+integer                      :: i
+character(len=:), allocatable :: strings(:)
+
+   strings = [character(len=128) :: &
+   '20/3.4                       ', &
+   'CI=10*sin(3.1416/4)          ', &
+   'a=CI**2+sqrt(90)             ', &
+   'x=a/CI-atan(a)               ', &
+   'y=x+CI/333                   ', &
+   '                             ']
+
+   do i = 1, size(strings)
+      answer = dnum0(strings(i))
+   enddo
+
+   x = dnum0('x')
+   y = dnum0('y')
+   z = dnum0('CI')
+   write (*, *) x, y, z
+
+end program demo_dnum0
 ```
+Results:
+```text
+ >    6.8587316018816180        6.8799660787542747        7.0710807985947346     
+```
+
+## Documentation   ![docs](docs/images/docs.gif)
+
+ - The [user documentation](md/M_calculator.3.md) describes the many functions available.
+
+ - The code was run through [ford(1)](https://politicalphysicist.github.io/ford-fortran-documentation.html)
+   to produce a [developers' document](https://urbanjost.github.io/M_calculator/fpm-ford/index.html).
+<!--
+ - [github action status](docs/STATUS.md)
+-->
 
 ## Build with gmake(1) ![gmake](docs/images/gnu.gif)
 ```bash
@@ -69,8 +83,6 @@
 ```
    This will compile the M_calculator module and build all the example
    programs from the document pages in the PROGRAMS/ sub-directory.
-   
-
 
 ## Build with  fpm(1) ![fpm](docs/images/fpm_logo.gif)
    #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
@@ -91,15 +103,5 @@
      [dependencies]
      calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 ```
-
-## Documentation   ![docs](docs/images/docs.gif)
-
- = The [user documentation](md/M_calculator.3.md) describes the many functions available.
-
- - The code was run through [ford(1)](https://politicalphysicist.github.io/ford-fortran-documentation.html)
-   to produce a [developers' document](https://urbanjost.github.io/M_calculator/fpm-ford/index.html).
-<!--
- - [github action status](docs/STATUS.md)
--->
 
 [![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
