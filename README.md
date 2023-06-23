@@ -55,7 +55,7 @@ Results:
 
 ## Documentation   ![docs](docs/images/docs.gif)
 
- - The [user documentation](md/M_calculator.3.md) describes the many functions available.
+ - The [user documentation](docs/M_calculator.3.md) describes the many functions available.
 
  - The code was run through [ford(1)](https://politicalphysicist.github.io/ford-fortran-documentation.html)
    to produce a [developers' document](https://urbanjost.github.io/M_calculator/fpm-ford/index.html).
