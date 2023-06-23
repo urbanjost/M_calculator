@@ -54,10 +54,7 @@
      lengths of the string variable values
    + character(len=:),save,public,allocatable :: values(:) !
      string variable values
-## SEE ALSO
-   + calculator(3f)
-   + expression(3f)
-   + inum0(3f),rnum0(3f),dnum0(3f),snum0(3f)
+
 ## USAGE
 ### Calculator Expressions 
 
