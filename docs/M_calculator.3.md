@@ -42,22 +42,22 @@
    values:
 ```fortran
    ! max length of expression or variable value as a string
-   integer,parameter,public :: iclen_calc=512 
+   integer,parameter,public :: iclen_calc=512
    ! number of variables in X() and Y() array
-   integer,parameter,public :: ixy_calc=55555 
+   integer,parameter,public :: ixy_calc=55555
    ! max length of a variable name
-   integer,parameter,public :: icname_calc=20 
+   integer,parameter,public :: icname_calc=20
    ! x array for procedure funcs_
-   real(kind=dp),save,public :: x(ixy_calc)=0.0_dp 
+   real(kind=dp),save,public :: x(ixy_calc)=0.0_dp
    ! y array for procedure funcs_
-   real(kind=dp),save,public :: y(ixy_calc)=0.0_dp 
+   real(kind=dp),save,public :: y(ixy_calc)=0.0_dp
    !  lengths of the string variable values
-   integer,save,public,allocatable :: values_len(:) 
+   integer,save,public,allocatable :: values_len(:)
    !  string variable values
-   character(len=:),save,public,allocatable :: values(:) 
+   character(len=:),save,public,allocatable :: values(:)
 ```
 ## USAGE
-### Calculator Expressions 
+### Calculator Expressions
 
    The calculator interface allows input values to be numeric or
    string expressions using Fortran-like syntax instead of just simple
@@ -87,7 +87,7 @@
    + Input lines should not normally be over 255 characters long,
    + There are three ways to store results to be used in future
      calculations:
- 
+
      1. Variable names
      2. The current-value
      3. The x and y arrays
@@ -180,15 +180,15 @@
      > 60
 ```
    NOTES:
-   1) x and y array values cannot be used on the left of equal
+   1. x and y array values cannot be used on the left of equal
       signs.
 ```text
          x(10)=5   #  IS ILLEGAL
 ```
-   2) The current value is set to the value of the last expression
+   2. The current value is set to the value of the last expression
       by the xstore and ystore commands
 ## INTRINSICS
-#### supported Fortran intrinsics 
+#### supported Fortran intrinsics
    The majority of intrinsic Fortran numeric functions are available.
    At a minimum the following are recognized (Deviations of the
    calculator routines from the standard intrinsics are noted):
@@ -220,214 +220,211 @@
 
 ##### Trigonometric functions
 
-            * COS(arg) is a generic function that returns the cosine
-              of its argument in radians. The result of COS(real-arg)
-              is real.
-            * SIN(arg) is a generic function that returns the sine of
-              its argument in radians. The result of SIN(real-arg) is
-              real.
-            * TAN(arg) is a generic function that returns the tangent
-              of its argument in radians.
-    Hyperbolic trigonometric functions
+  + COS(arg) is a generic function that returns the cosine
+    of its argument in radians. The result of COS(real-arg)
+    is real.
+  + SIN(arg) is a generic function that returns the sine of
+    its argument in radians. The result of SIN(real-arg) is
+    real.
+  + TAN(arg) is a generic function that returns the tangent
+    of its argument in radians.
 
-            * COSH(arg) is a generic function that returns the
-              hyperbolic cosine of its argument. The result of COSH
-              (real-arg) is real.
-            * SINH(arg) is a generic function that returns the
-              hyperbolic sine of its argument in radians. The result
-              of SINH(real-arg) is real.
-            * TANH(arg) is a generic function that returns the
-              hyperbolic tangent of its argument in radians.
-    Powers and logarithms
+##### Hyperbolic trigonometric functions
 
+  + COSH(arg) is a generic function that returns the
+    hyperbolic cosine of its argument. The result of COSH
+    (real-arg) is real.
+  + SINH(arg) is a generic function that returns the
+    hyperbolic sine of its argument in radians. The result
+    of SINH(real-arg) is real.
+  + TANH(arg) is a generic function that returns the
+    hyperbolic tangent of its argument in radians.
 
-            * EXP(arg) is a generic function that returns the
-              exponential of its argument. The result of EXP(real-
-              arg) is real.
-            * LOG(arg) is a generic function that returns the natural
-              logarithm (base e) of its argument. The result of LOG
-              (real-arg) is real.
-            * HYPOT(arg1,arg2) returns the Euclidean distance
-              calculated at HYPOT(X,Y)==SQRT(X**2+Y**2)
-            * LOG10(arg) is a generic function that returns the
-              common logarithm (base 10) of its argument. The result
-              of LOG10(real-arg) is real.
-            * SQRT(arg) is a generic function that returns the
-              principal square root of its argument. The result of
-                        SQRT(real-arg) is real.
-    Maximum/Minimum
+##### Powers and logarithms
 
-
-            * MAX(arg1, arg2 [,..., arg50]) is a generic function
-              that returns the largest value in its argument list.
-              The result of MAX(real-arg1, real-arg2 [,..., real-
-              arg50]) is real. - (NON-STANDARD LIMIT: 50 instead of
-              500 parameters allowed)
-            * MIN(arg1, arg2 [,..., arg50]) is a generic function
-              that returns the smallest value in its argument list.
-              The result of MIN(real-arg1, real-arg2 [,..., real-
-              arg50]) is real. NON-STANDARD LIMIT: 50 instead of 500
-              parameters allowed)
-    Directly effecting sign of value
+  + EXP(arg) is a generic function that returns the
+    exponential of its argument. The result of EXP(real-
+    arg) is real.
+  + LOG(arg) is a generic function that returns the natural
+    logarithm (base e) of its argument. The result of LOG
+    (real-arg) is real.
+  + HYPOT(arg1,arg2) returns the Euclidean distance
+    calculated at HYPOT(X,Y)==SQRT(X**2+Y**2)
+  + LOG10(arg) is a generic function that returns the
+    common logarithm (base 10) of its argument. The result
+    of LOG10(real-arg) is real.
+  + SQRT(arg) is a generic function that returns the
+    principal square root of its argument. The result of
+    SQRT(real-arg) is real.
+##### Maximum/Minimum
 
 
-            * ABS(arg) is a generic function that returns the
-              absolute value of its argument. The result of ABS(real-
-              arg) is real.
-            * SIGN(arg1, arg2) is a generic function that returns a
-              value after a sign transfer. The result of SIGN(real-
-              arg1, real-arg2) is real. The result is |arg1| if arg2
-              >= 0. The result is -|arg1| if arg2 < 0.
-    Converting to a whole number
+  + MAX(arg1, arg2 [,..., arg50]) is a generic function
+    that returns the largest value in its argument list.
+    The result of MAX(real-arg1, real-arg2 [,..., real-
+    arg50]) is real. - (NON-STANDARD LIMIT: 50 instead of
+    500 parameters allowed)
+  + MIN(arg1, arg2 [,..., arg50]) is a generic function
+    that returns the smallest value in its argument list.
+    The result of MIN(real-arg1, real-arg2 [,..., real-
+    arg50]) is real. NON-STANDARD LIMIT: 50 instead of 500
+    parameters allowed)
 
+##### Directly effecting sign of value
 
-            * INT(arg) is a generic function that converts its
-              argument to integer type. The result of INT(real-arg)
-              is zero if |real-arg| < 1. The result is the largest
-              integer with the same sign as real-arg that does not
-              exceed the magnitude of real-arg if |real-arg| >= 1.
-            * AINT(arg) is a generic function that returns a whole
-              number after truncation of its argument. The result of
-              AINT(real-arg) is real. The result is 0 if |arg| < 1.
-              The result is the largest integer with the same sign as
-              arg that does not exceed the magnitude of arg if |arg|
-              >= 1.
-            * ANINT(arg) is a generic function that returns the
-              nearest whole number of its argument. The result of
-              ANINT(real-arg) is real.
-            * NINT(arg) is a generic function that returns the
-              integer that is nearest to its argument. The result of
-              NINT(real-arg) is integer. If arg >= 0, the result is
-              (INT(arg+.5)). If arg < 0, the result is (INT(arg-.5)).
-    Bessel functions
+  + ABS(arg) is a generic function that returns the
+    absolute value of its argument. The result of ABS(real-
+    arg) is real.
+  + SIGN(arg1, arg2) is a generic function that returns a
+    value after a sign transfer. The result of SIGN(real-
+    arg1, real-arg2) is real. The result is |arg1| if arg2
+    >= 0. The result is -|arg1| if arg2 < 0.
 
+##### Converting to a whole number
 
-            * BESSEL_J0(X) - Bessel function of the first kind and
-              order zero.
-            * BESSEL_J1(X) - Bessel function of the first kind and
-              order one.
-            * BESSEL_Y0(X) - Bessel function of the second kind and
-              order zero.
-            * BESSEL_Y1(X) - Bessel function of the second kind and
-              order one.
-            * BESSEL_JN(N,X) - Bessel function of the first kind and
-              order N.
-            * BESSEL_YN(N,X) - Bessel function of the second kind and
-              order N.
-            * BESSEL_JN(N1,N2,X) - Bessel function of the first kind
-              and order N.
-            * BESSEL_YN(N1,N2,X) - Bessel function of the second kind
-              and order N.
-    Miscellaneous
+  + INT(arg) is a generic function that converts its
+    argument to integer type. The result of INT(real-arg)
+    is zero if |real-arg| < 1. The result is the largest
+    integer with the same sign as real-arg that does not
+    exceed the magnitude of real-arg if |real-arg| >= 1.
+  + AINT(arg) is a generic function that returns a whole
+    number after truncation of its argument. The result of
+    AINT(real-arg) is real. The result is 0 if |arg| < 1.
+    The result is the largest integer with the same sign as
+    arg that does not exceed the magnitude of arg if |arg|
+    >= 1.
+  + ANINT(arg) is a generic function that returns the
+    nearest whole number of its argument. The result of
+    ANINT(real-arg) is real.
+  + NINT(arg) is a generic function that returns the
+    integer that is nearest to its argument. The result of
+    NINT(real-arg) is integer. If arg >= 0, the result is
+    (INT(arg+.5)). If arg < 0, the result is (INT(arg-.5)).
 
+##### Bessel functions
 
-            * DIM(arg1, arg2) is a generic function that returns the
-              positive difference of its arguments. The result of DIM
-              (real-arg1, real-arg2) is real. The result is arg1-arg2
-              if arg1 > arg2, and the result is 0 if arg1 <= arg2.
-            * MOD(arg1, arg2) is a generic function that returns the
-              remainder of arg1 divided by arg2. The result of MOD
-              (real-arg1, real-arg2) is real. The result is arg1 -
-              (INT(arg1/arg2)*arg2). If arg2 = 0, the result is
-              undefined. Arg1 and arg2 must not exceed 2**48-1.
-            * REAL(arg) is a generic function that performs type
-              conversion on its argument. The result of REAL(real-
-              arg) is real.
+  + BESSEL_J0(X) - Bessel function of the first kind and
+    order zero.
+  + BESSEL_J1(X) - Bessel function of the first kind and
+    order one.
+  + BESSEL_Y0(X) - Bessel function of the second kind and
+    order zero.
+  + BESSEL_Y1(X) - Bessel function of the second kind and
+    order one.
+  + BESSEL_JN(N,X) - Bessel function of the first kind and
+    order N.
+  + BESSEL_YN(N,X) - Bessel function of the second kind and
+    order N.
+  + BESSEL_JN(N1,N2,X) - Bessel function of the first kind
+    and order N.
+  + BESSEL_YN(N1,N2,X) - Bessel function of the second kind
+    and order N.
 
-    Error function
+##### Miscellaneous
 
-            * ERF(X) - Error function.
-            * ERFC(X) - Complementary error function.
-            * ERFC_SCALED(X) - Exponentially-scaled complementary
-              error function.
-===================================================================
-### ADDITIONAL PROCEDURES 
+  + DIM(arg1, arg2) is a generic function that returns the
+    positive difference of its arguments. The result of DIM
+    (real-arg1, real-arg2) is real. The result is arg1-arg2
+    if arg1 > arg2, and the result is 0 if arg1 <= arg2.
+  + MOD(arg1, arg2) is a generic function that returns the
+    remainder of arg1 divided by arg2. The result of MOD
+    (real-arg1, real-arg2) is real. The result is arg1 -
+    (INT(arg1/arg2)*arg2). If arg2 = 0, the result is
+    undefined. Arg1 and arg2 must not exceed 2**48-1.
+  + REAL(arg) is a generic function that performs type
+    conversion on its argument. The result of REAL(real-
+    arg) is real.
+
+##### Error function
+
+  + ERF(X) - Error function.
+  + ERFC(X) - Complementary error function.
+  + ERFC_SCALED(X) - Exponentially-scaled complementary error function.
+
+### ADDITIONAL PROCEDURES
    In addition to standard Fortran intrinsics, many other functions
    are supported ...
-##### conversion functions 
-                * r2d(arg) - converts from radians to degrees
-                * d2r(arg) - converts from degrees to radians
-                * f2c() - convert Fahrenheit to Celsius
-                * c2f() - convert Celsius to Fahrenheit
-##### logical functions 
-                * ge(val1,val2) - return TRUE if VAL1 is greater than or equal
-                  to VAL2, else return FALSE
-                * gt(val1,val2) - return TRUE if VAL1 is greater than to VAL2,
-                  else return FALSE
-                * eq(val1,val2) - return TRUE if VAL1 is equal to VAL2, else
-                  return FALSE
-                * le(val1,val2) - return TRUE if VAL1 is less than or equal to
-                  VAL2, else return FALSE
-                * lt(val1,val2) - return TRUE if VAL1 is less than VAL2, else
-                  return FALSE
-                * ne(val1,val2) - return TRUE if VAL1 is not equal to VAL2,
-                  else return FALSE
-                * if(expression,val1,val2) - If expression is TRUE, return VAL1
-                  else return VAL2
-            For example:
-                 a=if(ge(b,c),a,d)
-            means return a if b is greater than or equal to c else return d.
+##### conversion functions
+  + r2d(arg) - converts from radians to degrees
+  + d2r(arg) - converts from degrees to radians
+  + f2c() - convert Fahrenheit to Celsius
+  + c2f() - convert Celsius to Fahrenheit
+##### logical functions
+  + ge(val1,val2) - return TRUE if VAL1 is greater than or equal to VAL2, else return FALSE
+  + gt(val1,val2) - return TRUE if VAL1 is greater than to VAL2, else return FALSE
+  + eq(val1,val2) - return TRUE if VAL1 is equal to VAL2, else return FALSE
+  + le(val1,val2) - return TRUE if VAL1 is less than or equal to VAL2, else return FALSE
+  + lt(val1,val2) - return TRUE if VAL1 is less than VAL2, else return FALSE
+  + ne(val1,val2) - return TRUE if VAL1 is not equal to VAL2, else return FALSE
+  + if(expression,val1,val2) - If expression is TRUE, return VAL1 else return VAL2
+
+  For example:
+```text
+     a=if(ge(b,c),a,d)
+```
+   means return a if b is greater than or equal to c else return d.
+
 ##### lexical logical functions
-                * lge($str1,$str2) - return TRUE if $STR1 is lexically greater
-                  than or equal to $STR2, else return FALSE
-                * lgt($str1,$str2) - return TRUE if $STR1 is lexically greater
-                  than to $STR2, else return FALSE
-                * leq($str1,$strN) - return TRUE if $STR1 is lexically equal to
-                  any of the other strings, else return FALSE
-                * lle($str1,$str2) - return TRUE if $STR1 is lexically less
-                  than or equal to $STR2, else return FALSE
-                * llt($str1,$str2) - return TRUE if $STR1 is lexically less
-                  than $STR2, else return FALSE
-                * lne($str1,$strN) - return TRUE if $STR1 is not equal to all
-                  following strings.
-                * $if(expression,$str1,$str2) - If expression is TRUE, return
+  + lge($str1,$str2) - return TRUE if $STR1 is lexically greater
+    than or equal to $STR2, else return FALSE
+  + lgt($str1,$str2) - return TRUE if $STR1 is lexically greater
+    than to $STR2, else return FALSE
+  + leq($str1,$strN) - return TRUE if $STR1 is lexically equal to
+    any of the other strings, else return FALSE
+  + lle($str1,$str2) - return TRUE if $STR1 is lexically less
+    than or equal to $STR2, else return FALSE
+  + llt($str1,$str2) - return TRUE if $STR1 is lexically less
+    than $STR2, else return FALSE
+  + lne($str1,$strN) - return TRUE if $STR1 is not equal to all
+    following strings.
+  + $if(expression,$str1,$str2) - If expression is TRUE, return
                   $STR1 else return $STR2
-##### miscellaneous functions 
-                * ownmode() - ownmode(3f) enables calls to user-supplied
-                  functions via set_mysub(3f) and set_myfunc(3f).
-                * c(val1) - user-supplied function
-                * ceiling(val1) - ceiling(3f)or ceil(3f) returns the least
-                  integral value greater than or equal to VAL1.
-                * floor(val1) - floor(3f) returns the greatest integral value
-                  less than or equal to VAL1.
-                * in(val1,val2,val3) - returns TRUE if VAL1 is between VAL2 and
-                  VAL3 else returns FALSE
-                * round(val1,val2) - round VAL1 to VAL2 significant digits.
-                  Warning: this function is not ready yet.
-##### String-related 
-                * $char(v1,v2,....) - return characters indicated by numeric
-                  ADE (ASCII decimal equivalent) values passed.
-                * delimx(istore,$str1,$delimiters) - parse string into tokens
-                  in array $x()
-                * $f(fortran_format,value) - create string from value using
-                  specified Fortran FORMAT statement
-                * ichar($char) - return the ADE (ASCII Decimal Equivalent)
-                  value of a letter
-                * index($str1,$str2) - return column number where $str2 begins
-                  in $str1 or zero(0).
-                * $l($str1) - convert string to lowercase
-                * len($str1) - return the length of the string
-                * $(ex,ex,ex,...) or $str(ex,ex,ex,...) - generate a string
-                  from a series of strings and numbers. The expressions may be
-                  numeric or string.
-                * str(ex,ex,ex,...) - same as $str() but convert resulting
-                  string to a number IF the string is a simple numeric value
-                * $substr(string,i,j) - return a string that is columns i thru
-                  j of the input string (first character is called column 1).
-                * $u($str1) - convert string to uppercase
+##### miscellaneous functions
+  + ownmode() - ownmode(3f) enables calls to user-supplied
+    functions via set_mysub(3f) and set_myfunc(3f).
+  + c(val1) - user-supplied function
+  + ceiling(val1) - ceiling(3f)or ceil(3f) returns the least
+    integral value greater than or equal to VAL1.
+  + floor(val1) - floor(3f) returns the greatest integral value
+    less than or equal to VAL1.
+  + in(val1,val2,val3) - returns TRUE if VAL1 is between VAL2 and
+    VAL3 else returns FALSE
+  + round(val1,val2) - round VAL1 to VAL2 significant digits.
+    Warning: this function is not ready yet.
+##### String-related
+  + $char(v1,v2,....) - return characters indicated by numeric
+    ADE (ASCII decimal equivalent) values passed.
+  + delimx(istore,$str1,$delimiters) - parse string into tokens
+    in array $x()
+  + $f(fortran_format,value) - create string from value using
+    specified Fortran FORMAT statement
+  + ichar($char) - return the ADE (ASCII Decimal Equivalent)
+    value of a letter
+  + index($str1,$str2) - return column number where $str2 begins
+    in $str1 or zero(0).
+  + $l($str1) - convert string to lowercase
+  + len($str1) - return the length of the string
+  + $(ex,ex,ex,...) or $str(ex,ex,ex,...) - generate a string
+    from a series of strings and numbers. The expressions may be
+    numeric or string.
+  + str(ex,ex,ex,...) - same as $str() but convert resulting
+    string to a number IF the string is a simple numeric value
+  + $substr(string,i,j) - return a string that is columns i thru
+    j of the input string (first character is called column 1).
+  + $u($str1) - convert string to uppercase
 ##### calendar(Time-related)
-                * ye(),year() - return current year
-                * mo(),month() - return current month
-                * da(),day() - return current day of month
-                * ho(),hour() - return current hour (0 -23)
-                * tz(),timezone() - timezone in minutes
-                * mi(),minute() - return current minute
-                * se(),second() - return current second
-                * $dw([0-7]) - day of week as a string
-                * $mo([1-12]) - month as a string
+  + ye(),year() - return current year
+  + mo(),month() - return current month
+  + da(),day() - return current day of month
+  + ho(),hour() - return current hour (0 -23)
+  + tz(),timezone() - timezone in minutes
+  + mi(),minute() - return current minute
+  + se(),second() - return current second
+  + $dw([0-7]) - day of week as a string
+  + $mo([1-12]) - month as a string
 ##### Random numbers
-                * rand() - return random number from 0.0 to 1.0
-                * srand(number) - set seed for rand(). Seeds should be whole
+  + rand() - return random number from 0.0 to 1.0
+  + srand(number) - set seed for rand(). Seeds should be whole
                   numbers
 ## MISCELLANEOUS COMMANDS
    Displaying variable values: dump
@@ -441,31 +438,31 @@
    executing CALCULATOR(3f) by entering the command 'funcs'. No
    descriptions are provided.
 
-### ADDING FUNCTIONS 
+### ADDING FUNCTIONS
    Any program that calls CALCULATOR(3f) directly or indirectly (via JUCALX
    (), INUM0(), RNUM0(), SNUM0()) can extend the functions available by
    supplying two routines:
 
-    1. SUBSTITUTE_SUBROUTINE(3f) - This user-supplied routine is a hook
-       for programmers to add their own functions to CALCULATOR(3f)
-       without having to change CALCULATOR(3f) directly. It is passed the
-       name of unknown functions and their parameter lists if the
-       expression 'ownmode(1)' is passed to the calculator. If you do not
-       need to add custom functions to the calculator this is not
-       required. A user-defined function call be created and called with
-       call set_mysub(SUBROUTINE_NAME) The routine must be defined with an
-       explicit interface available in the calling unit.
-    2. SUBSTITUTE_C(3f) - This user-supplied function is here to optimize
-       performance of a particular program and everyone else should
-       typically ignore it. In a special case a non-standard function
-       needed added that was called so heavily that it was important that
-       it be called more efficiently than a user defined function placed
-       in SUBSTITUTE_SUBROUTINE(3f) is. It allows for the function "c" to
-       be defined and given an array and an array size as arguments. By
-       default the "c" function just returns zero. A replacement can be
-       defined by creating a function with similar arguments and calling
-       call set_myfunc(FUNCTION_NAME). The routine must be defined with an
-       explicit interface available in the calling unit.
+   1. SUBSTITUTE_SUBROUTINE(3f) - This user-supplied routine is a hook
+      for programmers to add their own functions to CALCULATOR(3f)
+      without having to change CALCULATOR(3f) directly. It is passed the
+      name of unknown functions and their parameter lists if the
+      expression 'ownmode(1)' is passed to the calculator. If you do not
+      need to add custom functions to the calculator this is not
+      required. A user-defined function call be created and called with
+      call set_mysub(SUBROUTINE_NAME) The routine must be defined with an
+      explicit interface available in the calling unit.
+   2. SUBSTITUTE_C(3f) - This user-supplied function is here to optimize
+      performance of a particular program and everyone else should
+      typically ignore it. In a special case a non-standard function
+      needed added that was called so heavily that it was important that
+      it be called more efficiently than a user defined function placed
+      in SUBSTITUTE_SUBROUTINE(3f) is. It allows for the function "c" to
+      be defined and given an array and an array size as arguments. By
+      default the "c" function just returns zero. A replacement can be
+      defined by creating a function with similar arguments and calling
+      call set_myfunc(FUNCTION_NAME). The routine must be defined with an
+      explicit interface available in the calling unit.
 
    The following program shows a simple but complete line-mode calculator
    program.
