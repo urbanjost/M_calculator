@@ -1,5 +1,5 @@
 <?
-<body?>
+<body>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,27 +22,35 @@
    </dd>
    <dt class="c1">DESCRIPTION</dt>
    <dd>
-     <p>The <span class="c2">M_calculator module and related
+     <p>
+     The <span class="c2">M_calculator module and related
      functions</span> evaluate CHARACTER strings containing
      FORTRAN-like expressions and
-     returns numeric and string values.</p>
+     returns numeric and string values.
+     </p>
 
-     <p>Using this interface it is easy to make free-format
+     <p>
+     Using this interface it is easy to make free-format
      and order-independent input interfaces where values can be
      expressions and variable names
-     instead of simple formatted numbers.</p>
+     instead of simple formatted numbers.
+     </p>
 
-     <p> The primary routine CALCULATOR(3f) acts like a powerful
+     <p>
+     The primary routine CALCULATOR(3f) acts like a powerful
      desk-top calculator. It supports named variables and has
      several arrays (of 55555 elements each). Many standard FORTRAN
      functions are available, plus access to user-written functions
      is permitted via user-supplied routines via set_mysub(3f)
-     and set_myfunc(3f).</p>
+     and set_myfunc(3f).
+     </p>
 
-     <p>The programmer (generally) uses just the
+     <p>
+     The programmer (generally) uses just the
      CALCULATOR(3f) routine or several convenience routines
      (INUM0,RNUM0,SNUM0,,EXPRESSION) that simplify making the most
-     common type of calls to CALCULATOR(3f).</p>
+     common type of calls to CALCULATOR(3f).
+     </p>
 
    </dd>
    <dt class="c1">PROCEDURES</dt>
@@ -121,13 +129,22 @@
        <dd>
          A summary of the syntax rules for the expressions follows:
          <ul>
-      <li>The hierarchy of operations is the same as that of FORTRAN except that adjacent exponents are done from left to right, not right to left
-      [i.e. in FORTRAN 3**2**4=3**(2**4), e.g. 3**2**4=(3**2)**4]; and +- strings are resolved to a single sign (that is, 3+ -4 is acceptable
-      instead of 3+(-4)).</li>
-      <li>Almost all the INTRINSIC mathematical functions defined in FORTRAN are available, as well as access to common extensions and
-      user-written routines.</li>
-      <li>Embedded blanks are ignored during the processing of a calculation, but most applications using the calculator interface parse on
-      spaces. Therefore, it is generally good practice to assume unquoted white-space ends an expression.</li>
+      <li>The hierarchy of operations is the same as that of FORTRAN
+          except that adjacent exponents are done from left to right, not
+          right to left
+          [i.e. in FORTRAN 3**2**4=3**(2**4), e.g. 3**2**4=(3**2)**4]; 
+	  and +- strings are resolved to a single sign (that is, 3+ -4 is 
+	  acceptable instead of 3+(-4)).
+      </li>
+      <li>Almost all the INTRINSIC mathematical functions defined in
+          FORTRAN are available, as well as access to common extensions and
+          user-written routines.
+      </li>
+      <li>Embedded blanks are ignored during the processing of a
+      calculation, but most applications using the calculator interface
+      parse on spaces. Therefore, it is generally good practice to assume
+      unquoted white-space ends an expression.
+      </li>
       <li>All numeric values are treated as FORTRAN type REAL variables.</li>
       <li>Input lines should not normally be over 255 characters long,</li>
       <li>There are three ways to store results to be used in future calculations:
@@ -141,20 +158,25 @@
        </dd>
        <dt class="c1">VARIABLE NAMES</dt>
        <dd>
-         Names must be 1 to 20 characters long, and are case-sensitive. The numbr of names permitted is only limited by the available memory. Numeric
-         variable names should be composed of the letters a-z and underscores and numbers. String variables are similar but start with a dollar
-         sign($). Names must not end in a "digit-E" combination. For example:
+         Names must be 1 to 20 characters long, and are
+         case-sensitive. The numbr of names permitted is only limited by
+         the available memory. Numeric variable names should be composed
+         of the letters a-z and underscores and numbers. String variables
+         are similar but start with a dollar sign($). Names must not
+         end in a "digit-E" combination. For example:
          <pre>
       A=sin(3.1416/2)
       big=200.333E200
       $name="Thomas Jefferson"
-
-</pre>Variables may be defined by equating them to an expression. To define or redefine a variable called FRED, simply enter:
+         </pre>
+   Variables may be defined by equating them to an expression. To define
+   or redefine a variable called FRED, simply enter:
          <pre>
    &gt; FRED=300*4/500
-
-</pre>The last value assigned to a variable will be used to evaluate the expression on the left of the equals sign when this expression redefines the
-variable. For example:
+        </pre>
+The last value assigned to a variable will be used to evaluate the
+expression on the left of the equals sign when this expression redefines
+the variable. For example:
          <pre>
    &gt; A=2
      2
@@ -238,8 +260,11 @@ number 12E3=12000.
        </dd>
        <dt class="c1">INTRINSICS</dt>
        <dd>
-         <h3>supported Fortran intrinsics</h3>The majority of intrinsic Fortran numeric functions are available. At a minimum the following are
-         recognized (Deviations of the calculator routines from the standard intrinsics are noted):
+         <h3>supported Fortran intrinsics</h3>
+	 The majority of intrinsic Fortran numeric functions are
+	 available. At a minimum the following are recognized (Deviations
+	 of the calculator routines from the standard intrinsics are
+	 noted):
          <dl>
       <dt><strong>Arc or anti-trigonometric functions</strong></dt>
       <dd>
@@ -350,11 +375,19 @@ number 12E3=12000.
         <br />
         <br />
         <ul>
-          <li>DIM(arg1, arg2) is a generic function that returns the positive difference of its arguments. The result of DIM(real-arg1, real-arg2)
-          is real. The result is arg1-arg2 if arg1 &gt; arg2, and the result is 0 if arg1 &lt;= arg2.</li>
-          <li>MOD(arg1, arg2) is a generic function that returns the remainder of arg1 divided by arg2. The result of MOD(real-arg1, real-arg2) is
-          real. The result is arg1 - (INT(arg1/arg2)*arg2). If arg2 = 0, the result is undefined. Arg1 and arg2 must not exceed 2**48-1.</li>
-          <li>REAL(arg) is a generic function that performs type conversion on its argument. The result of REAL(real-arg) is real.</li>
+          <li>DIM(arg1, arg2) is a generic function that returns
+          the positive difference of its arguments. The result of
+          DIM(real-arg1, real-arg2) is real. The result is arg1-arg2 if
+          arg1 &gt; arg2, and the result is 0 if arg1 &lt;= arg2.</li>
+          <li>MOD(arg1, arg2) is a generic function that returns
+          the remainder of arg1 divided by arg2. The result of
+          MOD(real-arg1, real-arg2) is real. The result is arg1 - (INT(arg1/arg2)*arg2).
+	  If arg2 = 0, the result is undefined. Arg1 and arg2 must not exceed 2**48-1.</li>
+          <li>
+	  REAL(arg) is a generic function that performs type
+          conversion on its argument. The result of REAL(real-arg)
+          is real.
+	  </li>
         </ul>
       </dd>
       <dt><strong>Error function</strong></dt>
@@ -468,18 +501,34 @@ number 12E3=12000.
      <p>Any program that calls CALCULATOR(3f) directly or indirectly (via JUCALX(), INUM0(), RNUM0(), SNUM0()) can extend the functions available by
      supplying two routines:</p>
      <ol>
-       <li>SUBSTITUTE_SUBROUTINE(3f) - This user-supplied routine is a hook for programmers to add their own functions to CALCULATOR(3f) without having
-       to change CALCULATOR(3f) directly. It is passed the name of unknown functions and their parameter lists if the expression 'ownmode(1)' is passed
-       to the calculator. If you do not need to add custom functions to the calculator this is not required. A user-defined function call be created
-       and called with call set_mysub(SUBROUTINE_NAME) The routine must be defined with an explicit interface available in the calling unit.</li>
-       <li>SUBSTITUTE_C(3f) - This user-supplied function is here to optimize performance of a particular program and everyone else should typically
-       ignore it. In a special case a non-standard function needed added that was called so heavily that it was important that it be called more
-       efficiently than a user defined function placed in SUBSTITUTE_SUBROUTINE(3f) is. It allows for the function "c" to be defined and given an array
-       and an array size as arguments. By default the "c" function just returns zero. A replacement can be defined by creating a function with similar
-       arguments and calling call set_myfunc(FUNCTION_NAME). The routine must be defined with an explicit interface available in the calling unit.</li>
+       <li>
+       SUBSTITUTE_SUBROUTINE(3f) - This user-supplied routine is a
+       hook for programmers to add their own functions to CALCULATOR(3f)
+       without having to change CALCULATOR(3f) directly. It is passed
+       the name of unknown functions and their parameter lists if the
+       expression 'ownmode(1)' is passed to the calculator. If you do
+       not need to add custom functions to the calculator this is not
+       required. A user-defined function call be created and called with
+       call set_mysub(SUBROUTINE_NAME) The routine must be defined with
+       an explicit interface available in the calling unit.
+       </li>
+       <li>
+       SUBSTITUTE_C(3f) - This user-supplied function is here to optimize
+       performance of a particular program and everyone else should
+       typically ignore it. In a special case a non-standard function
+       needed added that was called so heavily that it was important that
+       it be called more efficiently than a user defined function placed
+       in SUBSTITUTE_SUBROUTINE(3f) is. It allows for the function "c" to
+       be defined and given an array and an array size as arguments. By
+       default the "c" function just returns zero. A replacement can be
+       defined by creating a function with similar arguments and calling
+       call set_myfunc(FUNCTION_NAME). The routine must be defined with
+       an explicit interface available in the calling unit.
+       </li>
      </ol>
      <p>The following program shows a simple but complete line-mode calculator program.</p>
-     <pre>         ./compute # run example program
+     <pre>
+     ./compute # run example program
      a=10 a/2 3**4
      sin(3.1416/4)
      PI=2*asin(1)
@@ -487,9 +536,8 @@ number 12E3=12000.
      circumference=PI*diameter
      funcs dump
      # use end-of-file (typically control-D) to exit program ctrl-D
-    </pre><!--FORTRAN90-->
-     <pre>
-
+    </pre>
+<!--FORTRAN90--><pre>
    program demo_M_calculator
 
       !     line mode calculator that calls calculator
