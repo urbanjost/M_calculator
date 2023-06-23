@@ -279,28 +279,28 @@
   + SIGN(arg1, arg2) is a generic function that returns a
     value after a sign transfer. The result of SIGN(real-
     arg1, real-arg2) is real. The result is |arg1| if arg2
-    >= 0. The result is -|arg1| if arg2 < 0.
+    \>= 0. The result is -\|arg1\| if arg2 \< 0.
 
 ##### Converting to a whole number
 
   + INT(arg) is a generic function that converts its
     argument to integer type. The result of INT(real-arg)
-    is zero if |real-arg| < 1. The result is the largest
+    is zero if |real-arg| \< 1. The result is the largest
     integer with the same sign as real-arg that does not
-    exceed the magnitude of real-arg if |real-arg| >= 1.
+    exceed the magnitude of real-arg if |real-arg| \>= 1.
   + AINT(arg) is a generic function that returns a whole
     number after truncation of its argument. The result of
-    AINT(real-arg) is real. The result is 0 if |arg| < 1.
+    AINT(real-arg) is real. The result is 0 if |arg| \< 1.
     The result is the largest integer with the same sign as
     arg that does not exceed the magnitude of arg if |arg|
-    >= 1.
+    \>= 1.
   + ANINT(arg) is a generic function that returns the
     nearest whole number of its argument. The result of
     ANINT(real-arg) is real.
   + NINT(arg) is a generic function that returns the
     integer that is nearest to its argument. The result of
-    NINT(real-arg) is integer. If arg >= 0, the result is
-    (INT(arg+.5)). If arg < 0, the result is (INT(arg-.5)).
+    NINT(real-arg) is integer. If arg \>= 0, the result is
+    (INT(arg+.5)). If arg \< 0, the result is (INT(arg-.5)).
 
 ##### Bessel functions
 
@@ -326,7 +326,7 @@
   + DIM(arg1, arg2) is a generic function that returns the
     positive difference of its arguments. The result of DIM
     (real-arg1, real-arg2) is real. The result is arg1-arg2
-    if arg1 > arg2, and the result is 0 if arg1 <= arg2.
+    if arg1 \> arg2, and the result is 0 if arg1 <= arg2.
   + MOD(arg1, arg2) is a generic function that returns the
     remainder of arg1 divided by arg2. The result of MOD
     (real-arg1, real-arg2) is real. The result is arg1 -
