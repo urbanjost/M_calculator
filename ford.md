@@ -5,7 +5,7 @@ src_dir: src
          test
 output_dir: docs/fpm-ford
 project: M_calculator
-summary: easy project
+summary: mathematical expression parser
 project_github: https://github.com/urbanjost/M_calculator
 project_download: https://github.com/urbanjost/M_calculator/archive/refs/heads/master.zip
 author: John S. Urban
