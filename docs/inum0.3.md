@@ -25,6 +25,7 @@
    inline:  INLINE is a CHARACTER variable up to 255 characters long that
             is similar to a FORTRAN 77 numeric expression. Keep it less
             than 80 characters when possible.
+
    ierr:    zero (0) if no error occurs
 ## DEPENDENCIES
    All programs that call the calculator routine can supply their own

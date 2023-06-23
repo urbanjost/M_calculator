@@ -26,312 +26,329 @@
    The programmer (generally) uses just the CALCULATOR(3f) routine or
    several convenience routines (INUM0,RNUM0,SNUM0,,EXPRESSION) that
    simplify making the most common type of calls to CALCULATOR(3f).
+
 ## PROCEDURES
-   * calculator The procedure CALCULATOR(3f) acts like a calculator
-   * Convenience routines
-     o inum0 resolve a calculator string into a whole integer number
-     o rnum0 resolve a calculator string into a real number (return
-       0 on errors)
-     o dnum0 resolve a calculator string into a doubleprecision
-       number (return 0 on error s)
-     o snum0 resolve a calculator expression into a string(return
-       blank on errors)
-     o expression call calculator() calculator and display messages
+   + calculator**:
+     The procedure [CALCULATOR(3f)](calculator.3.md) acts like a calculator
+   + Convenience routines
+     + [**inum0**](inum0.md):  resolve a calculator string into a whole integer number
+     + [**rnum0**](rnum0.md):  resolve a calculator string into a real number (return 0 on errors)
+     + [**dnum0**](dnum0.md):  resolve a calculator string into a doubleprecision number (return 0 on errors)
+     + [**snum0**](snum0.md):  resolve a calculator expression into a string(return blank on errors)
+     + [**expression**](expressions.md):  call calculator() calculator and display messages
 ## CONSTANTS
    The variables used to hold the X,Y,$X,$Y, ... arrays and the
    dictionaries of variable names and string names and their associated
    values:
-   * integer,parameter,public :: iclen_calc=512 ! max length
+   + integer,parameter,public :: iclen_calc=512 ! max length
      of expression or variable value as a string
-   * integer,parameter,public :: ixy_calc=55555 ! number of
+   + integer,parameter,public :: ixy_calc=55555 ! number of
      variables in X() and Y() array
-   * integer,parameter,public :: icname_calc=20 ! max length
+   + integer,parameter,public :: icname_calc=20 ! max length
      of a variable name
-   * real(kind=dp),save,public :: x(ixy_calc)=0.0_dp ! x array
+   + real(kind=dp),save,public :: x(ixy_calc)=0.0_dp ! x array
      for procedure funcs_
-   * real(kind=dp),save,public :: y(ixy_calc)=0.0_dp ! y array
+   + real(kind=dp),save,public :: y(ixy_calc)=0.0_dp ! y array
      for procedure funcs_
-   * integer,save,public,allocatable :: values_len(:) !
+   + integer,save,public,allocatable :: values_len(:) !
      lengths of the string variable values
-   * character(len=:),save,public,allocatable :: values(:) !
+   + character(len=:),save,public,allocatable :: values(:) !
      string variable values
 ## SEE ALSO
-   * calculator(3f)
-   * expression(3f)
-   * inum0(3f),rnum0(3f),dnum0(3f),snum0(3f)
+   + calculator(3f)
+   + expression(3f)
+   + inum0(3f),rnum0(3f),dnum0(3f),snum0(3f)
 ## USAGE
-      ***** Calculator Expressions *****
-        SYNOPSIS
-            The calculator interface allows input values to be numeric or
-            string expressions using Fortran-like syntax instead of just simple
-            variables.
+### Calculator Expressions 
 
-            Named variables may be created. Several arrays of 55555 elements
-            each exist. The majority of FORTRAN intrinsic functions are
-            available, Custom routines may be made available for each
-            application using the interface.
-        DESCRIPTION
-            A summary of the syntax rules for the expressions follows:
-                * The hierarchy of operations is the same as that of FORTRAN
-                  except that adjacent exponents are done from left to right,
-                  not right to left [i.e. in FORTRAN 3**2**4=3**(2**4), e.g.
-                  3**2**4=(3**2)**4]; and +- strings are resolved to a single
-                  sign (that is, 3+ -4 is acceptable instead of 3+(-4)).
-                * Almost all the INTRINSIC mathematical functions defined in
-                  FORTRAN are available, as well as access to common extensions
-                  and user-written routines.
-                * Embedded blanks are ignored during the processing of a
-                  calculation, but most applications using the calculator
-                  interface parse on spaces. Therefore, it is generally good
-                  practice to assume unquoted white-space ends an expression.
-                * All numeric values are treated as FORTRAN type REAL
-                  variables.
-                * Input lines should not normally be over 255 characters long,
-                * There are three ways to store results to be used in future
-                  calculations:
-                     1. Variable names
-                     2. The current-value
-                     3. The x and y arrays
-                  Each of the types will be discussed separately.
-## VARIABLE NAMES
-            Names must be 1 to 20 characters long, and are case-sensitive. The
-            numbr of names permitted is only limited by the available memory.
-            Numeric variable names should be composed of the letters a-z and
-            underscores and numbers. String variables are similar but start
-            with a dollar sign($). Names must not end in a "digit-E"
-            combination. For example:
-                  A=sin(3.1416/2)
-                  big=200.333E200
-                  $name="Thomas Jefferson"
-            Variables may be defined by equating them to an expression. To
-            define or redefine a variable called FRED, simply enter:
-               > FRED=300*4/500
-            The last value assigned to a variable will be used to evaluate the
-            expression on the left of the equals sign when this expression
-            redefines the variable. For example:
-               > A=2
-                 2
-               > A
-                 2
-               > A=A+A
-                 4
-               > A=A+A
-                 8
-            To allow FORTRAN-type E-format numeric entry and yet not cause the
-            calculator routine to do an excessive amount of checking, a
-            variable name ending in the letter E must not have a digit
-            (012345789) in front of that ending E. Attempting to define such a
-            variable name will produce an error. This limitation prevents the
-            calculator from becoming confused by whether 12E+3 is a variable
-            called 12E plus 3 or the exponential number 12E3=12000.
+   The calculator interface allows input values to be numeric or
+   string expressions using Fortran-like syntax instead of just simple
+   variables.
+
+   Named variables may be created. Several arrays of 55555 elements
+   each exist. The majority of FORTRAN intrinsic functions are
+   available, Custom routines may be made available for each
+   application using the interface.
+
+   A summary of the syntax rules for the expressions follows:
+     + The hierarchy of operations is the same as that of FORTRAN
+       except that adjacent exponents are done from left to right,
+       not right to left [i.e. in FORTRAN 3**2**4=3**(2**4), e.g.
+       3**2**4=(3**2)**4]; and +- strings are resolved to a single
+       sign (that is, 3+ -4 is acceptable instead of 3+(-4)).
+     + Almost all the INTRINSIC mathematical functions defined in
+       FORTRAN are available, as well as access to common extensions
+       and user-written routines.
+     + Embedded blanks are ignored during the processing of a
+       calculation, but most applications using the calculator
+       interface parse on spaces. Therefore, it is generally good
+       practice to assume unquoted white-space ends an expression.
+     + All numeric values are treated as FORTRAN type REAL
+       variables.
+     + Input lines should not normally be over 255 characters long,
+     + There are three ways to store results to be used in future
+       calculations:
+          1. Variable names
+          2. The current-value
+          3. The x and y arrays
+       Each of the types will be discussed separately.
+#### VARIABLE NAMES
+   Names must be 1 to 20 characters long, and are case-sensitive. The
+   numbr of names permitted is only limited by the available memory.
+   Numeric variable names should be composed of the letters a-z and
+   underscores and numbers. String variables are similar but start
+   with a dollar sign($). Names must not end in a "digit-E"
+   combination. For example:
+```text
+       A=sin(3.1416/2)
+       big=200.333E200
+       $name="Thomas Jefferson"
+```
+   Variables may be defined by equating them to an expression. To
+   define or redefine a variable called FRED, simply enter:
+```text
+       > FRED=300*4/500
+```
+   The last value assigned to a variable will be used to evaluate the
+   expression on the left of the equals sign when this expression
+   redefines the variable. For example:
+```text
+       > A=2
+       2
+       > A
+       2
+       > A=A+A
+       4
+       > A=A+A
+       8
+```
+   To allow FORTRAN-type E-format numeric entry and yet not cause the
+   calculator routine to do an excessive amount of checking, a
+   variable name ending in the letter E must not have a digit
+   (012345789) in front of that ending E. Attempting to define such a
+   variable name will produce an error. This limitation prevents the
+   calculator from becoming confused by whether 12E+3 is a variable
+   called 12E plus 3 or the exponential number 12E3=12000.
 ## CURRENT VALUE
-            The variable name '?' is automatically set by the program to
-            contain the last calculated value. This current-value register may
-            be used like any variable or number. It is 0 at program
-            initialization. Example:
-                 > (300+500)
-                   800
-                 > (1/4)*?
-                   200
-                 > ?+?
-                   400
+   The variable name '?' is automatically set by the program to
+   contain the last calculated value. This current-value register may
+   be used like any variable or number. It is 0 at program
+   initialization. Example:
+```text
+      > (300+500)
+      800
+      > (1/4)*?
+      200
+      > ?+?
+      400
+```
 ## THE X AND Y ARRAYS
-            Two arrays called X and Y are available that can contain up to
-            55555 values each. The arrays are originally initialized to all
-            zeros. To set values in the arrays, use the xstore (or ystore)
-            command. The format of the commands is
-                 xstore(start,ex1,ex2,ex3)
-                 ystore(start,ex1,ex2,ex3)
-            where start=array address to start storing at and ex(i) are
-            expressions.
-            The current value is assigned the last value stored.
-            In addition there are similar string arrays and functions that can
-            hold up to 50 255-character strings:
-                * $nstore(), $xstore(), $ystore()
-                * $n() ,$x() ,$y()
-            For example, to store into the locations 10,11,and 12 the values 1/
-            10,2/10, and 3/10, the following could be entered:
+   Two arrays called X and Y are available that can contain up to
+   55555 values each. The arrays are originally initialized to all
+   zeros. To set values in the arrays, use the xstore (or ystore)
+   command. The format of the commands is
+```text
+       xstore(start,ex1,ex2,ex3)
+       ystore(start,ex1,ex2,ex3)
+```
+   where start=array address to start storing at and ex(i) are
+   expressions.
 
-               xstore( 10 , 1/10 , 2/20 , 3/10 )
-                  ^
-                  !
-                  *-------Start storing evaluated expressions sequentially,
-                     beginning at x(10).
+   The current value is assigned the last value stored.
+   In addition there are similar string arrays and functions that can
+   hold up to 50 255-character strings:
+   + $nstore(), $xstore(), $ystore()
+   + $n() ,$x() ,$y()
+   For example, to store into the locations 10,11,and 12 the values 1/
+   10,2/10, and 3/10, the following could be entered:
+
+```text
+     xstore( 10 , 1/10 , 2/20 , 3/10 )
+        ^
+        !
+        *-------Start storing evaluated expressions sequentially,
+                beginning at x(10).
+```
 ## REFERENCING AN ARRAY VALUE
-            The values stored into the arrays may be referenced by subscript.
-            For example:
-                  > xstore(1,10,20,30)
-               30
-                  > fred=x(1)+x(2)+x(3)
-               60
-            NOTES:
-               1. x and y array values cannot be used on the left of equal
-                  signs.
-                      x(10)=5   #  IS ILLEGAL
-               2. The current value is set to the value of the last expression
-                  by the xstore and ystore commands
+   The values stored into the arrays may be referenced by subscript.
+   For example:
+```text
+     xstore(1,10,20,30)
+     > 30
+     fred=x(1)+x(2)+x(3)
+     > 60
+```
+   NOTES:
+   1) x and y array values cannot be used on the left of equal
+      signs.
+```text
+         x(10)=5   #  IS ILLEGAL
+```
+   2) The current value is set to the value of the last expression
+      by the xstore and ystore commands
 ## INTRINSICS
-            **** supported Fortran intrinsics ****
-            The majority of intrinsic Fortran numeric functions are available.
-            At a minimum the following are recognized (Deviations of the
-            calculator routines from the standard intrinsics are noted):
-              Arc or anti-trigonometric functions
+#### supported Fortran intrinsics 
+   The majority of intrinsic Fortran numeric functions are available.
+   At a minimum the following are recognized (Deviations of the
+   calculator routines from the standard intrinsics are noted):
+
+##### Arc or anti-trigonometric functions
+
+  + ACOS(arg) is a generic function that returns the
+    arccosine of its argument in radians. The result of
+    ACOS(real-arg) is real.
+  + ASIN(arg) is a generic function that returns the
+    arcsine of its argument in radians. The result of ASIN
+    (real-arg) is real.
+  + ATAN(arg) is a generic function that returns the
+    arctangent of its argument in radians. The result of
+    ATAN(real-arg) is real.
+  + ATAN2(arg1, arg2) is a generic function that returns
+    the arctangent of its argument in radians. The result
+    of ATAN2(real-arg1, real-arg2) is real. The arguments
+    must not both be 0.
+  + ACOSH(arg) is a generic function that returns the
+    hyperbolic arccosine of its argument in radians. The
+    result of ACOSH(real-arg) is real.
+  + ASINH(arg) is a generic function that returns the
+    hyperbolic arcsine of its argument in radians. The
+    result of ASIN(real-arg) is real.
+  + ATANH(arg) is a generic function that returns the
+    hyperbolic arctangent of its argument in radians. The
+    result of ATANH(real-arg) is real.
+
+##### Trigonometric functions
+
+            * COS(arg) is a generic function that returns the cosine
+              of its argument in radians. The result of COS(real-arg)
+              is real.
+            * SIN(arg) is a generic function that returns the sine of
+              its argument in radians. The result of SIN(real-arg) is
+              real.
+            * TAN(arg) is a generic function that returns the tangent
+              of its argument in radians.
+    Hyperbolic trigonometric functions
+
+            * COSH(arg) is a generic function that returns the
+              hyperbolic cosine of its argument. The result of COSH
+              (real-arg) is real.
+            * SINH(arg) is a generic function that returns the
+              hyperbolic sine of its argument in radians. The result
+              of SINH(real-arg) is real.
+            * TANH(arg) is a generic function that returns the
+              hyperbolic tangent of its argument in radians.
+    Powers and logarithms
 
 
-                      * ACOS(arg) is a generic function that returns the
-                        arccosine of its argument in radians. The result of
-                        ACOS(real-arg) is real.
-                      * ASIN(arg) is a generic function that returns the
-                        arcsine of its argument in radians. The result of ASIN
-                        (real-arg) is real.
-                      * ATAN(arg) is a generic function that returns the
-                        arctangent of its argument in radians. The result of
-                        ATAN(real-arg) is real.
-                      * ATAN2(arg1, arg2) is a generic function that returns
-                        the arctangent of its argument in radians. The result
-                        of ATAN2(real-arg1, real-arg2) is real. The arguments
-                        must not both be 0.
-                      * ACOSH(arg) is a generic function that returns the
-                        hyperbolic arccosine of its argument in radians. The
-                        result of ACOSH(real-arg) is real.
-                      * ASINH(arg) is a generic function that returns the
-                        hyperbolic arcsine of its argument in radians. The
-                        result of ASIN(real-arg) is real.
-                      * ATANH(arg) is a generic function that returns the
-                        hyperbolic arctangent of its argument in radians. The
-                        result of ATANH(real-arg) is real.
-              Trigonometric functions
-
-
-                      * COS(arg) is a generic function that returns the cosine
-                        of its argument in radians. The result of COS(real-arg)
-                        is real.
-                      * SIN(arg) is a generic function that returns the sine of
-                        its argument in radians. The result of SIN(real-arg) is
-                        real.
-                      * TAN(arg) is a generic function that returns the tangent
-                        of its argument in radians.
-              Hyperbolic trigonometric functions
-
-                      * COSH(arg) is a generic function that returns the
-                        hyperbolic cosine of its argument. The result of COSH
-                        (real-arg) is real.
-                      * SINH(arg) is a generic function that returns the
-                        hyperbolic sine of its argument in radians. The result
-                        of SINH(real-arg) is real.
-                      * TANH(arg) is a generic function that returns the
-                        hyperbolic tangent of its argument in radians.
-              Powers and logarithms
-
-
-                      * EXP(arg) is a generic function that returns the
-                        exponential of its argument. The result of EXP(real-
-                        arg) is real.
-                      * LOG(arg) is a generic function that returns the natural
-                        logarithm (base e) of its argument. The result of LOG
-                        (real-arg) is real.
-                      * HYPOT(arg1,arg2) returns the Euclidean distance
-                        calculated at HYPOT(X,Y)==SQRT(X**2+Y**2)
-                      * LOG10(arg) is a generic function that returns the
-                        common logarithm (base 10) of its argument. The result
-                        of LOG10(real-arg) is real.
-                      * SQRT(arg) is a generic function that returns the
-                        principal square root of its argument. The result of
+            * EXP(arg) is a generic function that returns the
+              exponential of its argument. The result of EXP(real-
+              arg) is real.
+            * LOG(arg) is a generic function that returns the natural
+              logarithm (base e) of its argument. The result of LOG
+              (real-arg) is real.
+            * HYPOT(arg1,arg2) returns the Euclidean distance
+              calculated at HYPOT(X,Y)==SQRT(X**2+Y**2)
+            * LOG10(arg) is a generic function that returns the
+              common logarithm (base 10) of its argument. The result
+              of LOG10(real-arg) is real.
+            * SQRT(arg) is a generic function that returns the
+              principal square root of its argument. The result of
                         SQRT(real-arg) is real.
-              Maximum/Minimum
+    Maximum/Minimum
 
 
-                      * MAX(arg1, arg2 [,..., arg50]) is a generic function
-                        that returns the largest value in its argument list.
-                        The result of MAX(real-arg1, real-arg2 [,..., real-
-                        arg50]) is real. - (NON-STANDARD LIMIT: 50 instead of
-                        500 parameters allowed)
-                      * MIN(arg1, arg2 [,..., arg50]) is a generic function
-                        that returns the smallest value in its argument list.
-                        The result of MIN(real-arg1, real-arg2 [,..., real-
-                        arg50]) is real. NON-STANDARD LIMIT: 50 instead of 500
-                        parameters allowed)
-              Directly effecting sign of value
+            * MAX(arg1, arg2 [,..., arg50]) is a generic function
+              that returns the largest value in its argument list.
+              The result of MAX(real-arg1, real-arg2 [,..., real-
+              arg50]) is real. - (NON-STANDARD LIMIT: 50 instead of
+              500 parameters allowed)
+            * MIN(arg1, arg2 [,..., arg50]) is a generic function
+              that returns the smallest value in its argument list.
+              The result of MIN(real-arg1, real-arg2 [,..., real-
+              arg50]) is real. NON-STANDARD LIMIT: 50 instead of 500
+              parameters allowed)
+    Directly effecting sign of value
 
 
-                      * ABS(arg) is a generic function that returns the
-                        absolute value of its argument. The result of ABS(real-
-                        arg) is real.
-                      * SIGN(arg1, arg2) is a generic function that returns a
-                        value after a sign transfer. The result of SIGN(real-
-                        arg1, real-arg2) is real. The result is |arg1| if arg2
-                        >= 0. The result is -|arg1| if arg2 < 0.
-              Converting to a whole number
+            * ABS(arg) is a generic function that returns the
+              absolute value of its argument. The result of ABS(real-
+              arg) is real.
+            * SIGN(arg1, arg2) is a generic function that returns a
+              value after a sign transfer. The result of SIGN(real-
+              arg1, real-arg2) is real. The result is |arg1| if arg2
+              >= 0. The result is -|arg1| if arg2 < 0.
+    Converting to a whole number
 
 
-                      * INT(arg) is a generic function that converts its
-                        argument to integer type. The result of INT(real-arg)
-                        is zero if |real-arg| < 1. The result is the largest
-                        integer with the same sign as real-arg that does not
-                        exceed the magnitude of real-arg if |real-arg| >= 1.
-                      * AINT(arg) is a generic function that returns a whole
-                        number after truncation of its argument. The result of
-                        AINT(real-arg) is real. The result is 0 if |arg| < 1.
-                        The result is the largest integer with the same sign as
-                        arg that does not exceed the magnitude of arg if |arg|
-                        >= 1.
-                      * ANINT(arg) is a generic function that returns the
-                        nearest whole number of its argument. The result of
-                        ANINT(real-arg) is real.
-                      * NINT(arg) is a generic function that returns the
-                        integer that is nearest to its argument. The result of
-                        NINT(real-arg) is integer. If arg >= 0, the result is
-                        (INT(arg+.5)). If arg < 0, the result is (INT(arg-.5)).
-              Bessel functions
+            * INT(arg) is a generic function that converts its
+              argument to integer type. The result of INT(real-arg)
+              is zero if |real-arg| < 1. The result is the largest
+              integer with the same sign as real-arg that does not
+              exceed the magnitude of real-arg if |real-arg| >= 1.
+            * AINT(arg) is a generic function that returns a whole
+              number after truncation of its argument. The result of
+              AINT(real-arg) is real. The result is 0 if |arg| < 1.
+              The result is the largest integer with the same sign as
+              arg that does not exceed the magnitude of arg if |arg|
+              >= 1.
+            * ANINT(arg) is a generic function that returns the
+              nearest whole number of its argument. The result of
+              ANINT(real-arg) is real.
+            * NINT(arg) is a generic function that returns the
+              integer that is nearest to its argument. The result of
+              NINT(real-arg) is integer. If arg >= 0, the result is
+              (INT(arg+.5)). If arg < 0, the result is (INT(arg-.5)).
+    Bessel functions
 
 
-                      * BESSEL_J0(X) - Bessel function of the first kind and
-                        order zero.
-                      * BESSEL_J1(X) - Bessel function of the first kind and
-                        order one.
-                      * BESSEL_Y0(X) - Bessel function of the second kind and
-                        order zero.
-                      * BESSEL_Y1(X) - Bessel function of the second kind and
-                        order one.
-                      * BESSEL_JN(N,X) - Bessel function of the first kind and
-                        order N.
-                      * BESSEL_YN(N,X) - Bessel function of the second kind and
-                        order N.
-                      * BESSEL_JN(N1,N2,X) - Bessel function of the first kind
-                        and order N.
-                      * BESSEL_YN(N1,N2,X) - Bessel function of the second kind
-                        and order N.
-              Miscellaneous
+            * BESSEL_J0(X) - Bessel function of the first kind and
+              order zero.
+            * BESSEL_J1(X) - Bessel function of the first kind and
+              order one.
+            * BESSEL_Y0(X) - Bessel function of the second kind and
+              order zero.
+            * BESSEL_Y1(X) - Bessel function of the second kind and
+              order one.
+            * BESSEL_JN(N,X) - Bessel function of the first kind and
+              order N.
+            * BESSEL_YN(N,X) - Bessel function of the second kind and
+              order N.
+            * BESSEL_JN(N1,N2,X) - Bessel function of the first kind
+              and order N.
+            * BESSEL_YN(N1,N2,X) - Bessel function of the second kind
+              and order N.
+    Miscellaneous
 
 
-                      * DIM(arg1, arg2) is a generic function that returns the
-                        positive difference of its arguments. The result of DIM
-                        (real-arg1, real-arg2) is real. The result is arg1-arg2
-                        if arg1 > arg2, and the result is 0 if arg1 <= arg2.
-                      * MOD(arg1, arg2) is a generic function that returns the
-                        remainder of arg1 divided by arg2. The result of MOD
-                        (real-arg1, real-arg2) is real. The result is arg1 -
-                        (INT(arg1/arg2)*arg2). If arg2 = 0, the result is
-                        undefined. Arg1 and arg2 must not exceed 2**48-1.
-                      * REAL(arg) is a generic function that performs type
-                        conversion on its argument. The result of REAL(real-
-                        arg) is real.
-              Error function
+            * DIM(arg1, arg2) is a generic function that returns the
+              positive difference of its arguments. The result of DIM
+              (real-arg1, real-arg2) is real. The result is arg1-arg2
+              if arg1 > arg2, and the result is 0 if arg1 <= arg2.
+            * MOD(arg1, arg2) is a generic function that returns the
+              remainder of arg1 divided by arg2. The result of MOD
+              (real-arg1, real-arg2) is real. The result is arg1 -
+              (INT(arg1/arg2)*arg2). If arg2 = 0, the result is
+              undefined. Arg1 and arg2 must not exceed 2**48-1.
+            * REAL(arg) is a generic function that performs type
+              conversion on its argument. The result of REAL(real-
+              arg) is real.
 
-                      * ERF(X) - Error function.
-                      * ERFC(X) - Complementary error function.
-                      * ERFC_SCALED(X) - Exponentially-scaled complementary
-                        error function.
-            ===================================================================
-            ***** ADDITIONAL PROCEDURES *****
-            In addition to standard Fortran intrinsics, many other functions
-            are supported ...
-            **** conversion functions ****
+    Error function
+
+            * ERF(X) - Error function.
+            * ERFC(X) - Complementary error function.
+            * ERFC_SCALED(X) - Exponentially-scaled complementary
+              error function.
+===================================================================
+### ADDITIONAL PROCEDURES 
+   In addition to standard Fortran intrinsics, many other functions
+   are supported ...
+##### conversion functions 
                 * r2d(arg) - converts from radians to degrees
                 * d2r(arg) - converts from degrees to radians
                 * f2c() - convert Fahrenheit to Celsius
                 * c2f() - convert Celsius to Fahrenheit
-            **** logical functions ****
+##### logical functions 
                 * ge(val1,val2) - return TRUE if VAL1 is greater than or equal
                   to VAL2, else return FALSE
                 * gt(val1,val2) - return TRUE if VAL1 is greater than to VAL2,
@@ -349,7 +366,7 @@
             For example:
                  a=if(ge(b,c),a,d)
             means return a if b is greater than or equal to c else return d.
-            **** lexical logical functions ****
+##### lexical logical functions
                 * lge($str1,$str2) - return TRUE if $STR1 is lexically greater
                   than or equal to $STR2, else return FALSE
                 * lgt($str1,$str2) - return TRUE if $STR1 is lexically greater
@@ -364,7 +381,7 @@
                   following strings.
                 * $if(expression,$str1,$str2) - If expression is TRUE, return
                   $STR1 else return $STR2
-            **** miscellaneous functions ****
+##### miscellaneous functions 
                 * ownmode() - ownmode(3f) enables calls to user-supplied
                   functions via set_mysub(3f) and set_myfunc(3f).
                 * c(val1) - user-supplied function
@@ -376,7 +393,7 @@
                   VAL3 else returns FALSE
                 * round(val1,val2) - round VAL1 to VAL2 significant digits.
                   Warning: this function is not ready yet.
-            **** String-related ****
+##### String-related 
                 * $char(v1,v2,....) - return characters indicated by numeric
                   ADE (ASCII decimal equivalent) values passed.
                 * delimx(istore,$str1,$delimiters) - parse string into tokens
@@ -397,7 +414,7 @@
                 * $substr(string,i,j) - return a string that is columns i thru
                   j of the input string (first character is called column 1).
                 * $u($str1) - convert string to uppercase
-            **** calendar(Time-related) ****
+##### calendar(Time-related)
                 * ye(),year() - return current year
                 * mo(),month() - return current month
                 * da(),day() - return current day of month
@@ -407,21 +424,21 @@
                 * se(),second() - return current second
                 * $dw([0-7]) - day of week as a string
                 * $mo([1-12]) - month as a string
-            **** Random numbers ****
+##### Random numbers
                 * rand() - return random number from 0.0 to 1.0
                 * srand(number) - set seed for rand(). Seeds should be whole
                   numbers
 ## MISCELLANEOUS COMMANDS
-    Displaying variable values: dump
+   Displaying variable values: dump
 
-    The current value and all defined variable names are
-    displayed via the dump command.
+   The current value and all defined variable names are
+   displayed via the dump command.
 
-    Listing Available Functions: funcs
+   Listing Available Functions: funcs
 
-    A display of all available functions can be obtained when
-    executing CALCULATOR(3f) by entering the command 'funcs'. No
-    descriptions are provided.
+   A display of all available functions can be obtained when
+   executing CALCULATOR(3f) by entering the command 'funcs'. No
+   descriptions are provided.
 
 ### ADDING FUNCTIONS 
    Any program that calls CALCULATOR(3f) directly or indirectly (via JUCALX
