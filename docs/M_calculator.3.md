@@ -68,28 +68,31 @@
    available, Custom routines may be made available for each
    application using the interface.
 
-   A summary of the syntax rules for the expressions follows:
-     + The hierarchy of operations is the same as that of FORTRAN
-       except that adjacent exponents are done from left to right,
-       not right to left [i.e. in FORTRAN 3**2**4=3**(2**4), e.g.
-       3**2**4=(3**2)**4]; and +- strings are resolved to a single
-       sign (that is, 3+ -4 is acceptable instead of 3+(-4)).
-     + Almost all the INTRINSIC mathematical functions defined in
-       FORTRAN are available, as well as access to common extensions
-       and user-written routines.
-     + Embedded blanks are ignored during the processing of a
-       calculation, but most applications using the calculator
-       interface parse on spaces. Therefore, it is generally good
-       practice to assume unquoted white-space ends an expression.
-     + All numeric values are treated as FORTRAN type REAL
-       variables.
-     + Input lines should not normally be over 255 characters long,
-     + There are three ways to store results to be used in future
-       calculations:
-          1. Variable names
-          2. The current-value
-          3. The x and y arrays
-       Each of the types will be discussed separately.
+   A summary of the syntax rules for the expressions :
+
+   + The hierarchy of operations is the same as that of FORTRAN
+     except that adjacent exponents are done from left to right,
+     not right to left [i.e. in FORTRAN 3**2**4=3**(2**4), e.g.
+     3**2**4=(3**2)**4]; and +- strings are resolved to a single
+     sign (that is, 3+ -4 is acceptable instead of 3+(-4)).
+   + Almost all the INTRINSIC mathematical functions defined in
+     FORTRAN are available, as well as access to common extensions
+     and user-written routines.
+   + Embedded blanks are ignored during the processing of a
+     calculation, but most applications using the calculator
+     interface parse on spaces. Therefore, it is generally good
+     practice to assume unquoted white-space ends an expression.
+   + All numeric values are treated as FORTRAN type REAL
+     variables.
+   + Input lines should not normally be over 255 characters long,
+   + There are three ways to store results to be used in future
+     calculations:
+ 
+     1. Variable names
+     2. The current-value
+     3. The x and y arrays
+
+    Each of the types will be discussed separately.
 #### VARIABLE NAMES
    Names must be 1 to 20 characters long, and are case-sensitive. The
    numbr of names permitted is only limited by the available memory.
