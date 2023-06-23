@@ -12,8 +12,8 @@
    INUM0(3f) evaluates a CHARACTER argument as a FORTRAN-like
    calculator expression and returns an integer.
 
-   o INUM0(3f) uses the calculator routine CALCULATOR(3f)
-   o Remember that the calculator treats all values as
+   + INUM0(3f) uses the calculator routine CALCULATOR(3f)
+   + Remember that the calculator treats all values as
      DOUBLEPRECISION.
 
    Values returned are assumed to be very close to being whole integer
