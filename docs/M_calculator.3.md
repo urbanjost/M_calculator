@@ -40,21 +40,22 @@
    The variables used to hold the X,Y,$X,$Y, ... arrays and the
    dictionaries of variable names and string names and their associated
    values:
-   + integer,parameter,public :: iclen_calc=512 ! max length
-     of expression or variable value as a string
-   + integer,parameter,public :: ixy_calc=55555 ! number of
-     variables in X() and Y() array
-   + integer,parameter,public :: icname_calc=20 ! max length
-     of a variable name
-   + real(kind=dp),save,public :: x(ixy_calc)=0.0_dp ! x array
-     for procedure funcs_
-   + real(kind=dp),save,public :: y(ixy_calc)=0.0_dp ! y array
-     for procedure funcs_
-   + integer,save,public,allocatable :: values_len(:) !
-     lengths of the string variable values
-   + character(len=:),save,public,allocatable :: values(:) !
-     string variable values
-
+```fortran
+   ! max length of expression or variable value as a string
+   integer,parameter,public :: iclen_calc=512 
+   ! number of variables in X() and Y() array
+   integer,parameter,public :: ixy_calc=55555 
+   ! max length of a variable name
+   integer,parameter,public :: icname_calc=20 
+   ! x array for procedure funcs_
+   real(kind=dp),save,public :: x(ixy_calc)=0.0_dp 
+   ! y array for procedure funcs_
+   real(kind=dp),save,public :: y(ixy_calc)=0.0_dp 
+   !  lengths of the string variable values
+   integer,save,public,allocatable :: values_len(:) 
+   !  string variable values
+   character(len=:),save,public,allocatable :: values(:) 
+```
 ## USAGE
 ### Calculator Expressions 
 
