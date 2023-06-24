@@ -3,6 +3,8 @@ use, intrinsic :: iso_fortran_env, only: &
 & stdin => input_unit,   &
 & stdout => output_unit, &
 & stderr => error_unit
+use, intrinsic :: iso_fortran_env, only : compiler_version
+use, intrinsic :: iso_fortran_env, only : compiler_options
 use M_framework,  only : unit_test_start, unit_test, unit_test_end, unit_test_msg, unit_test_stop
 use M_framework, only : unit_test_mode, unit_test_level, unit_test_flags
 use M_framework,  only : almost
@@ -15,6 +17,12 @@ use M_calculator, only : iclen_calc, ixy_calc, icname_calc, x, y, values_len, va
 implicit none
 logical, parameter :: T=.true., F=.false.
 integer,parameter :: bug=0 ! gfortran-11 bug where function calls as arguments cause errors, but expressions do not
+
+   print '(4(a/))', &
+      'This file was compiled by ', &
+      compiler_version(),           &
+      'using the options ',         &
+      compiler_options()
 
 ! optional call to change default modes
    call unit_test_mode(   &
@@ -30,6 +38,7 @@ integer,parameter :: bug=0 ! gfortran-11 bug where function calls as arguments c
 
    unit_test_level=0
 
+      
 call test_calculator()
 !!call test_jucals()
 !!call test_squeeze_()
