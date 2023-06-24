@@ -59,9 +59,8 @@ Results:
 
  - The code was run through [ford(1)](https://politicalphysicist.github.io/ford-fortran-documentation.html)
    to produce a [developers' document](https://urbanjost.github.io/M_calculator/fpm-ford/index.html).
-<!--
+
  - [github action status](docs/STATUS.md)
--->
 
 ## Build with gmake(1) ![gmake](docs/images/gnu.gif)
 ```bash
