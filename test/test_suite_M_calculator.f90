@@ -128,6 +128,9 @@ character(len=:),allocatable :: string
    string='-10'
    call unit_test('inum0', inum0(string).eq.-10, 'checking',string,'==>',inum0(string)+bug,'expected',-10)
 
+   string='+10'
+   call unit_test('inum0', inum0(string).eq.+10, 'checking',string,'==>',inum0(string)+bug,'expected',+10)
+
    call unit_test_end('inum0',msg='')
 end subroutine test_inum0
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
