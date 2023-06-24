@@ -197,7 +197,6 @@ procedure(c_interface),pointer      :: myfunc => c_placeholder
 public locate        ! [M_list] find PLACE in sorted character array where value can be found or should be placed
    private locate_c
    private locate_d
-   private locate_i
 public insert        ! [M_list] insert entry into a sorted allocatable array at specified position
    private insert_c
    private insert_d
@@ -354,7 +353,7 @@ integer                                :: nchard
          mssg='*calculator* input line was empty'
       elseif(line(1:nchard).eq.'dump')then ! process dump command
          write(*,g)line(1:nchard)
-         write(*,g)'sc','current value= ',last
+         write(*,g)' current value= ',last
          write(*,g)' variable name       variable value     '
          if(allocated(keyr_q))then
             do i10=1,size(keyr_q)
@@ -758,7 +757,6 @@ integer                             :: ier
 integer,parameter                   :: iargs=100
 character(len=10),save              :: days(7)
 character(len=10),save              :: months(12)
-character(len=9) :: day
 character(len=iclen_calc)           :: ctmp
 character(len=iclen_calc)           :: ctmp2
 character(len=iclen_calc)           :: junout
@@ -767,7 +765,6 @@ character(len=icname_calc)          :: wstrng2
 
 real(kind=dp)                       :: args(iargs)
 
-real                                :: acurcy
 real(kind=dp)                       :: arg1
 real(kind=dp)                       :: arg2
 real(kind=dp)                       :: bottom
@@ -792,7 +789,6 @@ integer                             :: i3030
 integer                             :: i410
 integer                             :: i440
 integer                             :: i520
-integer                             :: i852
 integer                             :: iargs_type(iargs)
 integer                             :: ibegin(ixyc_calc),iterm(ixyc_calc)
 integer                             :: icalen
@@ -803,38 +799,26 @@ integer                             :: idum
 integer                             :: iend
 integer                             :: iend1
 integer                             :: iend2
-integer                             :: ifail
 integer                             :: iflen
 integer                             :: ii
-integer                             :: iie
 integer                             :: iii
-integer                             :: iiie
 integer                             :: ileft
 integer                             :: ilen
 integer                             :: in
-integer                             :: ind
 integer                             :: indexout
 integer                             :: ios
 integer                             :: iright
 integer                             :: istart
-integer                             :: istat
 integer                             :: istore
 integer                             :: istoreat
 integer                             :: isub
-integer                             :: itime(8)
 integer                             :: itype
-integer                             :: iunit
 integer                             :: ival
 integer                             :: ivalue
 integer                             :: jend
-integer                             :: jj
 integer                             :: n
-integer                             :: idat(8)
 integer                             :: ierr
-integer                             :: iweekday
 integer                             :: ii2
-integer                             :: ilen2
-integer                             :: istatus
 
 intrinsic                           :: abs,aint,anint,exp,nint,int,log,log10
 intrinsic                           :: acos,asin,atan,cos,cosh,sin,sinh,tan,tanh
@@ -3824,86 +3808,6 @@ integer                                :: error
    endif
 end subroutine locate_d
 !===================================================================================================================================
-subroutine locate_i(list,value,place,ier,errmsg)
-
-!character(len=*),parameter::ident_8="&
-!&@(#)M_list::locate_i(3f): find PLACE in sorted integer array where VALUE can be found or should be placed"
-
-! Assuming an array sorted in descending order
-!
-!  1. If it is not found report where it should be placed as a NEGATIVE index number.
-
-integer,allocatable                    :: list(:)
-integer,intent(in)                     :: value
-integer,intent(out)                    :: place
-integer,intent(out),optional           :: ier
-character(len=*),intent(out),optional  :: errmsg
-
-integer                                :: i
-character(len=:),allocatable           :: message
-integer                                :: arraysize
-integer                                :: maxtry
-integer                                :: imin, imax
-integer                                :: error
-
-   if(.not.allocated(list))then
-      list=[integer :: ]
-   endif
-   arraysize=size(list)
-
-   error=0
-   if(arraysize.eq.0)then
-      maxtry=0
-      place=-1
-   else
-      maxtry=int(log(float(arraysize))/log(2.0)+1.0)
-      place=(arraysize+1)/2
-   endif
-   imin=1
-   imax=arraysize
-   message=''
-
-   LOOP: block
-   do i=1,maxtry
-
-      if(value.eq.list(PLACE))then
-         exit LOOP
-      else if(value.gt.list(place))then
-         imax=place-1
-      else
-         imin=place+1
-      endif
-
-      if(imin.gt.imax)then
-         place=-imin
-         if(iabs(place).gt.arraysize)then ! ran off end of list. Where new value should go or an unsorted input array'
-            exit LOOP
-         endif
-         exit LOOP
-      endif
-
-      place=(imax+imin)/2
-
-      if(place.gt.arraysize.or.place.le.0)then
-         message='*locate* error: search is out of bounds of list. Probably an unsorted input array'
-         error=-1
-         exit LOOP
-      endif
-
-   enddo
-   message='*locate* exceeded allowed tries. Probably an unsorted input array'
-   endblock LOOP
-   if(present(ier))then
-      ier=error
-   else if(error.ne.0)then
-      write(stderr,*)message//' VALUE=',value,' PLACE=',place
-      stop 1
-   endif
-   if(present(errmsg))then
-      errmsg=message
-   endif
-end subroutine locate_i
-!===================================================================================================================================
 subroutine remove_i(list,place)
 
 !character(len=*),parameter::ident_13="@(#)M_list::remove_i(3fp): remove value from allocatable array at specified position"
@@ -4215,9 +4119,6 @@ integer,intent(in) :: mine
    call random_seed(put = seed)
    deallocate(seed)
 end subroutine init_random_seed
-!===================================================================================================================================
-!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()=
-!===================================================================================================================================
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()=
 !===================================================================================================================================
