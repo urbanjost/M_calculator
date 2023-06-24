@@ -1,7 +1,7 @@
 # TOML file for fpm as described at https://fpm.fortran-lang.org/en/spec/manifest.html
 name = "M_calculator"
 version = "0.1.0"
-license = "Public Domain"
+license = "MIT"
 author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John S. Urban"
@@ -37,6 +37,7 @@ source-form = "free"
 source-dir="src"
 [dev-dependencies]
 M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
+#M_framework.namespace    = "GPF"
 
 [[test]]
 name="runTests"
