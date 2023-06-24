@@ -1,5 +1,5 @@
 [![](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fpm-ford/index.html)
-# [M_calculator](https://github.com/urbanjost/M_calculator/blob/master/docs/M_calculator.3.md)
+# [M_calculator](https://urbanjost.github.io/M_calculator/index.html)
 
 ## parse mathematical expressions
 
@@ -101,4 +101,4 @@ Results:
     [dependencies]
     calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 ```
-[![M_calculator](docs/images/calcs.gif)](https://urbanjost.github.io/M_calculator/index.html)
+[![M_calculator](docs/images/calcs.gif)](https://github.com/urbanjost/M_calculator/blob/master/docs/M_calculator.3.md)
