@@ -1,6 +1,6 @@
 !>
 !!##NAME
-!!   calculator - [M_calculator] parse calculator expression and return numeric or string value
+!!   calculator - [M_calculator] parse calculator expression and return numeric and string values
 !!   (LICENSE:PD)
 !!##SYNOPSIS
 !!
@@ -97,8 +97,8 @@ use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT,stdout=>OUTPUT_UNIT
 implicit none
 private
 
-integer,parameter                      :: k_dbl=kind(0.0d0)
-integer,parameter                      :: dp=kind(0.0d0)
+integer, parameter                     :: db = kind(0.0d0) ! SELECTED_REAL_KIND(15,300) ! real*8
+integer,parameter                      :: dp = kind(0.0d0)
 
 integer,parameter,public               :: iclen_calc=512           ! max length of expression or variable value as a string
 integer,parameter,public               :: ixy_calc=55555           ! number of variables in X() and Y() array
@@ -169,23 +169,23 @@ private :: c_placeholder
 
 abstract interface
    subroutine juown1_interface(func,iflen,args,iargstp,n,fval,ctmp,ier)
-      import k_dbl
-      character(len=*),intent(in)          :: func
-      integer,intent(in)                   :: iflen
-      real(kind=k_dbl),intent(in)          :: args(100)
-      integer,intent(in)                   :: iargstp(100)
-      integer,intent(in)                   :: n
-      real(kind=k_dbl)          :: fval
-      character(len=*)          :: ctmp
-      integer                   :: ier
+      import dp
+      character(len=*),intent(in)  :: func
+      integer,intent(in)           :: iflen
+      real(kind=dp),intent(in)     :: args(100)
+      integer,intent(in)           :: iargstp(100)
+      integer,intent(in)           :: n
+      real(kind=dp)                :: fval
+      character(len=*)             :: ctmp
+      integer                      :: ier
    end subroutine juown1_interface
 end interface
 
 abstract interface
    real function c_interface(args,n)
-      import k_dbl
-      integer,intent(in)            :: n
-      real(kind=k_dbl),intent(in)   :: args(n)
+      import dp
+      integer,intent(in)         :: n
+      real(kind=dp),intent(in)   :: args(n)
    end function c_interface
 end interface
 public c_interface
@@ -3355,19 +3355,18 @@ subroutine juown1_placeholder(func,iflen,args,iargstp,n,fval,ctmp,ier)
 !         set to  2 if a string is returned
 !
 !!use M_calculator, only : x, y, values, values_len
-integer, parameter        :: k_dbl = SELECTED_REAL_KIND(15,300) ! real*8
-character(len=*),intent(in)          :: func
-integer,intent(in)                   :: iflen
-real(kind=k_dbl),intent(in)          :: args(100)
-integer,intent(in)                   :: iargstp(100)
-integer,intent(in)                   :: n
-real(kind=k_dbl)          :: fval
-character(len=*)          :: ctmp
-integer                   :: ier
+character(len=*),intent(in) :: func
+integer,intent(in)          :: iflen
+real(kind=db),intent(in)    :: args(100)
+integer,intent(in)          :: iargstp(100)
+integer,intent(in)          :: n
+real(kind=db)               :: fval
+character(len=*)            :: ctmp
+integer                     :: ier
 
-integer                   :: i10
-integer                   :: iwhich
-integer                   :: ilen
+integer                     :: i10
+integer                     :: iwhich
+integer                     :: ilen
 !-----------------------------------------------------------------------
    fval=0.0d0
 !-----------------------------------------------------------------------
@@ -3393,8 +3392,8 @@ real function c_placeholder(args,n)
 ! a built-in calculator function called c must be satisfied.
 ! write whatever you want here as a function
 integer,intent(in)          :: n
-real(kind=k_dbl),intent(in) :: args(n)
-   c_placeholder=0.0_k_dbl
+real(kind=db),intent(in) :: args(n)
+   c_placeholder=0.0_db
 end function c_placeholder
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()=

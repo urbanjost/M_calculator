@@ -1,5 +1,5 @@
-[![](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/fpm-ford/index.html)
-# [M_calculator](https://urbanjost.github.io/M_calculator/index.html)
+[![](docs/images/calc_small.ico)](https://urbanjost.github.io/M_calculator/docs/fpm-ford/index.html)
+# [M_calculator](https://urbanjost.github.io/M_calculator/docs/M_calculator.3.html)
 
 ## parse mathematical expressions
 
@@ -39,6 +39,7 @@ character(len=:), allocatable :: strings(:)
 
    do i = 1, size(strings)
       answer = dnum0(strings(i))
+      write(*,'(*(g0))')answer,' = ',strings(i)
    enddo
 
    x = dnum0('x')
@@ -50,9 +51,14 @@ end program demo_dnum0
 ```
 Results:
 ```text
- >    6.8587316018816180        6.8799660787542747        7.0710807985947346     
+ > 5.8823529411764710 = 20/3.4
+ > 7.0710807985947346 = CI=10*sin(3.1416/4)
+ > 59.487016640760288 = a=CI**2+sqrt(90)
+ > 6.8587316018816180 = x=a/CI-atan(a)
+ > 6.8799660787542747 = y=x+CI/333
+ > 0.0000000000000000 =
+ >    6.8587316018816180        6.8799660787542747        7.0710807985947346
 ```
-
 ## Documentation   ![docs](docs/images/docs.gif)
 
  - The [user documentation](docs/M_calculator.3.md) describes the many functions available.
