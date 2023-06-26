@@ -36,6 +36,7 @@
      + [**dnum0**](dnum0.3.md):  resolve a calculator string into a doubleprecision number (return 0 on errors)
      + [**snum0**](snum0.3.md):  resolve a calculator expression into a string(return blank on errors)
      + [**expression**](expressions.3.md):  call calculator(3f) and display messages
+
 ## CONSTANTS
    The variables used to hold the X,Y,$X,$Y, ... arrays and the
    dictionaries of variable names and string names and their associated
@@ -257,6 +258,7 @@
   + SQRT(arg) is a generic function that returns the
     principal square root of its argument. The result of
     SQRT(real-arg) is real.
+
 ##### Maximum/Minimum
 
 
@@ -345,11 +347,13 @@
 #### ADDITIONAL PROCEDURES
    In addition to standard Fortran intrinsics, many other functions
    are supported ...
+
 ##### conversion functions
   + r2d(arg) - converts from radians to degrees
   + d2r(arg) - converts from degrees to radians
   + f2c() - convert Fahrenheit to Celsius
   + c2f() - convert Celsius to Fahrenheit
+
 ##### logical functions
   + ge(val1,val2) - return TRUE if VAL1 is greater than or equal to VAL2, else return FALSE
   + gt(val1,val2) - return TRUE if VAL1 is greater than to VAL2, else return FALSE
@@ -380,6 +384,7 @@
     following strings.
   + $if(expression,$str1,$str2) - If expression is TRUE, return
                   $STR1 else return $STR2
+
 ##### miscellaneous functions
   + ownmode() - ownmode(3f) enables calls to user-supplied
     functions via set_mysub(3f) and set_myfunc(3f).
@@ -392,6 +397,7 @@
     VAL3 else returns FALSE
   + round(val1,val2) - round VAL1 to VAL2 significant digits.
     Warning: this function is not ready yet.
+
 ##### String-related
   + $char(v1,v2,....) - return characters indicated by numeric
     ADE (ASCII decimal equivalent) values passed.
@@ -413,6 +419,7 @@
   + $substr(string,i,j) - return a string that is columns i thru
     j of the input string (first character is called column 1).
   + $u($str1) - convert string to uppercase
+
 ##### calendar(Time-related)
   + ye(),year() - return current year
   + mo(),month() - return current month
@@ -423,6 +430,7 @@
   + se(),second() - return current second
   + $dw([0-7]) - day of week as a string
   + $mo([1-12]) - month as a string
+
 ##### Random numbers
   + rand() - return random number from 0.0 to 1.0
   + srand(number) - set seed for rand(). Seeds should be whole
