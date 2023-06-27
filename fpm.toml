@@ -45,6 +45,7 @@ source-dir="test"
 main="test_suite_M_calculator.f90"
 #[test.dependencies]
 #M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
+#M_framework.namespace    = "GPF"
 
 [[executable]]
 name="ca"
