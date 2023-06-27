@@ -35,7 +35,7 @@
      + [**rnum0**](rnum0.3.md):  resolve a calculator string into a real number (return 0 on errors)
      + [**dnum0**](dnum0.3.md):  resolve a calculator string into a doubleprecision number (return 0 on errors)
      + [**snum0**](snum0.3.md):  resolve a calculator expression into a string(return blank on errors)
-     + [**expression**](expressions.3.md):  call calculator(3f) and display messages
+     + [**expression**](expression.3.md):  call calculator(3f) and display messages
 
 ## CONSTANTS
    The variables used to hold the X,Y,$X,$Y, ... arrays and the

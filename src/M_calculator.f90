@@ -463,14 +463,6 @@ help_text=[ &
 &'--------------------------------------------------------------------------------',&
 &'standard functions available:                                                   ',&
 &'--------------------------------------------------------------------------------',&
-!&'I/O: DEVELOPMENTAL                                                              ',&
-!&' open(unit,$filename)                                                           ',&
-!&' write(unit,values)                                                             ',&
-!&' $read(unit,name)                                                               ',&
-!&' $inquire(                                                                      ',&
-!&' rewind(unit)                                                                   ',&
-!&' flush(                                                                         ',&
-!&' close(                                                                         ',&
 !&'--------------------------------------------------------------------------------',&
 !&' c(                   : user-defined function                                   ',&
 !&' ownmode(             : call user-defined procedures                            ',&
@@ -567,7 +559,7 @@ help_text=[ &
 &'HIGHER FUNCTIONS:                                                               ',&
 &' fraction(x): fraction part of model | exponent(x) : largest exponent           ',&
 &' gamma(x): gamma function            | log_gamma(x): logarithm of gamma function',&
-&' tiny()  : smallest number              | huge():       largest number          ',&
+&' tiny()  : smallest number           | huge():       largest number             ',&
 !' erf(x), erfc_scaled(x): Error function | erfc(x): Complementary error function ',&
 &'--------------------------------------------------------------------------------',&
 &'                                                                                ']
@@ -575,21 +567,6 @@ help_text=[ &
       write(*,g)help_text(i)
    enddo
 end subroutine help_funcs_
-!-----------------------------------------------------------------------------------------------------------------------------------
-! modulo Modulo function
-! btest MANIPULATION] Bit test function
-! epsilon Epsilon function
-! same pads strings to same length and then calls MERGE(3f)
-! flush flush I/O buffers of specified files
-! unusedf
-! delimx
-! c
-! ownmode
-! mod
-! scale
-! len
-! ifdef
-! open close rewind write
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
