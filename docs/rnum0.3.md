@@ -1,5 +1,5 @@
 ## NAME
-   rnum0(3f) - [M_calculator] returns real number from string expression
+   rnum0(3f) - [M\_calculator] returns real number from string expression
    using CALCULATOR(3f) (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
@@ -10,14 +10,14 @@
 ```
 ## DESCRIPTION
     RNUM0() is used to return a REAL value from a CHARACTER string
-    representing a numeric expression. It uses the M_calculator(3fp)
+    representing a numeric expression. It uses the M\_calculator(3fp)
     module.
 ## OPTIONS
 <dl>
 
   <dt>inline</dt>
   <dd>
-   INLINE is a CHARACTER variable up to (iclen_calc=512)
+   INLINE is a CHARACTER variable up to (iclen\_calc=512)
    characters long that is similar to a FORTRAN 77 numeric
    expression.
   </dd>
@@ -30,8 +30,8 @@
 </dl>
 ## DEPENDENCIES
    All programs that call the calculator routine can supply their own
-   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
-   adding procedures to the calculator without altering the M_calculator
+   substitute\_subroutine(3f) and substitute\_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M\_calculator
    module. See the example program for samples.
    
 ## EXAMPLES

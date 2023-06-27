@@ -1,5 +1,5 @@
 ## NAME
-   M_calculator(3fm) - [M_calculator::INTRO] module of routines for parsing
+   M\_calculator(3fm) - [M\_calculator::INTRO] module of routines for parsing
    expressions and returning values
 ## SYNOPSIS
 ```fortran
@@ -9,7 +9,7 @@
     use M_calculator, only : inum0, rnum0, dnum0, snum0
 ```
 ## DESCRIPTION
-   The M_calculator module and related functions evaluate CHARACTER
+   The M\_calculator module and related functions evaluate CHARACTER
    strings containing FORTRAN-like expressions and returns numeric and
    string values.
 
@@ -21,7 +21,7 @@
    calculator. It supports named variables and has several arrays (of
    55555 elements each). Many standard FORTRAN functions are available,
    plus access to user-written functions is permitted via user-supplied
-   routines via set_mysub(3f) and set_myfunc(3f).
+   routines via set\_mysub(3f) and set\_myfunc(3f).
 
    The programmer (generally) uses just the CALCULATOR(3f) routine or
    several convenience routines (INUM0,RNUM0,SNUM0,,EXPRESSION) that
@@ -306,21 +306,21 @@
 
 ##### Bessel functions
 
-  + BESSEL_J0(X) - Bessel function of the first kind and
+  + BESSEL\_J0(X) - Bessel function of the first kind and
     order zero.
-  + BESSEL_J1(X) - Bessel function of the first kind and
+  + BESSEL\_J1(X) - Bessel function of the first kind and
     order one.
-  + BESSEL_Y0(X) - Bessel function of the second kind and
+  + BESSEL\_Y0(X) - Bessel function of the second kind and
     order zero.
-  + BESSEL_Y1(X) - Bessel function of the second kind and
+  + BESSEL\_Y1(X) - Bessel function of the second kind and
     order one.
-  + BESSEL_JN(N,X) - Bessel function of the first kind and
+  + BESSEL\_JN(N,X) - Bessel function of the first kind and
     order N.
-  + BESSEL_YN(N,X) - Bessel function of the second kind and
+  + BESSEL\_YN(N,X) - Bessel function of the second kind and
     order N.
-  + BESSEL_JN(N1,N2,X) - Bessel function of the first kind
+  + BESSEL\_JN(N1,N2,X) - Bessel function of the first kind
     and order N.
-  + BESSEL_YN(N1,N2,X) - Bessel function of the second kind
+  + BESSEL\_YN(N1,N2,X) - Bessel function of the second kind
     and order N.
 
 ##### Miscellaneous
@@ -342,7 +342,7 @@
 
   + ERF(X) - Error function.
   + ERFC(X) - Complementary error function.
-  + ERFC_SCALED(X) - Exponentially-scaled complementary error function.
+  + ERFC\_SCALED(X) - Exponentially-scaled complementary error function.
 
 #### ADDITIONAL PROCEDURES
    In addition to standard Fortran intrinsics, many other functions
@@ -387,7 +387,7 @@
 
 ##### miscellaneous functions
   + ownmode() - ownmode(3f) enables calls to user-supplied
-    functions via set_mysub(3f) and set_myfunc(3f).
+    functions via set\_mysub(3f) and set\_myfunc(3f).
   + c(val1) - user-supplied function
   + ceiling(val1) - ceiling(3f)or ceil(3f) returns the least
     integral value greater than or equal to VAL1.
@@ -403,7 +403,7 @@
     ADE (ASCII decimal equivalent) values passed.
   + delimx(istore,$str1,$delimiters) - parse string into tokens
     in array $x()
-  + $f(fortran_format,value) - create string from value using
+  + $f(fortran\_format,value) - create string from value using
     specified Fortran FORMAT statement
   + ichar($char) - return the ADE (ASCII Decimal Equivalent)
     value of a letter
@@ -452,25 +452,25 @@
    (), INUM0(), RNUM0(), SNUM0()) can extend the functions available by
    supplying two routines:
 
-   1. SUBSTITUTE_SUBROUTINE(3f) - This user-supplied routine is a hook
+   1. SUBSTITUTE\_SUBROUTINE(3f) - This user-supplied routine is a hook
       for programmers to add their own functions to CALCULATOR(3f)
       without having to change CALCULATOR(3f) directly. It is passed the
       name of unknown functions and their parameter lists if the
       expression 'ownmode(1)' is passed to the calculator. If you do not
       need to add custom functions to the calculator this is not
       required. A user-defined function call be created and called with
-      call set_mysub(SUBROUTINE_NAME) The routine must be defined with an
+      call set\_mysub(SUBROUTINE\_NAME) The routine must be defined with an
       explicit interface available in the calling unit.
-   2. SUBSTITUTE_C(3f) - This user-supplied function is here to optimize
+   2. SUBSTITUTE\_C(3f) - This user-supplied function is here to optimize
       performance of a particular program and everyone else should
       typically ignore it. In a special case a non-standard function
       needed added that was called so heavily that it was important that
       it be called more efficiently than a user defined function placed
-      in SUBSTITUTE_SUBROUTINE(3f) is. It allows for the function "c" to
+      in SUBSTITUTE\_SUBROUTINE(3f) is. It allows for the function "c" to
       be defined and given an array and an array size as arguments. By
       default the "c" function just returns zero. A replacement can be
       defined by creating a function with similar arguments and calling
-      call set_myfunc(FUNCTION_NAME). The routine must be defined with an
+      call set\_myfunc(FUNCTION\_NAME). The routine must be defined with an
       explicit interface available in the calling unit.
 
    The following program shows a simple but complete line-mode calculator

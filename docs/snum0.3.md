@@ -1,5 +1,5 @@
 ## NAME
-   snum0(3f) - [M_calculator] resolve a calculator expression into a
+   snum0(3f) - [M\_calculator] resolve a calculator expression into a
    string(return blank on errors) (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
@@ -11,7 +11,7 @@
 ```
 
 ## DESCRIPTION
-   SNUM0() is used to return a string value up to (iclen_calc=512)
+   SNUM0() is used to return a string value up to (iclen\_calc=512)
    characters long from a string expression. SNUM0() uses the calculator
    routine CALCULATOR(3f)
 ## OPTIONS
@@ -19,7 +19,7 @@
 
   <dt>inline0</dt>
   <dd>
-  INLINE0 is a CHARACTER variable up to (iclen_calc=512)
+  INLINE0 is a CHARACTER variable up to (iclen\_calc=512)
   characters long that is similar to a FORTRAN 77 expression.
   </dd>
 
@@ -56,8 +56,8 @@
 ```
 ## DEPENDENCIES
    All programs that call the calculator routine can supply their own
-   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
-   adding procedures to the calculator without altering the M_calculator
+   substitute\_subroutine(3f) and substitute\_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M\_calculator
    module. See the example program for samples.
    
 ## SEE ALSO

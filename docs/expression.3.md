@@ -1,5 +1,5 @@
 ## NAME
-   expression(3f) - [M_calculator] return value from a string expression
+   expression(3f) - [M\_calculator] return value from a string expression
    processing messages to simplify call to CALCULATOR(3f) (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
@@ -52,7 +52,7 @@
   OUTLIN0 contains a string representation of the number
   returned in OUTVAL up to 23 characters long when INLIN0 is a
   numeric expression. It contains a string up to
-  (iclen_calc=512) characters long when INLIN0 is a string
+  (iclen\_calc=512) characters long when INLIN0 is a string
   expression.
   </dd>
 
@@ -84,8 +84,8 @@
 
 ## DEPENDENCIES
    All programs that call the calculator routine can supply their own
-   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
-   adding procedures to the calculator without altering the M_calculator
+   substitute\_subroutine(3f) and substitute\_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M\_calculator
    module. See the example program for samples.
 ## EXAMPLES
    Sample program:

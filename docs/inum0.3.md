@@ -1,5 +1,5 @@
 ## NAME
-   inum0(3f) - [M_calculator] return integer value from calculator
+   inum0(3f) - [M\_calculator] return integer value from calculator
    expression (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
@@ -41,8 +41,8 @@
 
 ## DEPENDENCIES
    All programs that call the calculator routine can supply their own
-   substitute_subroutine(3f) and substitute_C(3f) procedures, which allow
-   adding procedures to the calculator without altering the M_calculator
+   substitute\_subroutine(3f) and substitute\_C(3f) procedures, which allow
+   adding procedures to the calculator without altering the M\_calculator
    module. See the example program for samples.
 ## EXAMPLES
    Sample program:

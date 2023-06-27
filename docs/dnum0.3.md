@@ -1,5 +1,5 @@
 ## NAME
-   dnum0(3f) - [M_calculator] return double precision value from string
+   dnum0(3f) - [M\_calculator] return double precision value from string
    expression using calculator(3f) (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
@@ -21,7 +21,7 @@
 
   <dt>inline</dt>
   <dd>
-      INLINE is a CHARACTER variable up to (iclen_calc=255)
+      INLINE is a CHARACTER variable up to (iclen\_calc=255)
       characters long that is similar to a FORTRAN 77 numeric
       expression.
   </dd>

@@ -1,5 +1,5 @@
 ## NAME
-   calculator - [M_calculator] parse calculator expression and return
+   calculator - [M\_calculator] parse calculator expression and return
    numeric or string value (LICENSE:PD)
 ## SYNOPSIS
 ```fortran
@@ -18,7 +18,7 @@
 <dl>
 
   <dt>inline</dt> <dd>
-      INLINE is a string expression up to (iclen_calc=512)
+      INLINE is a string expression up to (iclen\_calc=512)
       characters long. The syntax of an expression is described in
       the main document of the Calculator Library.
   </dd>
