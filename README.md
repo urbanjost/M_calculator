@@ -64,7 +64,7 @@ Results:
  - The [user documentation](docs/M_calculator.3.md) describes the many functions available.
 
  - The code was run through [ford(1)](https://politicalphysicist.github.io/ford-fortran-documentation.html)
-   to produce a [developers' document](https://urbanjost.github.io/M_calculator/fpm-ford/index.html).
+   to produce a [developers' document](https://urbanjost.github.io/M_calculator/docs/fpm-ford/index.html).
 
  - [github action status](docs/STATUS.md)
 
@@ -107,3 +107,6 @@ Results:
     calculator        = { git = "https://github.com/urbanjost/M_calculator.git" }
 ```
 [![M_calculator](docs/images/calcs.gif)](https://github.com/urbanjost/M_calculator/blob/master/docs/M_calculator.3.md)
+--
+[Find M_calculator on github](https://github.com/urbanjost/M_calculator.git)
+
