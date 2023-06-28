@@ -201,32 +201,32 @@
     arccosine of its argument in radians. The result of
     **ACOS(real-arg)** is real.
   + **ASIN(arg)** is a generic function that returns the
-    arcsine of its argument in radians. The result of ASIN
-    (real-arg) is real.
+    arcsine of its argument in radians. The result of
+    **ASIN(real-arg)** is real.
   + **ATAN(arg)** is a generic function that returns the
     arctangent of its argument in radians. The result of
-    ATAN(real-arg)** is real.
+    **ATAN(real-arg)** is real.
   + **ATAN2(arg1, arg2)** is a generic function that returns
     the arctangent of its argument in radians. The result
-    of ATAN2(real-arg1, real-arg2) is real. The arguments
+    of **ATAN2(real-arg1, real-arg2)** is real. The arguments
     must not both be 0.
   + **ACOSH(arg)** is a generic function that returns the
     hyperbolic arccosine of its argument in radians. The
-    result of ACOSH(real-arg) is real.
+    result of **ACOSH(real-arg)** is real.
   + **ASINH(arg)** is a generic function that returns the
     hyperbolic arcsine of its argument in radians. The
-    result of ASIN(real-arg) is real.
+    result of **ASIN(real-arg)** is real.
   + **ATANH(arg)** is a generic function that returns the
     hyperbolic arctangent of its argument in radians. The
-    result of ATANH(real-arg) is real.
+    result of **ATANH(real-arg)** is real.
 
 ##### Trigonometric functions
 
   + **COS(arg)** is a generic function that returns the cosine
-    of its argument in radians. The result of COS(real-arg)
+    of its argument in radians. The result of COS(real-arg)****
     is real.
   + **SIN(arg)** is a generic function that returns the sine of
-    its argument in radians. The result of SIN(real-arg) is
+    its argument in radians. The result of **SIN(real-arg)** is
     real.
   + **TAN(arg)** is a generic function that returns the tangent
     of its argument in radians.
@@ -234,73 +234,74 @@
 ##### Hyperbolic trigonometric functions
 
   + **COSH(arg)** is a generic function that returns the
-    hyperbolic cosine of its argument. The result of COSH
-    (real-arg) is real.
+    hyperbolic cosine of its argument. The result of 
+    **COSH(real-arg)** is real.
   + **SINH(arg)** is a generic function that returns the
     hyperbolic sine of its argument in radians. The result
-    of SINH(real-arg) is real.
+    of **SINH(real-arg)** is real.
   + **TANH(arg)** is a generic function that returns the
     hyperbolic tangent of its argument in radians.
 
 ##### Powers and logarithms
 
   + **EXP(arg)** is a generic function that returns the
-    exponential of its argument. The result of EXP(real-
-    arg) is real.
+    exponential of its argument. The result of 
+    **EXP(real-arg)** is real.
   + **LOG(arg)** is a generic function that returns the natural
-    logarithm (base e) of its argument. The result of LOG
-    (real-arg) is real.
+    logarithm (base e) of its argument. The result of 
+    **LOG(real-arg)** is real.
   + **HYPOT(arg1,arg2)** returns the Euclidean distance
-    calculated at HYPOT(X,Y)==SQRT(X\*\*2+Y\*\*2)
+    calculated at **HYPOT(X,Y)==SQRT(X\*\*2+Y\*\*2)**
   + **LOG10(arg)** is a generic function that returns the
     common logarithm (base 10) of its argument. The result
-    of LOG10(real-arg) is real.
+    of **LOG10(real-arg)** is real.
   + **SQRT(arg)** is a generic function that returns the
     principal square root of its argument. The result of
-    SQRT(real-arg) is real.
+    **SQRT(real-arg)** is real.
 
 ##### Maximum/Minimum
 
   + **MAX(arg1, arg2 [,..., arg50])** is a generic function
     that returns the largest value in its argument list.
-    The result of MAX(real-arg1, real-arg2 [,..., real-
-    arg50]) is real. - (NON-STANDARD LIMIT: 50 instead of
-    500 parameters allowed)
+    The result of **MAX(real-arg1, real-arg2 [,..., real-
+    arg50])** is real. - (__NON-STANDARD LIMIT: 50 instead of
+    500 parameters allowed__)
   + **MIN(arg1, arg2 [,..., arg50])** is a generic function
     that returns the smallest value in its argument list.
-    The result of MIN(real-arg1, real-arg2 [,..., real-
-    arg50]) is real. NON-STANDARD LIMIT: 50 instead of 500
-    parameters allowed)
+    The result of **MIN(real-arg1, real-arg2 [,..., real-
+    arg50])** is real. __NON-STANDARD LIMIT: 50 instead of 500
+    parameters allowed__)
 
 ##### Directly effecting sign of value
 
   + **ABS(arg)** is a generic function that returns the
-    absolute value of its argument. The result of ABS(real-
-    arg) is real.
+    absolute value of its argument. The result of 
+    **ABS(real-arg)** is real.
   + **SIGN(arg1, arg2)** is a generic function that returns a
-    value after a sign transfer. The result of SIGN(real-
-    arg1, real-arg2) is real. The result is |arg1| if arg2
-    \>= 0. The result is -\|arg1\| if arg2 \< 0.
+    value after a sign transfer. The result of 
+    **SIGN(real-arg1, real-arg2)** is real. 
+    The result is |arg1| if arg2 \>= 0. 
+    The result is -\|arg1\| if arg2 \< 0.
 
 ##### Converting to a whole number
 
   + **INT(arg)** is a generic function that converts its
-    argument to integer type. The result of INT(real-arg)
+    argument to integer type. The result of **INT(real-arg)**
     is zero if |real-arg| \< 1. The result is the largest
     integer with the same sign as real-arg that does not
     exceed the magnitude of real-arg if |real-arg| \>= 1.
   + **AINT(arg)** is a generic function that returns a whole
     number after truncation of its argument. The result of
-    AINT(real-arg) is real. The result is 0 if |arg| \< 1.
+    **AINT(real-arg)** is real. The result is 0 if |arg| \< 1.
     The result is the largest integer with the same sign as
     arg that does not exceed the magnitude of arg if |arg|
     \>= 1.
   + **ANINT(arg)** is a generic function that returns the
     nearest whole number of its argument. The result of
-    ANINT(real-arg) is real.
+    **ANINT(real-arg)** is real.
   + **NINT(arg)** is a generic function that returns the
     integer that is nearest to its argument. The result of
-    NINT(real-arg) is integer. If arg \>= 0, the result is
+    **NINT(real-arg)** is integer. If arg \>= 0, the result is
     (INT(arg+.5)). If arg \< 0, the result is (INT(arg-.5)).
 
 ##### Bessel functions
@@ -325,17 +326,16 @@
 ##### Miscellaneous
 
   + **DIM(arg1, arg2)** is a generic function that returns the
-    positive difference of its arguments. The result of DIM
-    (real-arg1, real-arg2) is real. The result is arg1-arg2
+    positive difference of its arguments. The result of 
+    **DIM(real-arg1, real-arg2)** is real. The result is arg1-arg2
     if arg1 \> arg2, and the result is 0 if arg1 <= arg2.
   + **MOD(arg1, arg2)** is a generic function that returns the
-    remainder of arg1 divided by arg2. The result of MOD
-    (real-arg1, real-arg2) is real. The result is arg1 -
+    remainder of arg1 divided by arg2. The result of 
+    **MOD(real-arg1, real-arg2)** is real. The result is arg1 -
     (INT(arg1/arg2)*arg2). If arg2 = 0, the result is
     undefined. Arg1 and arg2 must not exceed 2\*\*48-1.
   + **REAL(arg)** is a generic function that performs type
-    conversion on its argument. The result of REAL(real-
-    arg) is real.
+    conversion on its argument. The result of **REAL(real-arg)** is real.
 
 ##### Error function
 
@@ -451,7 +451,7 @@
    (), INUM0(), RNUM0(), SNUM0()) can extend the functions available by
    supplying two routines:
 
-   1. SUBSTITUTE\_SUBROUTINE(3f) - This user-supplied routine is a hook
+   1. **SUBSTITUTE\_SUBROUTINE(3f)** - This user-supplied routine is a hook
       for programmers to add their own functions to CALCULATOR(3f)
       without having to change CALCULATOR(3f) directly. It is passed the
       name of unknown functions and their parameter lists if the
@@ -460,7 +460,7 @@
       required. A user-defined function call be created and called with
       call set\_mysub(SUBROUTINE\_NAME) The routine must be defined with an
       explicit interface available in the calling unit.
-   2. SUBSTITUTE\_C(3f) - This user-supplied function is here to optimize
+   2. **SUBSTITUTE\_C(3f)** - This user-supplied function is here to optimize
       performance of a particular program and everyone else should
       typically ignore it. In a special case a non-standard function
       needed added that was called so heavily that it was important that
