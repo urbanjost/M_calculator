@@ -433,11 +433,11 @@
 ##### Random numbers
   + **rand()** - return random number from 0.0 to 1.0
   + **srand(number)** - set seed for rand(). Seeds should be whole
-                  numbers
+    numbers
 
 ## MISCELLANEOUS COMMANDS
 
-####Displaying variable values: dump
+#### Displaying variable values: dump
 
    The current value and all defined variable names are
    displayed via the dump command.
