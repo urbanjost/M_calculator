@@ -5,13 +5,13 @@
 
    The M_calculator(3f) module contains a basic expression parser and
    related convenience routines.
-   
-   Expressions are similar to Fortran77 syntax except 
+
+   Expressions are similar to Fortran77 syntax except
    + powers are processed from left to right so use parenthesis
-   + variable names are case-sensitive 
+   + variable names are case-sensitive
    + string variable names start with a dollar-sign,
    + all numeric values are assumed to be DOUBLEPRECISION.
-   
+
    Note that although suitable for many uses, this is not a byte-code
    interpreter and is designed for parsing basic unique expressions,
    not for high volume repetition of the computations on a large volume
@@ -73,11 +73,11 @@ Results:
     git clone https://github.com/urbanjost/M_calculator.git
     cd M_calculator/src
     # change Makefile if not using one of the listed compilers
-     
+
     # for gfortran
     make clean
     make F90=gfortran gfortran
-     
+
     # for ifort
     make clean
     make F90=ifort ifort
@@ -91,8 +91,8 @@ Results:
 
 ## Build with  fpm(1) ![fpm](docs/images/fpm_logo.gif)
    #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
-   
-   Alternatively, download the github repository and build it with 
+
+   Alternatively, download the github repository and build it with
    fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 
 ```bash
