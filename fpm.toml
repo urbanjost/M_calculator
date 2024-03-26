@@ -18,8 +18,6 @@ auto-examples = true
 
 # new force module naming rules to avoid collisions with other packages
 module-naming = true
-# traditional where user can use any module name
-#module-naming = false
 
 [fortran]
 
@@ -36,7 +34,7 @@ source-form = "free"
 [library]
 source-dir="src"
 [dev-dependencies]
-M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
+M_framework = {namespace = "GPF"}
 #M_framework.namespace    = "GPF"
 
 [[test]]
@@ -44,7 +42,7 @@ name="runTests"
 source-dir="test"
 main="test_suite_M_calculator.f90"
 #[test.dependencies]
-#M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
+#M_framework = {namespace = "GPF"}
 #M_framework.namespace    = "GPF"
 
 [[executable]]
