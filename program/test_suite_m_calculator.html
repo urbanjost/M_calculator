@@ -1,114 +1,103 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="easy project">
+      <meta name="description" content="mathematical expression parser">
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
 
     <title>test_suite_M_calculator &ndash; M_calculator</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">M_calculator </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-            <li><a href="../lists/programs.html">Programs</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
     <h1>test_suite_M_calculator      <small>Program</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title="46.9% of total for programs.">100 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title="53.5% of total for programs.">129 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/test_suite_M_calculator.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/test_suite_m_calculator.f90.html'>test_suite_M_calculator.f90</a></li>
-          <li class="active">test_suite_M_calculator</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/test_suite_m_calculator.f90.html'>test_suite_M_calculator.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">test_suite_M_calculator</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -119,14 +108,15 @@
       <div id="sidebar">
       <h3>Contents</h3>
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-0">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/test_suite_m_calculator.html#variable-f">F</a>
+            <a class="list-group-item" href="../program/test_suite_m_calculator.html#variable-t">T</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#variable-bug">bug</a>
         </div>
       </div>
@@ -142,29 +132,22 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#subs-0">Subroutines</a>
-        </h3>
-      </div>
-      <div id="subs-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_c">test_c</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_calculator">test_calculator</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_dnum0">test_dnum0</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_expression">test_expression</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_getvalue">test_getvalue</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_igetvalue">test_igetvalue</a>
+            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_funcs">test_funcs</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_inum0">test_inum0</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_juown1">test_juown1</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_rgetvalue">test_rgetvalue</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_rnum0">test_rnum0</a>
             <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_snum0">test_snum0</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_strgar2">test_strgar2</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_strgarr">test_strgarr</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_stuff">test_stuff</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_stuffa">test_stuffa</a>
         </div>
       </div>
     </div>
@@ -175,8 +158,9 @@
   
   
   
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
         <a class="list-group-item" href="../program/test_suite_m_calculator.html#src">test_suite_M_calculator</a>
       </div>
@@ -188,113 +172,68 @@
     </div>
     
     <div class="col-md-9" id='text'>
-        <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Uses</h3>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item"><a href='../module/m_calculator.html'>M_calculator</a></li>
+                  <li class="list-inline-item">M_framework</li>
+              </ul>
+            </li>
+        </ul>
       </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <ul class="list-inline">
-                <li>M_framework__verify</li>
-                <li>M_framework__msg</li>
-                <li><a href='../module/m_calculator.html'>M_calculator</a></li>
-                <li>M_framework__approx</li>
-            </ul>
-          </li>
-      </ul>
     </div>
 
-    <p>REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa
-REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, stuff, stuffa
-REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : inum0, rnum0, dnum0, snum0, expression, strgarr, strgar2
-use M_calculator, only : read_config
-call test_jucals()
-call test_squeeze_()</p>
-<p>call test_a_to_d_()</p>
+    <p>use M_calculator, only : read_config</p>
 <br>
-     <section class="visible-xs visible-sm hidden-md">
-         <h3>Contents</h3>
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-1">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#variable-bug">bug</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#subs-1">Subroutines</a>
-        </h3>
-      </div>
-      <div id="subs-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_c">test_c</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_calculator">test_calculator</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_dnum0">test_dnum0</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_expression">test_expression</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_getvalue">test_getvalue</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_igetvalue">test_igetvalue</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_inum0">test_inum0</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_juown1">test_juown1</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_rgetvalue">test_rgetvalue</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_rnum0">test_rnum0</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_snum0">test_snum0</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_strgar2">test_strgar2</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_strgarr">test_strgarr</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_stuff">test_stuff</a>
-            <a class="list-group-item" href="../program/test_suite_m_calculator.html#proc-test_stuffa">test_stuffa</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-      <div class="list-group">
-        <a class="list-group-item" href="../program/test_suite_m_calculator.html#src">test_suite_M_calculator</a>
-      </div>
-    </div>
-
-
-     </section>
-     <br class="visible-xs visible-sm hidden-md">
-
 
     <section>
     <h2>Variables</h2>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-<th></th><th>Initial</th>        <th></th>
+        <th scope="col">Type</th>
+        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
     </thead>
     <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f"></span>
+              logical,
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>F</strong></td>
+<td> =</td>
+                <td>.false.</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-t"></span>
+              logical,
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>T</strong></td>
+<td> =</td>
+                <td>.true.</td>
+            <td>
+                
+            </td>
+        </tr>
         <tr>
             <td>
               <span class="anchor" id="variable-bug"></span>
@@ -308,7 +247,7 @@ parameter
 <td> =</td>
                 <td>0</td>
             <td>
-                
+                <p>EXAMPLE OF ALMOST JUST PRINTING VALUES!!if(almost(z,10*sin(3.1416d0/4.0d0),35,verbose=.true.))continue</p>
             </td>
         </tr>
     </tbody>
@@ -325,12 +264,12 @@ parameter
 
     <section>
     <h2>Subroutines</h2>
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_c"></span><h3> subroutine <a href='../proc/test_c.html'>test_c</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_c"></span> <h3> subroutine <a href='../proc/test_c.html'>test_c</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;c&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  <p>call unit_test(&lsquo;c&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -338,12 +277,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_calculator"></span><h3> subroutine <a href='../proc/test_calculator.html'>test_calculator</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_calculator"></span> <h3> subroutine <a href='../proc/test_calculator.html'>test_calculator</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;calculator&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  <p>call unit_test(&lsquo;calculator&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -351,63 +290,10 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_dnum0"></span><h3> subroutine <a href='../proc/test_dnum0.html'>test_dnum0</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_dnum0"></span> <h3> subroutine <a href='../proc/test_dnum0.html'>test_dnum0</a>()  
 </h3></div>
-    <div class="panel-body">
-          
-  <p>JUST PRINT VALUES!!if(almost(z,10*sin(3.1416d0/4.0d0),35,verbose=.true.))continue</p>
-
-  <h4>Arguments</h4>
-    <em>None</em>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_expression"></span><h3> subroutine <a href='../proc/test_expression.html'>test_expression</a>()  
-</h3></div>
-    <div class="panel-body">
-          
-  <p>call unit_check(&lsquo;expression&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
-
-  <h4>Arguments</h4>
-    <em>None</em>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_getvalue"></span><h3> subroutine <a href='../proc/test_getvalue.html'>test_getvalue</a>()  
-</h3></div>
-    <div class="panel-body">
-          
-  <p>!   call unit_check(&lsquo;getvalue&rsquo;, value.eq. 3.1415926535897931d0, &lsquo;check PI&rsquo;,value)</p>
-
-  <h4>Arguments</h4>
-    <em>None</em>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_igetvalue"></span><h3> subroutine <a href='../proc/test_igetvalue.html'>test_igetvalue</a>()  
-</h3></div>
-    <div class="panel-body">
-          
-  <p>!   call stuff(&lsquo;ten&rsquo;,10)
-!   call unit_check(&lsquo;igetvalue&rsquo;, inum0(&lsquo;ten&rsquo;).eq.10, &lsquo;checking integer&rsquo;,inum0(&lsquo;ten&rsquo;))</p>
-
-  <h4>Arguments</h4>
-    <em>None</em>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_inum0"></span><h3> subroutine <a href='../proc/test_inum0.html'>test_inum0</a>()  
-</h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   
 
@@ -417,12 +303,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_juown1"></span><h3> subroutine <a href='../proc/test_juown1.html'>test_juown1</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_expression"></span> <h3> subroutine <a href='../proc/test_expression.html'>test_expression</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;juown1&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -430,12 +316,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_rgetvalue"></span><h3> subroutine <a href='../proc/test_rgetvalue.html'>test_rgetvalue</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_funcs"></span> <h3> subroutine <a href='../proc/test_funcs.html'>test_funcs</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;rgetvalue&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -443,12 +329,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_rnum0"></span><h3> subroutine <a href='../proc/test_rnum0.html'>test_rnum0</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_inum0"></span> <h3> subroutine <a href='../proc/test_inum0.html'>test_inum0</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;rnum0&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -456,12 +342,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_snum0"></span><h3> subroutine <a href='../proc/test_snum0.html'>test_snum0</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_juown1"></span> <h3> subroutine <a href='../proc/test_juown1.html'>test_juown1</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;snum0&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  <p>call unit_test(&lsquo;juown1&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -469,12 +355,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_strgar2"></span><h3> subroutine <a href='../proc/test_strgar2.html'>test_strgar2</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_rnum0"></span> <h3> subroutine <a href='../proc/test_rnum0.html'>test_rnum0</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;strgar2&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
+  
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -482,45 +368,12 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_strgarr"></span><h3> subroutine <a href='../proc/test_strgarr.html'>test_strgarr</a>()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_snum0"></span> <h3> subroutine <a href='../proc/test_snum0.html'>test_snum0</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
-  <p>call unit_check(&lsquo;strgarr&rsquo;, 0.eq.0, &lsquo;checking&rsquo;,100)</p>
-
-  <h4>Arguments</h4>
-    <em>None</em>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_stuff"></span><h3> subroutine <a href='../proc/test_stuff.html'>test_stuff</a>()  
-</h3></div>
-    <div class="panel-body">
-          
-  <p>!   call unit_check_start(&lsquo;stuff&rsquo;,msg=&rsquo;&lsquo;)
-!   call unit_check(&lsquo;stuff&rsquo;, value.eq. 31.415926535897931d0, &lsquo;check PI*10&rsquo;,value,31.415926535897931d0)</p>
-
-  <h4>Arguments</h4>
-    <em>None</em>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_stuffa"></span><h3> subroutine <a href='../proc/test_stuffa.html'>test_stuffa</a>()  
-</h3></div>
-    <div class="panel-body">
-          
-  <p>!   call stuffa(&lsquo;$A&rsquo;,&rsquo;&lsquo;)
-!   string=&rsquo;this is the value of the string&rsquo;
-!   call stuffa(&lsquo;$mystring&rsquo;,string)
-!   call unit_check(&lsquo;stuffa&rsquo;, snum0(&lsquo;$mystring&rsquo;).eq.string, &lsquo;string check&rsquo;,snum0(&lsquo;$mystring&rsquo;))
-!   string=&rsquo;this is the new value of the string&rsquo;
-!   call stuffa(&lsquo;$mystring&rsquo;,string)
-!   call unit_check(&lsquo;stuffa&rsquo;, snum0(&lsquo;$mystring&rsquo;).eq.string, &lsquo;string check&rsquo;,snum0(&lsquo;$mystring&rsquo;))</p>
+  
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -530,175 +383,231 @@ parameter
 
     </section>    
     
+
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="k">program </span><span class="n">test_suite_M_calculator</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_check_start</span><span class="p">,</span><span class="n">unit_check</span><span class="p">,</span><span class="n">unit_check_done</span><span class="p">,</span><span class="n">unit_check_good</span><span class="p">,</span><span class="n">unit_check_bad</span><span class="p">,</span><span class="n">unit_check_msg</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_check_stop</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_framework__approx</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">almost</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_framework__msg</span><span class="w"></span>
-<span class="c">!*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, getvalue, igetvalue, rgetvalue, stuff, stuffa</span>
-<span class="c">!*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : calculator, stuff, stuffa</span>
-<span class="c">!*REGULAR VERSION, NOT GITHUB VERSION!use M_calculator, only : inum0, rnum0, dnum0, snum0, expression, strgarr, strgar2</span>
-<span class="k">use </span><span class="n">M_calculator</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">calculator</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_calculator</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">iclen_calc</span><span class="p">,</span><span class="w"> </span><span class="n">ixy_calc</span><span class="p">,</span><span class="w"> </span><span class="n">icname_calc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">values_len</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="w"></span>
+    <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">test_suite_M_calculator</span>
+<span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="n">stdin</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">input_unit</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="n">stdout</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">output_unit</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="n">stderr</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">error_unit</span>
+<span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">compiler_version</span>
+<span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">compiler_options</span>
+<span class="k">use </span><span class="n">M_framework</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_test_start</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_end</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_msg</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_stop</span>
+<span class="k">use </span><span class="n">M_framework</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_test_mode</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_level</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_flags</span>
+<span class="k">use </span><span class="n">M_framework</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">almost</span>
+<span class="k">use </span><span class="n">M_calculator</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">calculator</span>
 <span class="c">! convenience routines</span>
-<span class="k">use </span><span class="n">M_calculator</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">inum0</span><span class="p">,</span><span class="w"> </span><span class="n">rnum0</span><span class="p">,</span><span class="w"> </span><span class="n">dnum0</span><span class="p">,</span><span class="w"> </span><span class="n">snum0</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="w"></span>
+<span class="k">use </span><span class="n">M_calculator</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">inum0</span><span class="p">,</span><span class="w"> </span><span class="n">rnum0</span><span class="p">,</span><span class="w"> </span><span class="n">dnum0</span><span class="p">,</span><span class="w"> </span><span class="n">snum0</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span>
+<span class="c">! constants</span>
+<span class="k">use </span><span class="n">M_calculator</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">iclen_calc</span><span class="p">,</span><span class="w"> </span><span class="n">ixy_calc</span><span class="p">,</span><span class="w"> </span><span class="n">icname_calc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">values_len</span><span class="p">,</span><span class="w"> </span><span class="n">values</span>
 <span class="c">!!use M_calculator, only : read_config</span>
 <span class="k">implicit none</span>
+<span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">T</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="w"> </span><span class="n">F</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bug</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="c">! gfortran-11 bug where function calls as arguments cause errors, but expressions do not</span>
-<span class="k">call </span><span class="n">test_calculator</span><span class="p">()</span><span class="w"></span>
-<span class="c">!!call test_jucals()</span>
-<span class="c">!!call test_squeeze_()</span>
 
-<span class="c">!!call test_a_to_d_()</span>
+<span class="w">   </span><span class="c">!!EXAMPLE OF ALMOST JUST PRINTING VALUES!!if(almost(z,10*sin(3.1416d0/4.0d0),35,verbose=.true.))continue</span>
+<span class="w">   </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(4(a/))&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s1">&#39;This file was compiled by &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">compiler_version</span><span class="p">(),</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s1">&#39;using the options &#39;</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">compiler_options</span><span class="p">()</span>
 
-<span class="k">call </span><span class="n">test_getvalue</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_igetvalue</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_rgetvalue</span><span class="p">()</span><span class="w"></span>
+<span class="c">! optional call to change default modes</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_mode</span><span class="p">(</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">keep_going</span><span class="o">=</span><span class="n">T</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">luns</span><span class="o">=</span><span class="p">[</span><span class="n">stdout</span><span class="p">],</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">command</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">brief</span><span class="o">=</span><span class="n">T</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">match</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">interactive</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">CMDLINE</span><span class="o">=</span><span class="n">T</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">       </span><span class="n">debug</span><span class="o">=</span><span class="n">F</span><span class="p">)</span>
 
-<span class="k">call </span><span class="n">test_stuffa</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_stuff</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="n">unit_test_level</span><span class="o">=</span><span class="mi">0</span>
+<span class="w">      </span>
+<span class="k">call </span><span class="n">test_calculator</span><span class="p">()</span>
 
-<span class="k">call </span><span class="n">test_dnum0</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_inum0</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_expression</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_rnum0</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_snum0</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_strgar2</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_strgarr</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">test_dnum0</span><span class="p">()</span>
+<span class="k">call </span><span class="n">test_inum0</span><span class="p">()</span>
+<span class="k">call </span><span class="n">test_expression</span><span class="p">()</span>
+<span class="k">call </span><span class="n">test_rnum0</span><span class="p">()</span>
+<span class="k">call </span><span class="n">test_snum0</span><span class="p">()</span>
 
-<span class="k">call </span><span class="n">test_c</span><span class="p">()</span><span class="w"></span>
-<span class="k">call </span><span class="n">test_juown1</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">test_c</span><span class="p">()</span>
+<span class="k">call </span><span class="n">test_juown1</span><span class="p">()</span>
 
-<span class="k">call </span><span class="n">unit_check_stop</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">test_funcs</span><span class="p">()</span>
 
-<span class="k">contains</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_stuff</span><span class="p">()</span><span class="w"></span>
-<span class="n">doubleprecision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">value</span><span class="w"></span>
-<span class="c">!*!   call stuff(&#39;A&#39;,10.0)</span>
-<span class="c">!*!   call stuff(&#39;PI&#39;,3.141592653589793238462643383279502884197169399375105820974944592307d0)</span>
-<span class="w">   </span><span class="k">value</span><span class="o">=</span><span class="n">dnum0</span><span class="p">(</span><span class="s1">&#39;A*PI&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="c">!*!   call unit_check_start(&#39;stuff&#39;,msg=&#39;&#39;)</span>
-<span class="c">!*!   call unit_check(&#39;stuff&#39;, value.eq. 31.415926535897931d0, &#39;check PI*10&#39;,value,31.415926535897931d0)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;stuff&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_stuff</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_getvalue</span><span class="p">()</span><span class="w"></span>
-<span class="n">doubleprecision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">value</span><span class="w"></span>
-<span class="c">!*!   call stuff(&#39;PI&#39;,3.141592653589793238462643383279502884197169399375105820974944592307d0)</span>
-<span class="c">!*!   value=getvalue(&#39;PI&#39;)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;getvalue&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="c">!*!   call unit_check(&#39;getvalue&#39;, value.eq. 3.1415926535897931d0, &#39;check PI&#39;,value)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;getvalue&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_getvalue</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_igetvalue</span><span class="p">()</span><span class="w"></span>
-<span class="c">!*!   call stuff(&#39;ten&#39;,10)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;igetvalue&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="c">!*!   call unit_check(&#39;igetvalue&#39;, inum0(&#39;ten&#39;).eq.10, &#39;checking integer&#39;,inum0(&#39;ten&#39;))</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;igetvalue&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_igetvalue</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_calculator</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">unit_test_stop</span><span class="p">()</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;calculator&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;calculator&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;calculator&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_calculator</span><span class="w"></span>
+<span class="k">contains</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_rgetvalue</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_calculator</span><span class="p">()</span>
+<span class="c">! iclen_calc : max length of expression or variable value as a string</span>
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">outlin</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">event</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">rvalue</span>
+<span class="kt">integer</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;rgetvalue&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;rgetvalue&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;rgetvalue&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_rgetvalue</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_stuffa</span><span class="p">()</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;stuffa&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="c">!*!   call stuffa(&#39;$A&#39;,&#39;&#39;)</span>
-<span class="c">!*!   string=&#39;this is the value of the string&#39;</span>
-<span class="c">!*!   call stuffa(&#39;$mystring&#39;,string)</span>
-<span class="c">!*!   call unit_check(&#39;stuffa&#39;, snum0(&#39;$mystring&#39;).eq.string, &#39;string check&#39;,snum0(&#39;$mystring&#39;))</span>
-<span class="c">!*!   string=&#39;this is the new value of the string&#39;</span>
-<span class="c">!*!   call stuffa(&#39;$mystring&#39;,string)</span>
-<span class="c">!*!   call unit_check(&#39;stuffa&#39;, snum0(&#39;$mystring&#39;).eq.string, &#39;string check&#39;,snum0(&#39;$mystring&#39;))</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;stuffa&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_stuffa</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_c</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;calculator&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;c&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_c</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_juown1</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="n">ierr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="k">call </span><span class="n">calculator</span><span class="p">(</span><span class="s1">&#39;ownmode(1)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">outlin</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="n">rvalue</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">)</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;juown1&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;juown1&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;juown1&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_juown1</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_dnum0</span><span class="p">()</span><span class="w"></span>
-<span class="n">doubleprecision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
-<span class="w">   </span><span class="n">Y</span><span class="o">=</span><span class="n">DNUM0</span><span class="p">(</span><span class="s1">&#39;CI = 10 * sin(3.1416/4)&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="n">Z</span><span class="o">=</span><span class="n">DNUM0</span><span class="p">(</span><span class="s1">&#39;CI&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;dnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!JUST PRINT VALUES!!if(almost(z,10*sin(3.1416d0/4.0d0),35,verbose=.true.))continue</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;dnum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">z</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">almost</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mf">3.1416d0</span><span class="o">/</span><span class="mi">4</span><span class="n">d0</span><span class="p">),</span><span class="mi">15</span><span class="p">),&amp;</span><span class="w"></span>
-<span class="w">           </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;checking CI&#39;</span><span class="p">,</span><span class="n">dnum0</span><span class="p">(</span><span class="s1">&#39;CI&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="n">dnum0</span><span class="p">(</span><span class="s1">&#39;10*sin(3.1416/4)&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mf">3.1416d0</span><span class="o">/</span><span class="mf">4.0d0</span><span class="p">))</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;dnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_dnum0</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_inum0</span><span class="p">()</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;10/3&#39;</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;(444/111+1)*10-5.0&#39;</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">45</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_inum0</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_expression</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="c">! activate user-defined function interface</span>
+<span class="w">   </span><span class="c">!!call unit_test(&#39;calculator&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;expression&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_expression</span><span class="w"></span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_rnum0</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="n">line</span><span class="o">=</span><span class="s1">&#39;1.3/sind(90)+1-20*2/3&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">calculator</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">outlin</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="n">rvalue</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! several different meanings to the error flag returned by calculator</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! a numeric value was returned without error</span>
+<span class="w">      </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a,a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">outlin</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39; = &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! a string value was returned without error</span>
+<span class="w">      </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">event</span><span class="p">(:</span><span class="nb">int</span><span class="p">(</span><span class="n">rvalue</span><span class="p">)))</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! a request for a message has been returned (from DUMP or FUNC)</span>
+<span class="w">      </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;message===&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">event</span><span class="p">(:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">event</span><span class="p">)))</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! an error has occurred</span>
+<span class="w">      </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error===&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">event</span><span class="p">(:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">event</span><span class="p">)))</span>
+<span class="w">   </span><span class="k">case </span><span class="n">default</span>
+<span class="w">      </span><span class="c">! this should not occur</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="w"> </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(A,i10)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;*CALCULATOR* UNEXPECTED IERR VALUE &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">IERR</span>
+<span class="w">   </span><span class="k">end select</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;rnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;rnum0&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;rnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_rnum0</span><span class="w"></span>
+<span class="k">   call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;calculator&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_calculator</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_snum0</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_c</span><span class="p">()</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;snum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;snum0&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;snum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_snum0</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="c">!!call unit_test(&#39;c&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_c</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_strgar2</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_juown1</span><span class="p">()</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;strgar2&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;strgar2&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;strgar2&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_strgar2</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;juown1&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="c">!!call unit_test(&#39;juown1&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;juown1&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_juown1</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_strgarr</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_dnum0</span><span class="p">()</span>
+<span class="n">doubleprecision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span>
+<span class="w">   </span><span class="n">Y</span><span class="o">=</span><span class="n">DNUM0</span><span class="p">(</span><span class="s1">&#39;CI = 10 * sin(3.1416/4)&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">Z</span><span class="o">=</span><span class="n">DNUM0</span><span class="p">(</span><span class="s1">&#39;CI&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;dnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;dnum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">z</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">almost</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mf">3.1416d0</span><span class="o">/</span><span class="mi">4</span><span class="n">d0</span><span class="p">),</span><span class="mi">15</span><span class="p">),&amp;</span>
+<span class="w">           </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;checking CI&#39;</span><span class="p">,</span><span class="n">dnum0</span><span class="p">(</span><span class="s1">&#39;CI&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="n">dnum0</span><span class="p">(</span><span class="s1">&#39;10*sin(3.1416/4)&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mf">3.1416d0</span><span class="o">/</span><span class="mf">4.0d0</span><span class="p">))</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;strgarr&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="c">!!call unit_check(&#39;strgarr&#39;, 0.eq.0, &#39;checking&#39;,100)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;strgarr&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_strgarr</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;dnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_dnum0</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">end program </span><span class="n">test_suite_M_calculator</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_inum0</span><span class="p">()</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;10/3&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;(444/111+1)*10-5.0&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;-10&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;+10&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;inum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_inum0</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_funcs</span><span class="p">()</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">outlin0</span>
+<span class="n">doubleprecision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">outval</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="p">,</span><span class="w"> </span><span class="n">ilen</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="c">!   call expression(&#39;A=3.4**5    &#39;,outval,outlin0,ierr,ilen)</span>
+<span class="c">!   write(*,*)&#39;value of expression is &#39;,outval</span>
+<span class="c">!   write(*,*)&#39;string representation of value is &#39;,trim(outlin0)</span>
+<span class="c">!   write(*,*)&#39;error flag value is &#39;,ierr</span>
+<span class="c">!   write(*,*)&#39;length of expression is &#39;,ilen</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;funcs&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;+10&#39;</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">expression</span><span class="p">(</span><span class="s1">&#39;xstore(1,10,20,30)&#39;</span><span class="p">,</span><span class="n">outval</span><span class="p">,</span><span class="n">outlin0</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">ilen</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;xstore&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="s1">&#39;x(2)&#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">,</span><span class="w">  </span><span class="n">inum0</span><span class="p">(</span><span class="s1">&#39;  max(-100,0,20,40)   &#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">40</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="w">  </span><span class="n">inum0</span><span class="p">(</span><span class="s1">&#39;  min(-100,0,20,40)   &#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">inum0</span><span class="p">(</span><span class="s1">&#39;  sqrt(25)            &#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;log10&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="s1">&#39;  log10(1000)         &#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;hypot&#39;</span><span class="p">,</span><span class="n">inum0</span><span class="p">(</span><span class="s1">&#39;  hypot(3,4)          &#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;funcs&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_funcs</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_expression</span><span class="p">()</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">iclen_calc</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">outlin0</span>
+<span class="n">doubleprecision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">outval</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="p">,</span><span class="w"> </span><span class="n">ilen</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;A=3.4**5    &#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">expression</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="n">outval</span><span class="p">,</span><span class="n">outlin0</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">ilen</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;error flag should be zero&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ilen</span><span class="o">==</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;trimmed expression length should be eight&#39;</span><span class="p">,</span><span class="n">ilen</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;$STR(&quot;The value is &quot;,nint(40/4))&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">expression</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="n">outval</span><span class="p">,</span><span class="n">outlin0</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">ilen</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;expression&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="o">==</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;string returned&#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">outlin0</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;# this is a comment&#39;</span>
+<span class="w">   </span><span class="c">!call unit_test(&#39;expression&#39;, ierr==1, &#39;expression is a comment&#39;,ierr)</span>
+
+<span class="k">end subroutine </span><span class="n">test_expression</span>
+<span class="c">!</span>
+<span class="c">!   string=&#39;A=sin(3.1416/5)&#39;</span>
+<span class="c">!   !  -1 if an error occurred</span>
+<span class="c">!   !  0 if a numeric value is returned (value is in OUTVAL, string representation of the value is in OUTLIN2).</span>
+<span class="c">!   !  1 if no value was returned but a message was displayed (If a &#39;dump&#39; or &#39;funcs&#39; command was passed to the calculator).</span>
+<span class="c">!   !  2 if the expression evaluated to a string value instead of a numeric value (value is in OUTLIN0).</span>
+<span class="c">!   write(*,*)&#39;value of expression is &#39;,outval</span>
+<span class="c">!   write(*,*)&#39;string representation of value is &#39;,trim(outlin0)</span>
+<span class="c">!   </span>
+<span class="c">!   ! value of expression is    454.35424000000000</span>
+<span class="c">!   ! string representation of value is 454.35424</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_rnum0</span><span class="p">()</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;rnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;10/2&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;rnum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">rnum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">rnum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">+</span><span class="n">bug</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;rnum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_rnum0</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_snum0</span><span class="p">()</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;snum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;$str(10/2)&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;snum0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">snum0</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;checking&#39;</span><span class="p">,</span><span class="n">string</span><span class="p">,</span><span class="s1">&#39;==&gt;&#39;</span><span class="p">,</span><span class="n">snum0</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;snum0&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_snum0</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">end program </span><span class="n">test_suite_M_calculator</span>
 </pre></div>
 
     </section>
@@ -706,50 +615,45 @@ parameter
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>M_calculator was developed by John S. Urban<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>M_calculator was developed by John S. Urban<br>&copy; 2024 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-03-29 03:45              </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-06-23 19:32            </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>

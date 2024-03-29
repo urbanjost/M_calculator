@@ -1,6 +1,6 @@
 !>
 !!##NAME
-!!   calculator - [M_calculator] parse calculator expression and return numeric or string value
+!!   calculator - [M_calculator] parse calculator expression and return numeric and string values
 !!   (LICENSE:PD)
 !!##SYNOPSIS
 !!
@@ -79,28 +79,26 @@
 !!       end program demo_calculator
 !!
 !!##SEE ALSO
-!!     see INUM0(),RNUM0(),SNUM0(),EXPRESSION().
+!!     see INUM0(),RNUM0(),SNUM0(),,EXPRESSION().
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! AUTHOR   John S. Urban
 !!##VERSION  1.0 19971123,20161218
-!===================================================================================================================================
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
 module M_calculator
-use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT,stdout=>OUTPUT_UNIT    ! access computing environment
 
+use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT,stdout=>OUTPUT_UNIT    ! access computing environment
 !!implicit doubleprecision (a-h,o-z)
 implicit none
 private
 
-integer,parameter                      :: k_dbl=kind(0.0d0)
-integer,parameter                      :: dp=kind(0.0d0)
+integer, parameter                     :: db = kind(0.0d0) ! SELECTED_REAL_KIND(15,300) ! real*8
+integer,parameter                      :: dp = kind(0.0d0)
 
 integer,parameter,public               :: iclen_calc=512           ! max length of expression or variable value as a string
 integer,parameter,public               :: ixy_calc=55555           ! number of variables in X() and Y() array
@@ -115,17 +113,17 @@ integer,save,public,allocatable           :: values_len(:)         ! lengths of 
 
 character(len=:),allocatable,save         :: keyr_q(:)             ! contains the names of numeric variables
 real(kind=dp),save,allocatable            :: values_d(:)           ! numeric variable values
-logical,save                              :: G_debug=.false.
+character(len=*),parameter                :: g='(*(g0,1x))'
 
-public  :: calculator
-private :: stuff
-private :: stuffa
+public :: calculator
+public :: stuff
+public :: stuffa
 ! CONVENIENCE ROUTINES
-public :: inum0      ! resolve a calculator string into a whole integer number
-public :: rnum0      ! resolve a calculator string into a real number (return 0 on errors)
-public :: dnum0      ! resolve a calculator string into a doubleprecision number (return 0 on error s)
-public :: snum0      ! resolve a calculator expression into a string(return blank on errors)
-public :: expression ! call calculator() calculator and display messages
+public :: inum0        ! resolve a calculator string into a whole integer number
+public :: rnum0        ! resolve a calculator string into a real number (return 0 on errors)
+public :: dnum0        ! resolve a calculator string into a doubleprecision number (return 0 on error s)
+public :: snum0        ! resolve a calculator expression into a string(return blank on errors)
+public :: expression   ! call calculator() calculator and display messages
 
 public :: set_mysub
 public :: set_myfunc
@@ -151,6 +149,9 @@ logical,save                    :: ownon=.false.            ! flag for whether t
 
 integer,save                    :: ktoken                   ! count of number of token strings assembled
 !
+! requires
+!  rand,
+!
 private :: a_to_d_                       ! returns a real value rval from a numeric character string chars.
 private :: squeeze_
 private :: stufftok_
@@ -168,23 +169,23 @@ private :: c_placeholder
 
 abstract interface
    subroutine juown1_interface(func,iflen,args,iargstp,n,fval,ctmp,ier)
-      import k_dbl
-      character(len=*),intent(in)          :: func
-      integer,intent(in)                   :: iflen
-      real(kind=k_dbl),intent(in)          :: args(100)
-      integer,intent(in)                   :: iargstp(100)
-      integer,intent(in)                   :: n
-      real(kind=k_dbl)          :: fval
-      character(len=*)          :: ctmp
-      integer                   :: ier
+      import dp
+      character(len=*),intent(in)  :: func
+      integer,intent(in)           :: iflen
+      real(kind=dp),intent(in)     :: args(100)
+      integer,intent(in)           :: iargstp(100)
+      integer,intent(in)           :: n
+      real(kind=dp)                :: fval
+      character(len=*)             :: ctmp
+      integer                      :: ier
    end subroutine juown1_interface
 end interface
 
 abstract interface
    real function c_interface(args,n)
-      import k_dbl
-      integer,intent(in)            :: n
-      real(kind=k_dbl),intent(in)   :: args(n)
+      import dp
+      integer,intent(in)         :: n
+      real(kind=dp),intent(in)   :: args(n)
    end function c_interface
 end interface
 public c_interface
@@ -196,7 +197,6 @@ procedure(c_interface),pointer      :: myfunc => c_placeholder
 public locate        ! [M_list] find PLACE in sorted character array where value can be found or should be placed
    private locate_c
    private locate_d
-   private locate_i
 public insert        ! [M_list] insert entry into a sorted allocatable array at specified position
    private insert_c
    private insert_d
@@ -233,19 +233,6 @@ end interface
 interface remove
    module procedure remove_c, remove_d, remove_i 
 end interface
-
-!-----------------------------------------------------------------------------------------------------------------------------------
-public dictionary
-
-type dictionary
-   character(len=:),allocatable :: key(:)
-   character(len=:),allocatable :: value(:)
-   integer,allocatable          :: count(:)
-   contains
-      procedure,private :: get => dict_get
-      procedure,private :: set => dict_add    ! insert entry by name into a sorted allocatable character array if it is not present
-      procedure,private :: del => dict_delete ! delete entry by name from a sorted allocatable character array if it is present
-end type dictionary
 contains
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
@@ -323,7 +310,7 @@ recursive subroutine calculator(inline,outlin,mssg,slast,ierr)
 !#----------------------------------------------------------------------------------------------------------------------------------
 !subroutine calculator(inline,outlin,mssg,slast,ierr)
 
-!character(len=*),parameter::ident_1="@(#)M_calculator::calculator(3f): The procedure CALCULATOR(3f) acts like a calculator"
+! ident_1="@(#) M_calculator calculator(3f) The procedure CALCULATOR(3f) acts like a calculator"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),intent(in)            :: inline
@@ -365,14 +352,14 @@ integer                                :: nchard
          ierr=-1
          mssg='*calculator* input line was empty'
       elseif(line(1:nchard).eq.'dump')then ! process dump command
-         write(*,*)line(1:nchard)
-         write(*,*)'current value= ',last
-         write(*,*)' variable name       variable value     '
+         write(*,g)line(1:nchard)
+         write(*,g)' current value= ',last
+         write(*,g)' variable name       variable value     '
          if(allocated(keyr_q))then
             do i10=1,size(keyr_q)
                if(keyr_q(i10).ne.' ')then
                   write(junout,'('' '',2a,g23.16e3)')keyr_q(i10),' ',values_d(i10)
-                  write(*,*)trim(junout)
+                  write(*,g)trim(junout)
                endif
             enddo
          endif
@@ -380,7 +367,7 @@ integer                                :: nchard
             do i20=1,size(keys_q)
                if(keys_q(i20).ne.' ')then
                   write(junout,'('' '',3a)')keys_q(i20),' ',values(i20)(:values_len(i20))
-                  write(*,*)trim(junout)
+                  write(*,g)trim(junout)
                endif
             enddo
          endif
@@ -449,7 +436,6 @@ integer                                :: nchard
    enddo BIG
    slast=rlast                                            ! set returned value to last successfully calculated real value
 end subroutine calculator
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -467,10 +453,9 @@ end subroutine calculator
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine help_funcs_()
 
-!character(len=*),parameter::ident_2="@(#)M_calculator::help_funcs_(3fp): prints help for calculator functions"
+! ident_2="@(#) M_calculator help_funcs_(3fp) prints help for calculator functions"
 
 character(len=80),allocatable :: help_text(:)
 integer                       :: i
@@ -478,22 +463,24 @@ help_text=[ &
 &'--------------------------------------------------------------------------------',&
 &'standard functions available:                                                   ',&
 &'--------------------------------------------------------------------------------',&
+!&'--------------------------------------------------------------------------------',&
 !&' c(                   : user-defined function                                   ',&
 !&' ownmode(             : call user-defined procedures                            ',&
 &'--------------------------------------------------------------------------------',&
-&' len_trim($value)     : number of characters trimming trailing spaces           ',&
-&' index($value,$match) : return position $match occurs in $value or zero         ',&
-&' sign(val1,val2)      : magnitude of val1 with the sign of val2                 ',&
-&' real(value)          : conversion to real type                                 ',&
-&' str($str|expr,....)  :append as strings and then convert to number             ',&
-&' $str($str|expr,....) :append as strings                                        ',&
-&' round(value,digits)  :                                                         ',&
-&' ichar($value)        : return ASCII Decimal Equivalent of character            ',&
-&' $char(value)         : return character given ASCII Decimal Equivalent         ',&
-&' $f(format,value)     : using FORMAT to create it convert number to string      ',&
-&' $if(expr,$val1,$val2): if expr==0 return $val1, else return $val2              ',&
-&' if(expr,val1,val2)   : if expr==0 return val1, else return val2                ',&
-&' hypot(x,y)           : Euclidean distance function                             ',&
+&' len_trim($value)         : number of characters trimming trailing spaces       ',&
+&' index($value,$match)     : return position $match occurs in $value or zero     ',&
+&' sign(val1,val2)          : magnitude of val1 with the sign of val2             ',&
+&' real(value)              : conversion to real type                             ',&
+&' matchw($string,$pattern) : wildcard match;*=any string, ?=any character        ',&
+&' str($str|expr,....)      : append as strings and then convert to number        ',&
+&' round(value,digits)      :                                                     ',&
+&' ichar($value)            : return ASCII Decimal Equivalent of character        ',&
+&' $char(value)             : return character given ASCII Decimal Equivalent     ',&
+&' $f(format,value)         : using FORMAT to create it convert number to string  ',&
+&' $repeat(string,count)    : repeat string count times                           ',&
+&' $if(expr,$val1,$val2)    : if expr==0 return $val1, else return $val2          ',&
+&' if(expr,val1,val2)       : if expr==0 return val1, else return val2            ',&
+&' hypot(x,y)               : Euclidean distance function                         ',&
 &'--------------------------------------------------------------------------------',&
 &'WHOLE NUMBERS:                                                                  ',&
 &' aint(value) : truncation toward zero to a whole number                         ',&
@@ -511,13 +498,11 @@ help_text=[ &
 &' mod(A,P)    : remainder function                                               ',&
 &' abs(value)  : absolute value                                                   ',&
 &' exp(value)  : exponent of value                                                ',&
+&'BESSEL FUNCTIONS:                                                               ',&
+&' bessel_j0 : of first kind of order 0  | bessel_j1 : of first kind of order 1   ',&
+&' bessel_y0 : of second kind of order 0 | bessel_y1 : of second kind of order 1  ',&
+&' bessel_jn : of first kind             | bessel_yn : of second kind             ',&
 &'NUMERIC FUNCTIONS:                                                              ',&
-&' bessel_j0   : Bessel function of the first kind of order 0                     ',&
-&' bessel_j1   : Bessel function of the first kind of order 1                     ',&
-&' bessel_jn   : Bessel function of the first kind                                ',&
-&' bessel_y0   : Bessel function of the second kind of order 0                    ',&
-&' bessel_y1   : Bessel function of the second kind of order 1                    ',&
-&' bessel_yn   : Bessel function of the second kind                               ',&
 &' sqrt(value) : return square root of value                                      ',&
 &' log(v1)     : logarithm of value to base e                                     ',&
 &' log10(v1)   : logarithm of value to base 10                                    ',&
@@ -527,8 +512,9 @@ help_text=[ &
 &' rand()            : random number                                              ',&
 &'--------------------------------------------------------------------------------',&
 &'SYSTEM:                                                                         ',&
+&' $setenv(name,value),$se(name,value)   : set environment variable value         ',&
 &' $getenv(name),$ge(name)               : get environment variable value         ',&
-&' sh(command)                           : system command                         ',&
+&' $sh(command)                          : return output of system command        ',&
 &'--------------------------------------------------------------------------------',&
 &'ARRAY STORAGE:                                                                  ',&
 &' $nstore(start_index,$value1,$value2,$value3,....) | $n(index)                  ',&
@@ -544,72 +530,43 @@ help_text=[ &
 &' $str($a|e,$a|e,$a|e,....):append string and value expressions into string      ',&
 &'--------------------------------------------------------------------------------',&
 &'CALENDAR:                                                                       ',&
-&' ye(),year()   : current year                                                   ',&
-&' mo(),month()  : current month                                                  ',&
-&' da(),day()    : current day                                                    ',&
-&' ho(),hour()   : current hour                                                   ',&
-&' mi(),minute() : current minute                                                 ',&
-&' se(),second() : current second                                                 ',&
-&' $mo([n])      : name of month                                                  ',&
-&' dw()          : day of week                                                    ',&
-&' ju()          : day of year                                                    ',&
+&' ye(),year()     : current year       | mo(),month()    : current month         ',&
+&' da(),day()      : current day        | ho(),hour()     : current hour          ',&
+&' tz(),timezone() : current timezone   | mi(),minute()   : current minute        ',&
+&' se(),second()   : current second     |                                         ',&
+&' $mo([n])        : name of month      |                                         ',&
 &'--------------------------------------------------------------------------------',&
 &'TRIGONOMETRIC:                                                                  ',&
-&' cos(radians) : cosine  | acos(x/r)   | cosh()   | acosh()   | cosd(degrees)    ',&
-&' sin(radians) : sine    | asin(y/r)   | sinh()   | asinh()   | sind(degrees)    ',&
-&' tan(radians) : tangent | atan(y/x)   | tanh()   | atanh()   | tand(degrees)    ',&
+&' cos(radians) : cosine  | acos(x/r)   | cosh(x)  | acosh(x)  | cosd(degrees)    ',&
+&' sin(radians) : sine    | asin(y/r)   | sinh(x)  | asinh(x)  | sind(degrees)    ',&
+&' tan(radians) : tangent | atan(y/x)   | tanh(x)  | atanh(x)  | tand(degrees)    ',&
 &'                        | atan2(x,y)  |                                         ',&
 &'--------------------------------------------------------------------------------',&
 &'UNIT CONVERSION:                                                                ',&
-&' c2f(c) : centigrade to Fahrenheit |f2c(f) : Fahrenheit to centigrade           ',&
-&' d2r(d) : degrees to radians       |r2d(r) : radians to degrees                 ',&
+&' c2f(c) : centigrade to Fahrenheit    | f2c(f) : Fahrenheit to centigrade       ',&
+&' d2r(d) : degrees to radians          | r2d(r) : radians to degrees             ',&
 &'--------------------------------------------------------------------------------',&
 &'LOGICAL:                                                                        ',&
-&' ge(a,b) : greater than or equal to                                             ',&
-&' le(a,b) : A less than or equal to B                                            ',&
-&' gt(a,b) : A greater than B                                                     ',&
-&' lt(a,b) : A less than B                                                        ',&
-&' eq(a,b) : A equal to B                                                         ',&
-&' ne(a,b) : A not equal to B                                                     ',&
-&' lge($a,$b): lexically greater than or equal to                                 ',&
-&' lle($a,$b): lexically A less than or equal to B                                ',&
-&' lgt($a,$b): lexically A greater than B                                         ',&
-&' llt($a,$b): lexically A less than B                                            ',&
-&' leq($a,$b): lexically A equal to B                                             ',&
-&' lne($a,$b): lexically A not equal to B                                         ',&
+&' ge(a,b) : greater than or equal to   | le(a,b) : A less than or equal to B     ',&
+&' gt(a,b) : A greater than B           | lt(a,b) : A less than B                 ',&
+&' eq(a,b) : A equal to B               | ne(a,b) : A not equal to B              ',&
 &' in(lower_bound,test_value,upper_bound) : test if value in given range          ',&
+&'LEXICAL LOGICAL:                                                                ',&
+&' lge($a,$b): greater than or equal to | lle($a,$b): A less than or equal to B   ',&
+&' lgt($a,$b): A greater than B         | llt($a,$b): A less than B               ',&
+&' leq($a,$b): A equal to B             | lne($a,$b): A not equal to B            ',&
+&'--------------------------------------------------------------------------------',&
+&'HIGHER FUNCTIONS:                                                               ',&
+&' fraction(x): fraction part of model | exponent(x) : largest exponent           ',&
+&' gamma(x): gamma function            | log_gamma(x): logarithm of gamma function',&
+&' tiny()  : smallest number           | huge():       largest number             ',&
+!' erf(x), erfc_scaled(x): Error function | erfc(x): Complementary error function ',&
 &'--------------------------------------------------------------------------------',&
 &'                                                                                ']
    do i=1,size(help_text)
-      write(*,*)trim(help_text(i))
+      write(*,g)help_text(i)
    enddo
 end subroutine help_funcs_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-!-----------------------------------------------------------------------------------------------------------------------------------
-! fraction : Fractional part of the model representation
-! exponent :
-! gamma    : Logarithm of the Gamma function
-! log_gamma  Logarithm of the Gamma function
-! erf Error function erfc (3fortran) -
-! Complementary error function erfc_scaled
-! erfc Complementary error function
-! erfc_scaled  Error function
-! modulo Modulo function
-! btest MANIPULATION] Bit test function
-! tiny Smallest positive number of a real kind
-! epsilon Epsilon function
-! huge Largest number of a kind
-! same pads strings to same length and then calls MERGE(3f)
-! flush flush I/O buffers of specified files
-! unusedf
-! delimx
-! c
-! ownmode
-! mod
-! scale
-! len
-! ifdef
-! open close rewind write
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -640,10 +597,9 @@ end subroutine help_funcs_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 recursive subroutine parens_(string,nchar,ier)
 
-!character(len=*),parameter::ident_3="@(#)M_calculator::parens_(3fp): crack out the parenthesis and solve"
+! ident_3="@(#) M_calculator parens_(3fp) crack out the parenthesis and solve"
 
 character(len=*)             :: string
 integer,intent(inout)        :: nchar
@@ -745,7 +701,6 @@ real(kind=dp)                :: rdum
       string=dummy
    enddo INFINITE
 end subroutine parens_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -768,11 +723,9 @@ end subroutine parens_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 recursive subroutine funcs_(wstrng,nchars,ier)
 
-!character(len=*),parameter::ident_4="&
-!&@(#)M_calculator::funcs_(3fp):given string of form name(p1,p2,...) (p(i) are non-parenthesized expressions) call procedure name"
+! ident_4="@(#) M_calculator funcs_(3fp) given string of form name(p1 p2 ...) (p(i) are non-parenthesized expressions) call procedure "name""
 
 character(len=*)                    :: wstrng
 integer                             :: nchars
@@ -800,7 +753,7 @@ real(kind=dp)                       :: val
 
 real,external                       :: c
 
-integer,save                        :: ikeepran=22
+!!integer,save                        :: ikeepran=22
 integer                             :: i
 integer                             :: i1
 integer                             :: i1010
@@ -826,7 +779,6 @@ integer                             :: iend2
 integer                             :: iflen
 integer                             :: ii
 integer                             :: iii
-integer                             :: iiie
 integer                             :: ileft
 integer                             :: ilen
 integer                             :: in
@@ -851,7 +803,7 @@ intrinsic                           :: sqrt,atan2,dim,mod,sign,max,min
 !-----------------------------------------------------------------------------------------------------------------------------------
    data months/'January','February','March','April','May','June','July','August','September','October','November','December'/
    data days/'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'/
-!ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc------------------------------------------------------------
+
    TRUE=0.0d0
    FALSE=1.0d0
    ier=0
@@ -964,14 +916,14 @@ case("abs","aint","anint","ceil","ceiling","floor","frac","int","nint",&
 !=======================================================================------------------------------------------------------------
          case("log")
             if(args(1).le.0.0d0)then                                          ! check for appropriate value range for function
-               write(*,*)'*log* ERROR: cannot take log of ',real(args(1))
+               write(*,g)'*log* ERROR: cannot take log of ',real(args(1))
             else                                                              ! call function with one positive numeric parameter
                fval= log(args(1))
             endif
 !=======================================================================------------------------------------------------------------
          case("log10")
             if(args(1).le.0.0d0)then                                          ! check for appropriate value range for function
-               write(*,*)'*log10* ERROR: cannot take log of ',real(args(1))
+               write(*,g)'*log10* ERROR: cannot take log of ',real(args(1))
             else                                                              ! call function with one positive numeric parameter
                fval= log10(args(1))
             endif
@@ -1146,11 +1098,11 @@ case("le","lt","eq","ge","gt","ne")
                goto 999
             endif
             write(junout,'(a,3(g23.16e3,1x),i5)')'args=',args(1),args(2),args(3),idig
-            write(*,*)junout
+            write(*,g)trim(junout)
             arg1=round(args(1),idig)
             arg2=round(args(2),idig)
             write(junout,'(a,3(g23.16e3,1x),i5,1x,2(g23.16e3,1x))')'b. args=',args(1),args(2),args(3),idig,arg1,arg2
-            write(*,*)junout
+            write(*,g)trim(junout)
          else
             arg1=args(1)
             arg2=args(2)
@@ -1184,18 +1136,6 @@ case("ichar")
       else
          fval=ichar(values(int(args(1)))(1:1))
       endif
-!=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=------------------------------------------------------------
-case("sh")
-   ii=int(args(1)+0.5d0)
-   ilen=values_len(ii)
-   if(ilen.ge.1)then
-      call execute_command_line(values(ii)(:ilen),exitstat=idum)
-      fval=idum
-   else
-      fval=0.0d0
-   endif
-   ctmp=' '
-   iend=len_trim(ctmp)
 !=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=------------------------------------------------------------
 case("$ge","$getenv") ! $getenv or $ge get system environment variable
    ii=int(args(1)+0.5d0)
@@ -1241,7 +1181,7 @@ case("in")                                                            ! in(lower
       !=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
       select case(n)
       !=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-      case(2)                                                         ! if two parameters test }first - second}<epsilon
+      case(2)                                                         ! if two parameters test {first - second}<epsilon
         if(iargs_type(1).eq.0.and.iargs_type(2).eq.0)then
            val=abs(args(1)-args(2))
            top=epsilon(0.0d0)
@@ -1331,9 +1271,8 @@ case("srand")                                                           ! seed r
          !!   ikeepran=-abs(ivalue)
          !!   fval=ran_mod(ikeepran)                                         ! just setting seed; fval is a dummy here
          case default
-            call init_random_seed(ivalue)
-            !!mssge='unknown type for srand()'
-            !!ier=-1
+            mssge='unknown type for srand()'
+            ier=-1
          end select
          fval=ivalue
       endif
@@ -1352,8 +1291,31 @@ case("$f")                              ! $f(format,value) Using single format s
             if(ios.ne.0)then
                ctmp='*'
                ier=-1
-               mssge='*$f() error writing value'
+               mssge='*$f()* error writing value'
             endif
+         endif
+      endif
+      iend=len_trim(ctmp)
+!=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=------------------------------------------------------------
+case("$repeat")                              ! $repeat(string,count) concatenate string count times
+      ier=2                                  ! string will be returned
+      if(n.eq.0)then
+         ctmp=' '
+      else
+         ctmp=' '
+         if(iargs_type(1).eq.2)then     ! if first field is a string
+            ii=int(args(1))             ! get index into values() array
+            iend1=values_len(ii)        ! maximum end is at end of string
+            if(n.gt.1)fval=args(n)      ! get the real value
+            if(fval.lt.0)then
+               ier=-1
+               mssge='Argument NCOPIES of REPEAT intrinsic is negative'
+            else
+               ctmp=repeat(values(ii)(:iend1),nint(fval))
+            endif
+         else
+            ier=-1
+            mssge='*$repeat()* first value not string'
          endif
       endif
       iend=len_trim(ctmp)
@@ -1440,7 +1402,7 @@ case("str","$str","$") ! "$str" appends numbers and strings into a new string
                   if(cnum(ilen:ilen).eq.'.')jend=jend-1    ! this number ends in a decimal
                   jend=max(jend,istart)
                   if(jend.gt.len(ctmp))then
-                     write(*,*)'*funcs_* $str output string truncated'
+                     write(*,g)'*funcs_* $str output string truncated'
                      jend=len(ctmp)
                   endif
                   ctmp(istart:jend)=cnum(:ilen)
@@ -1581,7 +1543,7 @@ case("ifdef")
          ier=-1
       else
          ii=int(args(1))                                         ! get index into values() array
-         iend1=values_len(ii)                                    ! maximum end is at end of string
+         iend1=values_len(ii)                                        ! maximum end is at end of string
          if(values(ii)(1:1).eq.'$')then
             call locate(keys_q,values(ii)(:iend1),indexout,ierr) ! determine if the string variable name exists
          else
@@ -1596,32 +1558,30 @@ case("ifdef")
          endif
       endif
 !=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=------------------------------------------------------------
-case("ye","mo","da","ho","mi","se","timezone","year","month","day","hour","minute","second","tz")
-         icalen=1                                                              ! default value that is safe even if an error occurs
+case("ye","year","mo","month","da","day","tz","timezone","ho","hour","mi","minute","se","second","ms","millisecond")
+         icalen=1                                                       ! default value that is safe even if an error occurs
          !------------------------------------------
          call date_and_time(values=idarray)
          !------------------------------------------
          if(n.eq.0)then
-            select case(wstrng2(:iend))                                           ! select desired subscript of value to return
-               case("ye","year");     icalen=1                                    ! year
-               case("mo","month");    icalen=2                                    ! month
-               case("da","day");      icalen=3                                    ! day
-               case("tz","timezone"); icalen=4                                    ! days since Sunday [ 0-6]
-               case("ho","hour");     icalen=5                                    ! hour
-               case("mi","minute");   icalen=6                                    ! minute
-               case("se","second");   icalen=7                                    ! second
-               case default                                                       ! report internal error if name was not matched
+            select case(wstrng2(:iend))                                 ! select desired subscript of value to return
+               case("ye","year");         icalen=1                      ! year
+               case("mo","month");        icalen=2                      ! month
+               case("da","day");          icalen=3                      ! day
+               case("tz","timezone");     icalen=4                      ! timezone
+               case("ho","hour");         icalen=5                      ! hour
+               case("mi","minute");       icalen=6                      ! minute
+               case("se","second");       icalen=7                      ! second
+               case("sd","millisecond");  icalen=8
+               case default                                             ! report internal error if name was not matched
                   ier=-1
                   mssge='*calendar* internal error, unknown keyword'//wstrng2(:iend)
                end select
-            if(ier.eq.0)then                                                      ! if error flag not set set return value
                fval=idarray(icalen)
-            else                                                                  ! error has occurred, set default return value
-               fval=0.0d0
-            endif
          else
             ier=-1
             mssge='*calendar* parameters not allowed'
+            fval=0.0d0
          endif
 !=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=------------------------------------------------------------
 case("$mo")                             ! $mo(1-12) is "January, February, ... ")
@@ -1690,11 +1650,10 @@ end select
         call value_to_string(fval,wstrng,nchars,idum,fmt='(g23.16e3)',trimz=.true.) ! minimum of 23 characters required
       case(-1)  ! return error
       case default
-         write(*,*)'*funcs_* unknown closing value ',ier
+         write(*,g)'*funcs_* unknown closing value ',ier
          ier=-1
       end select
 end subroutine funcs_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -1713,10 +1672,9 @@ end subroutine funcs_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine stufftok_(fval,wstrng,nchars,string,iend,ier)
 
-!character(len=*),parameter::ident_5="@(#)M_calculator::stufftok_(3fp): add a new token variable and assign string to it"
+! ident_5="@(#) M_calculator stufftok_(3fp) add a new token variable and assign string to it"
 
 real(kind=dp)          :: fval
 character(len=*)       :: wstrng
@@ -1731,12 +1689,11 @@ character(len=5)       :: toknam
    nchars=5
    write(toknam,'(''$_'',i3.3)')ktoken        ! build a unique name for the token string found for this output string
    wstrng=toknam
-   call stuffa(toknam,string(:iend))          ! cannot do this earlier or indexs from call that defined args could be wrong
+   call stuffa(toknam,string(:iend),'')       ! cannot do this earlier or indexs from call that defined args could be wrong
    fval=0.0d0
    ier=2
    mssge=string(:iend)
 end subroutine stufftok_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -1755,11 +1712,9 @@ end subroutine stufftok_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine args_(line,ilen,array,itype,iarray,ier,mx)
 
-!character(len=*),parameter::ident_6="&
-!&@(#)M_calculator::args_(3fp):given 'par1,par2,...' store non-parenthesized expression par(n) into a real or string array"
+! ident_6="@(#) M_calculator args_(3fp) given 'par1 par2 ...' store non-parenthesized expression par(n) into a real or string array"
 
 !@ (#) record type of par(n) into itype()"
 !@ (#) Commas are only legal delimiters. extra or redundant delimiters are ignored.
@@ -1823,7 +1778,6 @@ character(len=icbuf_calc)  :: wstrng
    write(mssge,'(a,i4,a)')'more than ',mx,' arguments not allowed'
    ier=-1
 end subroutine args_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -1842,11 +1796,9 @@ end subroutine args_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine expressions_(string,nchar,value,ier)
 
-!character(len=*),parameter::ident_7="&
-!&@(#)M_calculator::expressions_(3fp): resolve a series of terms into a single value and restring"
+! ident_7="@(#) M_calculator expressions_(3fp) resolve a series of terms into a single value and restring"
 
 character(len=*),intent(inout) :: string
 integer,intent(inout)          :: nchar
@@ -1884,7 +1836,7 @@ real(kind=dp) :: temp
       endif
       do
          iendp=index(string(istat:nchar),'#')     ! find left-most addition operator
-         iendm=index(string(istat:nchar),'@')     ! find left-most subtraction operator
+         iendm=index(string(istat:nchar),'=')     ! find left-most subtraction operator
          iend=min(iendp,iendm)                    ! find left-most sum (+-) operator assuming at least one of each exists
          if(iend.eq.0)iend=max(iendm,iendp)       ! if one of the sum operators is not remaining, find left-most of remaining type
          if(iend.eq.0)then                        ! if no more sum operators remain this is the last remaining term
@@ -1900,7 +1852,7 @@ real(kind=dp) :: temp
          if(ier.eq.-1) return                     ! if an error occurred, return
          call factors_(dummy,nchar2,temp,ier)       ! evaluate and remove * and / operators, return the evaluated -value- temp
          if(ier.eq.-1)return                      ! if an error occurred, return
-         if(string(ista:ista).eq.'@')then         ! if term operator was a subtraction, subtract temp from value
+         if(string(ista:ista).eq.'=')then         ! if term operator was a subtraction, subtract temp from value
             value=value-temp
          else                                     ! operator was an addition (+) , add temp to value
 !           if first term was not signed, then first character will not be a subtraction, so addition is implied
@@ -1922,7 +1874,6 @@ real(kind=dp) :: temp
       call value_to_string(value,string,nchar,ier2,fmt='(g23.16e3)',trimz=.true.) ! convert sum of terms to string and return
       if(ier2.lt.0)ier=ier2
 end subroutine expressions_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -1962,10 +1913,9 @@ end subroutine expressions_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine pows_(wstrng,nchar,ier)
 
-!character(len=*),parameter::ident_8="@(#)M_calculator::pows_(3fp): expand power functions in a string, working from left to right"
+! ident_8="@(#) M_calculator pows_(3fp) expand power functions in a string working from left to right"
 
 character(len=*),intent(inout) :: wstrng    ! input string returned with power operators evaluated
 integer,intent(inout)          :: nchar     ! input length of wstrng, returned corrected for new wstrng returned.
@@ -2075,7 +2025,6 @@ integer                        :: nchart
          wstrng=dummy
       enddo INFINITE
 end subroutine pows_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2093,11 +2042,9 @@ end subroutine pows_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine factors_(wstrng,nchr,fval1,ier)
 
-!character(len=*),parameter::ident_9="&
-!&@(#)M_calculator::factors_(3fp):reduce unparenthesized string with only * and / operators to val"
+! ident_9="@(#) M_calculator factors_(3fp) reduce unparenthesized string with only * and / operators to val"
 
 !
 !     The input string is unaltered. for any single pass thru the routine, the string structure is assumed to be:
@@ -2197,7 +2144,6 @@ integer          :: nchr
          ip=iright+1
       enddo
 end subroutine factors_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2240,16 +2186,14 @@ end subroutine factors_
 !!       o 07/15/1986  J. S. Urban
 !!       o 12/28/1987  modified to specify bn in formats for reads. vax
 !!                    defaults to zero-fill on internal files.
-!!       o 12/22/2016  Changed to generate man(1) pages via ufpp(1).
+!!       o 12/22/2016  Changed to generate man(1) pages via prep(1).
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine a_to_d_(chars,rval8,ierr)
 
-!character(len=*),parameter::ident_10="&
-!&@(#)M_calculator::a_to_d_(3f):returns a real value rval8 from a numeric character string chars."
+! ident_10="@(#) M_calculator a_to_d_(3f) returns a real value rval8 from a numeric character string chars."
 
 ! CAREFUL: LAST is in GLOBAL, but can be read from when passed to this routine as CHARS. DO NOT CHANGE CHARS.
 character(len=*),intent(in) :: chars
@@ -2265,10 +2209,10 @@ integer                     :: ioerr
    ioerr=0
    chars_local=trim(adjustl(chars))//' ' ! minimum of one character required
    if(chars_local.eq.'?')then       ! if string is a (unsigned) question mark, use value returned from last completed calculation
-     !x!read(last,'(bn,g512.40)',iostat=ioerr,err=9991)rval8   ! assuming cannot get a read error out of reading last
-     write(frmt,101)len(last)                       ! build a format statement to try and read the string as a number with
-     chars_local=trim(last)//repeat(' ',512)                   ! kludge: problems if string is not long enough for format
-     read(chars_local,fmt=frmt,iostat=ioerr,err=9991)rval8  ! try and read the string as a number
+     !x!read(last,'(bn,g512.40)',iostat=ioerr,err=9991)rval8  ! assuming cannot get a read error out of reading last
+     write(frmt,101)len(last)                                 ! build a format statement to try and read the string as a number with
+     chars_local=trim(last)//repeat(' ',512)                  ! kludge: problems if string is not long enough for format
+     read(chars_local,fmt=frmt,iostat=ioerr,err=9991)rval8    ! try and read the string as a number
    elseif('$'.eq.chars_local(1:1))then                ! string is a string variable name
       call locate(keys_q,chars_local,indx,ier)        ! try to find the index in the character array for the string variable
       if(indx.le.0)then                         ! if indx is not .gt. 0 string was not a variable name
@@ -2312,7 +2256,6 @@ chars_local=chars_local//repeat(' ',512)                   ! kludge: problems if
       rval8=values_d(indx)
    endif
 end subroutine a_to_d_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2322,8 +2265,8 @@ end subroutine a_to_d_
 !!    (LICENSE:PD)
 !!
 !!##DESCRIPTION
-!!    remove all blanks from input string and return position of last non-blank character in nchars using imax as the highest
-!!    column number to search in.  return a zero in nchars if the string is blank.
+!!    Remove all blanks from input string and return position of last non-blank character in nchars using imax as the highest
+!!    column number to search in. Return a zero in nchars if the string is blank.
 !!
 !!    replace all + and - characters with the # and = characters which will be used to designate + and - operators, as opposed to
 !!    value signs.
@@ -2369,11 +2312,9 @@ end subroutine a_to_d_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine squeeze_(string,imax,nchars,varnam,nchar2,ier)
 
-!character(len=*),parameter::ident_11="&
-!&@(#)M_calculator::squeeze_(3fp):change +-[] to #=(),replace strings with placeholders,delete comments"
+! ident_11="@(#) M_calculator squeeze_(3fp) change +-[] to #=() replace strings with placeholders delete comments"
 
 integer, parameter                      :: ilen=(icbuf_calc)+2
 character(len=*)                        :: string
@@ -2389,7 +2330,7 @@ integer                                 :: iplace
 character(len=1)                        :: currnt
 character(len=iclen_calc)               :: ctoken
 !!character(len=10),parameter             :: list  =' +-="#[]{}'  ! list of special characters
-!!character(len=10),parameter             :: list2 =' #@&  ()()'  ! list of what to convert special characters too when appropriate
+!!character(len=10),parameter             :: list2 =' #=&  ()()'  ! list of what to convert special characters too when appropriate
 character(len=5)                        :: toknam
 integer                                 :: i10
 integer                                 :: i20
@@ -2477,11 +2418,11 @@ integer                                 :: kstrln
 !!!!!       what is effect on a---b or other +- combinations?
             ! if letter before e is not numeric this is a variable name and - is an operator
             if(index('0123456789.',back2).eq.0)then
-              currnt="@"                       ! no digit before the e, so the e is the end of a variable name
+              currnt="="                       ! no digit before the e, so the e is the end of a variable name
             else                               ! digit before e, so assume this is number and do not change +- to #= operators
             endif
          else
-            currnt="@"                         ! previous letter was not e, so +- is an operator so change +- to #= operators
+            currnt="="                         ! previous letter was not e, so +- is an operator so change +- to #= operators
          endif
 !-----------------------------------------------------------------------------------------------------------------------------------
       case("=")                                      ! current is a plus or minus
@@ -2581,7 +2522,6 @@ integer                                 :: kstrln
      endif
    endif
 end subroutine squeeze_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2613,10 +2553,9 @@ end subroutine squeeze_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 subroutine given_name_get_stringvalue_(chars,ierr)
 
-!character(len=*),parameter::ident_12="@(#)M_calculator::given_name_get_stringvalue_(3fp):return associated value for variable name"
+! ident_12="@(#) M_calculator given_name_get_stringvalue_(3fp) return associated value for variable name"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),intent(in)  :: chars
@@ -2637,7 +2576,6 @@ integer,intent(out)          :: ierr
       mssge=values(index)
    endif
 end subroutine given_name_get_stringvalue_
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2648,10 +2586,11 @@ end subroutine given_name_get_stringvalue_
 !!
 !!##SYNOPSIS
 !!
-!!   subroutine stuff(varnam,val)
+!!   subroutine stuff(varnam,val,ioflag)
 !!
 !!    class(*),intent(in)         :: varnam
 !!    character(len=*),intent(in) :: val
+!!    integer,intent(in),optional :: ioflag
 !!
 !!##DEFINITION
 !!    breaking the rule of only accessing the calculator thru calculator(3f):
@@ -2680,6 +2619,11 @@ end subroutine given_name_get_stringvalue_
 !!    varnam  name of calculator variable to define or replace val
 !!    numeric value to associate with the name VARNAME. May be
 !!            integer, real, or doubleprecision.
+!!    ioflag  optional flag to use with journal logging. This string is
+!!            passed directly to M_framework__journal::journal(3f)
+!!            as the first parameter. The default is to not log the
+!!            definitions to the journal(3f) command if this parameter is
+!!            blank or not present.
 !!
 !!##EXAMPLE
 !!
@@ -2689,10 +2633,10 @@ end subroutine given_name_get_stringvalue_
 !!    use M_calculator, only : stuff, dnum0
 !!    implicit none
 !!    doubleprecision :: value
-!!    call stuff('A',10.0)
-!!    call stuff('PI',3.141592653589793238462643383279502884197169399375105820974944592307d0)
-!!    value=dnum0('A*PI')
-!!    write(*,*)value
+!!       call stuff('A',10.0)
+!!       call stuff('PI',3.1415926535897932384626433832795)
+!!       value=dnum0('A*PI')
+!!       write(*,*)value
 !!    end program demo_stuff
 !!
 !!   Expected result:
@@ -2703,14 +2647,13 @@ end subroutine given_name_get_stringvalue_
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
-subroutine stuff(varnam,value)
+subroutine stuff(varnam,value,ioflag)
 
-!character(len=*),parameter::ident_14="&
-!&@(#)M_calculator::stuff(3fp): pass key value and integer|real|doubleprecision value to dictionary(3f) as doubleprecision"
+! ident_14="@(#) M_calculator stuff(3fp) pass key value and integer|real|doubleprecision value to dictionary(3f) as doubleprecision"
 
 character(len=*),intent(in)           :: varnam        ! variable name to add or replace value of
 class(*),intent(in)                   :: value
+character(len=*),intent(in),optional  :: ioflag
 
 real(kind=dp)                         :: val8          ! input value to store
 character(len=:),allocatable          :: varnam_local  ! some trouble with variable length character strings on some machines
@@ -2740,21 +2683,26 @@ integer                               :: istart
    end select
    call replace(values_d,val8,istart)
 !-----------------------------------------------------------------------------------------------------------------------------------
+   if(present(ioflag))then                    ! display values with an assumed variable length of 20 characters so get neat columns
+      write(*,g)ioflag,varnam_local//'=',val8
+   endif
+!-----------------------------------------------------------------------------------------------------------------------------------
 end subroutine stuff
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
 !>
 !!##NAME
-!!     stuffa(3f) - [M_calculator] stuffa(3f): directly store a string into calculator variable name table
+!!     stuffa(3f) - [M_calculator] directly store a string into calculator
+!!     variable name table
 !!     (LICENSE:PD)
 !!##SYNOPSIS
 !!
-!!   subroutine stuffa(varnam,string)
+!!   subroutine stuffa(varnam,string,ioflag)
 !!
 !!    character(len=*),intent(in)          :: varnam
 !!    character(len=*),intent(in)          :: string
+!!    character(len=*),intent(in),optional :: ioflag
 !!
 !!##DEFINITION
 !!    Breaking the rule of only accessing the calculator thru calculator(3f):
@@ -2768,6 +2716,8 @@ end subroutine stuff
 !!##OPTIONS
 !!    varnam    variable name to create or replace in calculator module
 !!    string    string to associate with the calculator variable name varnam
+!!    ioflag    journal logging type passed on to journal(3f) procedure. If it
+!!              is not present or blank, the journal(3f) routine is not evoked.
 !!##EXAMPLE
 !!
 !!   Sample program:
@@ -2786,17 +2736,23 @@ end subroutine stuff
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
-subroutine stuffa(varnam,string)
+subroutine stuffa(varnam,string,ioflag)
 
-!character(len=*),parameter::ident_15="@(#)M_calculator::stuffa(3f): directly store a string into calculator variable name table"
+! ident_15="@(#) M_calculator stuffa(3f) directly store a string into calculator variable name table"
 
 character(len=*),intent(in)           :: varnam    !  assuming friendly, not checking for null or too long varnam0
 character(len=:),allocatable          :: varnam_local
 character(len=*),intent(in)           :: string
+character(len=*),intent(in),optional  :: ioflag
+character(len=:),allocatable          :: ioflag_local
 integer                               :: indx
 integer                               :: ierr
 !-----------------------------------------------------------------------------------------------------------------------------------
+   if(present(ioflag))then
+      ioflag_local=trim(ioflag)
+   else
+      ioflag_local=' '
+   endif
    varnam_local=adjustl(trim(varnam))
    ierr=0
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2806,13 +2762,14 @@ integer                               :: ierr
       call insert(keys_q,varnam_local,indx)                 ! adding the new variable name to the variable name array
       call insert(values,' '         ,indx)
       call insert(values_len,0       ,indx)
+   elseif(ioflag_local.ne.'')then                           ! display variable string to trail and output as indicated by ioflag
+      write(*,g)ioflag,varnam_local//'=',string
    endif
    ! found variable name in dictionary
    call replace(values,string,indx)
    call replace(values_len,len_trim(string),indx)
 !-----------------------------------------------------------------------------------------------------------------------------------
 end subroutine stuffa
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !-----------------------------------------------------------------------------------------------------------------------------------
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2857,10 +2814,12 @@ end subroutine stuffa
 !!
 !!       program demo_inum0
 !!       use M_calculator, only : inum0
-!!       i=inum0('20/3.4')
-!!       j=inum0('CI = 13 * 3.1')
-!!       k=inum0('CI')
-!!       write(*,*)'Answers are ',I,J,K
+!!       implicit none
+!!       integer :: i,j,k
+!!          i=inum0('20/3.4')
+!!          j=inum0('CI = 13 * 3.1')
+!!          k=inum0('CI')
+!!          write(*,*)'Answers are ',I,J,K
 !!       end program demo_inum0
 !!
 !!##SEE ALSO
@@ -2876,15 +2835,13 @@ end subroutine stuffa
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! AUTHOR:  John S. Urban
 !!##VERSION: 19971123
-!===================================================================================================================================
 !-----------------------------------------------------------------------------------------------------------------------------------
 integer function inum0(inline,ierr)
 
-!character(len=*),parameter::ident_16="@(#)M_calculator::inum0(3f):resolve a calculator string into a whole integer number"
+! ident_16="@(#) M_calculator inum0(3f) resolve a calculator string into a whole integer number"
 
 !  The special string '*' returns -99999, otherwise return 0 on errors
 character(len=*),intent(in)  :: inline
@@ -2916,7 +2873,7 @@ endif
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! on most machines int() would catch the overflow, but this is safer
 if(dnum1.gt.IBIG)then
-   write(*,*)'*inum0* integer overflow 2**31-1 <',dnum1
+   write(*,g)'*inum0* integer overflow 2**31-1 <',dnum1
    inum0=IBIG
 elseif(dnum1.gt.0)then
    inum0=int(dnum1+SMALL)
@@ -2958,10 +2915,12 @@ end function inum0
 !!
 !!     program demo_rnum0
 !!     use M_calculator, only : rnum0
-!!     x=rnum0('20/3.4')
-!!     y=rnum0('CI = 10 * sin(3.1416/4)')
-!!     z=rnum0('CI')
-!!     write(*,*)x,y,z
+!!     implicit none
+!!     real :: x, y, z
+!!        x=rnum0('20/3.4')
+!!        y=rnum0('CI = 10 * sin(3.1416/4)')
+!!        z=rnum0('CI')
+!!        write(*,*)x,y,z
 !!     end program demo_rnum0
 !!
 !!##SEE ALSO
@@ -2974,14 +2933,12 @@ end function inum0
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! AUTHOR    John S. Urban
 !!##VERSION   1.0,19971123
-!===================================================================================================================================
 real function rnum0(inline,ierr)
 
-!character(len=*),parameter::ident_17="@(#)M_calculator::rnum0(3f):resolve a calculator string into a real number"
+! ident_17="@(#) M_calculator rnum0(3f) resolve a calculator string into a real number"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),intent(in)  :: inline
@@ -3041,11 +2998,12 @@ end function rnum0
 !!
 !!     program demo_dnum0
 !!     use M_calculator, only : dnum0
-!!     doubleprecision x,y,z
-!!     X=DNUM0('20/3.4')
-!!     Y=DNUM0('CI = 10 * sin(3.1416/4)')
-!!     Z=DNUM0('CI')
-!!     write(*,*)x,y,z
+!!     implicit none
+!!        doubleprecision x,y,z
+!!        X=DNUM0('20/3.4')
+!!        Y=DNUM0('CI = 10 * sin(3.1416/4)')
+!!        Z=DNUM0('CI')
+!!        write(*,*)x,y,z
 !!     end program demo_dnum0
 !!
 !!##SEE ALSO
@@ -3057,14 +3015,12 @@ end function rnum0
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! AUTHOR + John S. Urban
 !!##VERSION 1.0, 19971123
-!===================================================================================================================================
 doubleprecision function dnum0(inline,ierr)
 
-!character(len=*),parameter::ident_18="@(#)M_calculator::dnum0(3f):resolve a calculator string into a doubleprecision number"
+! ident_18="@(#) M_calculator dnum0(3f) resolve a calculator string into a doubleprecision number"
 
 character(len=*),intent(in) :: inline
 integer,optional,intent(out) :: ierr
@@ -3121,17 +3077,19 @@ end function dnum0
 !!
 !!     program demo_snum0
 !!     use m_calculator, only: rnum0, snum0
+!!     implicit none
+!!     real :: rdum
 !!     character(len=80)  :: ic,jc,kc
 !!
-!!     rdum=rnum0('A=83/2') ! set a variable in the calculator
-!!     kc=snum0('$MYTITLE="This is my title variable"')
+!!        rdum=rnum0('A=83/2') ! set a variable in the calculator
+!!        kc=snum0('$MYTITLE="This is my title variable"')
 !!
-!!     ic=snum0('$STR("VALUE IS [",A,"]")')
-!!     jc=snum0('$MYTITLE')
+!!        ic=snum0('$STR("VALUE IS [",A,"]")')
+!!        jc=snum0('$MYTITLE')
 !!
-!!     write(*,*)'IC=',trim(ic)
-!!     write(*,*)'JC=',trim(jc)
-!!     write(*,*)'KC=',trim(kc)
+!!        write(*,*)'IC=',trim(ic)
+!!        write(*,*)'JC=',trim(jc)
+!!        write(*,*)'KC=',trim(kc)
 !!
 !!     end program demo_snum0
 !!
@@ -3156,15 +3114,13 @@ end function dnum0
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! AUTHOR    John S. Urban
 !!##VERSION   1.0, 19971123
 !===================================================================================================================================
-!===================================================================================================================================
 function snum0(inline0,ierr)
 
-!character(len=*),parameter::ident_19="@(#)M_calculator::snum0(3f):resolve a calculator expression into a string"
+! ident_19="@(#) M_calculator snum0(3f) resolve a calculator expression into a string"
 
 !  a few odd things are done because some compilers did not work as expected
 character(len=:),allocatable :: snum0
@@ -3266,15 +3222,17 @@ end function snum0
 !!    Sample program:
 !!
 !!     program demo_expression
-!!     use M_calculator,      only : iclen_calc
+!!     use M_calculator, only : iclen_calc
 !!     use M_calculator, only : expression
+!!     implicit none
 !!     character(len=iclen_calc) ::  outlin0
 !!     doubleprecision :: outval
-!!     call expression('A=3.4**5    ',outval,outlin0,ierr,ilen)
-!!     write(*,*)'value of expression is ',outval
-!!     write(*,*)'string representation of value is ',trim(outlin0)
-!!     write(*,*)'error flag value is ',ierr
-!!     write(*,*)'length of expression is ',ilen
+!!     integer :: ierr, ilen
+!!        call expression('A=3.4**5    ',outval,outlin0,ierr,ilen)
+!!        write(*,*)'value of expression is ',outval
+!!        write(*,*)'string representation of value is ',trim(outlin0)
+!!        write(*,*)'error flag value is ',ierr
+!!        write(*,*)'length of expression is ',ilen
 !!     end program demo_expression
 !!
 !!   Results:
@@ -3285,19 +3243,17 @@ end function snum0
 !!     length of expression is            8
 !!
 !!##SEE ALSO
-!!     See also: STRGAR(),RNUM0(),CALCULATOR(),INUM0(),SNUM0()
+!!     See also: RNUM0(),CALCULATOR(),INUM0(),SNUM0()
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! AUTHOR   John S. Urban
 !!##VERSION  V1.0, 19971123
-!===================================================================================================================================
 recursive subroutine expression(inlin0,outval,outlin0,ierr,ilen)
 
-!character(len=*),parameter::ident_20="@(#)M_calculator::expression(3f):call CALCULATOR(3f) calculator and display messages"
+! ident_20="@(#) M_calculator expression(3f) call CALCULATOR(3f) calculator and display messages"
 
 ! evaluate a FORTRAN-like string expression and return a numeric
 ! value and its character equivalent or a string value as appropriate
@@ -3325,7 +3281,7 @@ character(len=iclen_calc)   :: event
 !-----------------------------------------------------------------------------------------------------------------------------------
    if(ilen.eq.0)then                                            ! command was totally blank
       ierr=-1
-      write(*,*)'*expression* warning===> blank expression'
+      write(*,g)'*expression* warning===> blank expression'
 !-----------------------------------------------------------------------------------------------------------------------------------
    elseif(line(:1).eq.'#')then                                  ! line was a comment
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -3335,17 +3291,17 @@ character(len=iclen_calc)   :: event
 !-----------------------------------------------------------------------------------------------------------------------------------
       select case(ierr)
       case(-1)                                    ! trapped error, display error message
-        write(*,*)'*expression* error===>',trim(event)
+        write(*,g)'*expression* error===>',event
         !call pdec(line(:ilen))                   ! echo input string as is and in ASCII decimal
       case(1)                                     ! general message, display message
-        write(*,*)'*expression* message===>',trim(event)
+        write(*,g)'*expression* message===>',event
       case(0)                                     ! numeric output
          outlin0=outlin
       case(2)                                     ! string output
          outlin0=event                            ! assumes outlin is long enough to return the string into
          ilen=int(rvalue)                         ! in special mode where a string is returned, rvalue is the length of the string
       case default
-        write(*,*)'*expression* warning===> unexpected ierr value=',ierr
+        write(*,g)'*expression* warning===> unexpected ierr value=',ierr
       end select
 !-----------------------------------------------------------------------------------------------------------------------------------
    endif
@@ -3376,19 +3332,18 @@ subroutine juown1_placeholder(func,iflen,args,iargstp,n,fval,ctmp,ier)
 !         set to  2 if a string is returned
 !
 !!use M_calculator, only : x, y, values, values_len
-integer, parameter        :: k_dbl = SELECTED_REAL_KIND(15,300) ! real*8
-character(len=*),intent(in)          :: func
-integer,intent(in)                   :: iflen
-real(kind=k_dbl),intent(in)          :: args(100)
-integer,intent(in)                   :: iargstp(100)
-integer,intent(in)                   :: n
-real(kind=k_dbl)          :: fval
-character(len=*)          :: ctmp
-integer                   :: ier
+character(len=*),intent(in) :: func
+integer,intent(in)          :: iflen
+real(kind=db),intent(in)    :: args(100)
+integer,intent(in)          :: iargstp(100)
+integer,intent(in)          :: n
+real(kind=db)               :: fval
+character(len=*)            :: ctmp
+integer                     :: ier
 
-integer                   :: i10
-integer                   :: iwhich
-integer                   :: ilen
+integer                     :: i10
+integer                     :: iwhich
+integer                     :: ilen
 !-----------------------------------------------------------------------
    fval=0.0d0
 !-----------------------------------------------------------------------
@@ -3414,16 +3369,14 @@ real function c_placeholder(args,n)
 ! a built-in calculator function called c must be satisfied.
 ! write whatever you want here as a function
 integer,intent(in)          :: n
-real(kind=k_dbl),intent(in) :: args(n)
-   c_placeholder=0.0_k_dbl
+real(kind=db),intent(in) :: args(n)
+   c_placeholder=0.0_db
 end function c_placeholder
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()=
 !===================================================================================================================================
-! copies
-! use M_strings, only : upper, lower, value_to_string, delim
-! use M_list,    only : locate, insert, replace
-! use M_math,    only : round
+!use M_strings, only : upper, lower, value_to_string
+!use M_list,    only : locate, insert, replace
 !===================================================================================================================================
 elemental pure function upper(str,begin,end) result (string)
 
@@ -3831,86 +3784,6 @@ integer                                :: error
    endif
 end subroutine locate_d
 !===================================================================================================================================
-subroutine locate_i(list,value,place,ier,errmsg)
-
-!character(len=*),parameter::ident_8="&
-!&@(#)M_list::locate_i(3f): find PLACE in sorted integer array where VALUE can be found or should be placed"
-
-! Assuming an array sorted in descending order
-!
-!  1. If it is not found report where it should be placed as a NEGATIVE index number.
-
-integer,allocatable                    :: list(:)
-integer,intent(in)                     :: value
-integer,intent(out)                    :: place
-integer,intent(out),optional           :: ier
-character(len=*),intent(out),optional  :: errmsg
-
-integer                                :: i
-character(len=:),allocatable           :: message
-integer                                :: arraysize
-integer                                :: maxtry
-integer                                :: imin, imax
-integer                                :: error
-
-   if(.not.allocated(list))then
-      list=[integer :: ]
-   endif
-   arraysize=size(list)
-
-   error=0
-   if(arraysize.eq.0)then
-      maxtry=0
-      place=-1
-   else
-      maxtry=int(log(float(arraysize))/log(2.0)+1.0)
-      place=(arraysize+1)/2
-   endif
-   imin=1
-   imax=arraysize
-   message=''
-
-   LOOP: block
-   do i=1,maxtry
-
-      if(value.eq.list(PLACE))then
-         exit LOOP
-      else if(value.gt.list(place))then
-         imax=place-1
-      else
-         imin=place+1
-      endif
-
-      if(imin.gt.imax)then
-         place=-imin
-         if(iabs(place).gt.arraysize)then ! ran off end of list. Where new value should go or an unsorted input array'
-            exit LOOP
-         endif
-         exit LOOP
-      endif
-
-      place=(imax+imin)/2
-
-      if(place.gt.arraysize.or.place.le.0)then
-         message='*locate* error: search is out of bounds of list. Probably an unsorted input array'
-         error=-1
-         exit LOOP
-      endif
-
-   enddo
-   message='*locate* exceeded allowed tries. Probably an unsorted input array'
-   endblock LOOP
-   if(present(ier))then
-      ier=error
-   else if(error.ne.0)then
-      write(stderr,*)message//' VALUE=',value,' PLACE=',place
-      stop 1
-   endif
-   if(present(errmsg))then
-      errmsg=message
-   endif
-end subroutine locate_i
-!===================================================================================================================================
 subroutine remove_i(list,place)
 
 !character(len=*),parameter::ident_13="@(#)M_list::remove_i(3fp): remove value from allocatable array at specified position"
@@ -3985,11 +3858,11 @@ integer                      :: end
    if(.not.allocated(list))then
       list=[character(len=max(len_trim(value),2)) :: ]
    endif
-   tlen=len_trim(value)
+   tlen=len(value)
    end=size(list)
    if(place.lt.0.or.place.gt.end)then
            write(stderr,*)'*replace_c* error: index out of range. end=',end,' index=',place
-   elseif(len_trim(value).le.len(list))then
+   elseif(len(value).le.len(list))then
       list(place)=value
    else  ! increase length of variable
       ii=max(tlen,len(list))
@@ -4054,10 +3927,10 @@ integer                      :: ii
 integer                      :: end
 
    if(.not.allocated(list))then
-      list=[character(len=max(len_trim(value),2)) :: ]
+      list=[character(len=max(len(value),2)) :: ]
    endif
 
-   ii=max(len_trim(value),len(list),2)
+   ii=max(len(value),len(list),2)
    end=size(list)
 
    if(end.eq.0)then                                          ! empty array
@@ -4128,61 +4001,6 @@ integer               :: end
    endif
 
 end subroutine insert_i
-!===================================================================================================================================
-subroutine dict_delete(self,key)
-
-!character(len=*),parameter::ident_24="@(#)M_list::dict_delete(3f): remove string from sorted allocatable string array if present"
-
-class(dictionary),intent(inout) :: self
-character(len=*),intent(in)     :: key
-integer                         :: place
-
-   call locate(self%key,key,place)
-   if(place.ge.1)then
-      call remove(self%key,place)
-      call remove(self%value,place)
-      call remove(self%count,place)
-   endif
-
-end subroutine dict_delete
-!===================================================================================================================================
-function dict_get(self,key) result(value)
-
-!character(len=*),parameter::ident_25="@(#)M_list::dict_get(3f): get value of key-value pair in dictionary, given key"
-
-!!class(dictionary),intent(inout) :: self
-class(dictionary)               :: self
-character(len=*),intent(in)     :: key
-character(len=:),allocatable    :: value
-integer                         :: place
-   call locate(self%key,key,place)
-   if(place.lt.1)then
-      value=''
-   else
-      value=self%value(place)(:self%count(place))
-   endif
-end function dict_get
-!===================================================================================================================================
-subroutine dict_add(self,key,value)
-
-!character(len=*),parameter::ident_26="@(#)M_list::dict_add(3f): place key-value pair into dictionary, adding the key if required"
-
-class(dictionary),intent(inout) :: self
-character(len=*),intent(in)     :: key
-character(len=*),intent(in)     :: value
-integer                         :: place
-integer                         :: place2
-   call locate(self%key,key,place)
-   if(place.lt.1)then
-      place2=iabs(place)
-      call insert( self%key,   key,             place2 )
-      call insert( self%value, value,           place2 )
-      call insert( self%count, len_trim(value), place2 )
-   elseif(place.gt.0)then  ! replace instead of insert
-      call insert( self%value, value,           place )
-      call insert( self%count, len_trim(value), place )
-   endif
-end subroutine dict_add
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()=
 !===================================================================================================================================
