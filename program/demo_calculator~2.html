@@ -76,19 +76,19 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="12.9% of total for programs.">31 statements</a>
+                 title="12.4% of total for programs.">30 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/ca.f90"> Source File</a>
+              <a href="../src/demo_calculator.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/ca.f90.html'>ca.f90</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/demo_calculator.f90.html'>demo_calculator.f90</a></li>
             <li class="breadcrumb-item active" aria-current="page">demo_calculator</li>
           </ol>
         </nav>
@@ -115,12 +115,12 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-dp~5">dp</a>
-            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-event~4">event</a>
-            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-ierr~16">ierr</a>
-            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-line~7">line</a>
-            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-outlin~5">outlin</a>
-            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-rvalue~4">rvalue</a>
+            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-dp~3">dp</a>
+            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-event~3">event</a>
+            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-ierr~5">ierr</a>
+            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-line~3">line</a>
+            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-outlin~3">outlin</a>
+            <a class="list-group-item" href="../program/demo_calculator~2.html#variable-rvalue~3">rvalue</a>
         </div>
       </div>
     </div>
@@ -186,7 +186,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~5"></span>
+              <span class="anchor" id="variable-dp~3"></span>
               integer,
             </td>
             <td>
@@ -202,7 +202,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-event~4"></span>
+              <span class="anchor" id="variable-event~3"></span>
               character(len=iclen_calc)
             </td>
             <td>
@@ -218,7 +218,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~16"></span>
+              <span class="anchor" id="variable-ierr~5"></span>
               integer
             </td>
             <td>
@@ -234,7 +234,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-line~7"></span>
+              <span class="anchor" id="variable-line~3"></span>
               character(len=iclen_calc)
             </td>
             <td>
@@ -250,7 +250,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outlin~5"></span>
+              <span class="anchor" id="variable-outlin~3"></span>
               character(len=iclen_calc)
             </td>
             <td>
@@ -266,7 +266,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rvalue~4"></span>
+              <span class="anchor" id="variable-rvalue~3"></span>
               real(kind=dp)
             </td>
             <td>
@@ -308,7 +308,6 @@ parameter
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dp</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">rvalue</span>
 <span class="kt">integer</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
 <span class="w">   </span><span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>
-<span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Enter expressions or &quot;funcs&quot; or &quot;dump&quot;&#39;</span>
 <span class="w">   </span><span class="k">call </span><span class="n">calculator</span><span class="p">(</span><span class="s1">&#39;ownmode(1)&#39;</span><span class="p">,</span><span class="n">outlin</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">rvalue</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! activate user-defined function interface</span>
 <span class="w">   </span><span class="n">INFINITE</span><span class="p">:</span><span class="w"> </span><span class="k">do</span>
@@ -355,7 +354,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-03-29 03:45              </p>
+ on 2024-03-29 03:49              </p>
           </div>
         </div>
         <br>
